@@ -1,0 +1,43 @@
+.example-small-box, .example-large-box {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 16px;
+	padding: 16px;
+	border-radius: 8px;
+	background-color: blue;
+}
+  
+.example-small-box {
+	height: 100px;
+	width: 100px;
+}
+  
+.example-large-box {
+	height: 300px;
+	width: 300px;
+}
+  
+.mat-tab-group{
+	margin: 16px;
+	padding: 16px;
+	border-radius: 8px;
+	background-color: rgb(244, 76, 96);
+}
+
+.log{
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	justify-content: center;
+}
+
+h1{
+	font-size: 7em;
+	font-weight: bold;
+	text-align: center;
+	justify-content: center;
+	padding: 50px;
+}
+
+body {background-color: rgb(241, 241, 241)}

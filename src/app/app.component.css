@@ -1,0 +1,31 @@
+.example-small-box, .example-large-box {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 16px;
+	padding: 16px;
+	border-radius: 8px;
+	background-color: blue;
+}
+  
+.example-small-box {
+	height: 100px;
+	width: 100px;
+}
+  
+.example-large-box {
+	height: 300px;
+	width: 300px;
+}
+  
+.mat-tab-group{
+	margin: 16px;
+	padding: 16px;
+	border-radius: 8px;
+	background-color: rgb(120, 236, 155);
+	display: flex;
+}
+
+.mat-tab{
+	background-color: rgb(101, 0, 168);
+}

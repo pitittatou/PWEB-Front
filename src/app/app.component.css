@@ -22,7 +22,8 @@
 	margin: 16px;
 	padding: 16px;
 	border-radius: 8px;
-	background-color: rgb(120, 236, 155);
+	background-color: rgb(161, 182, 167);
+	color:black;
 	display: flex;
 }
 

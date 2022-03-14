@@ -19,7 +19,6 @@
 }
   
 .mat-tab-group{
-	margin: 16px;
 	padding: 16px;
 	border-radius: 8px;
 	background-color: rgb(244, 76, 96);
@@ -32,12 +31,22 @@
 	justify-content: center;
 }
 
+.mdp{
+	background-color: transparent;
+	border: none;
+}
+
+p{
+	padding: 5px;
+	padding-bottom: 0px ;
+}
+
 h1{
 	font-size: 7em;
 	font-weight: bold;
 	text-align: center;
 	justify-content: center;
-	padding: 50px;
+	padding: 100px;
 }
 
 body {background-color: rgb(241, 241, 241)}

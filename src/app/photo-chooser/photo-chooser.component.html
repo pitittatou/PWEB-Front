@@ -6,12 +6,18 @@
       <div *ngIf="!item.empty; then itemContent else placeholder"></div>
       <ng-template #itemContent>
         <img mat-card-image [src]="item.url" alt="Photo numéro {{i+1}}">
-        <button mat-mini-fab color="warn" aria-label="Supprimer la photo" matTooltip="Supprimer la photo" class="close-button">
+        <button (click)="onDelete(i)" mat-mini-fab color="warn" aria-label="Supprimer la photo" matTooltip="Supprimer la photo" class="close-button">
           <mat-icon>clear</mat-icon>
         </button>
-        <button mat-mini-fab aria-label="Changer l'ordre de la photo" matTooltip="Changer l'ordre de la photo" color="" class="number-button">
+        <button mat-mini-fab [matMenuTriggerFor]="positionMenu" aria-label="Changer l'ordre de la photo" matTooltip="Changer l'ordre de la photo" color="" class="number-button">
           {{i+1}}
         </button>
+        <mat-menu #positionMenu="matMenu">
+          <button (click)="onPositionChange(i, j)" mat-menu-item *ngFor="let j of [0, 1, 2]" [disabled]="i==j || items[j].empty">
+            Position {{j+1}}
+            <mat-icon *ngIf="i==j">arrow_left</mat-icon>
+          </button>
+        </mat-menu>
       </ng-template>
       <ng-template #placeholder>
         <i class="add-photo-icon"></i>

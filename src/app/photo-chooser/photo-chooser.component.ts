@@ -36,10 +36,26 @@ export class PhotoChooserComponent implements OnInit {
     }
 
     for (let i = 0; i < 3; i++) {
-      if (i != 0 && this.items[i-1].empty) {
-        this.items[i].disabled = true
+      if (this.urls[i]) {
+        this.items[i].disabled = false
+        this.items[i].empty = false
+        this.items[i].url = this.urls[i]
+      } else {
+        this.items[i].empty = true
+        this.items[i].url = ""
+        this.items[i].disabled = i != 0 && this.items[i - 1].empty;
       }
     }
   }
 
+  onDelete(id: number): void {
+    this.urls.splice(id, 1)
+    this.updateItems()
+  }
+
+  onPositionChange(id: number, target: number): void {
+    [this.urls[id], this.urls[target]] = [this.urls[target], this.urls[id]]
+    this.updateItems()
+    console.log(this.urls)
+  }
 }

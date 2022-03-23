@@ -58,4 +58,8 @@ export class PhotoChooserComponent implements OnInit {
     this.updateItems()
     console.log(this.urls)
   }
+
+  onFileSelected($event: Event) {
+    
+  }
 }

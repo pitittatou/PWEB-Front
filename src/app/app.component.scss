@@ -1,5 +1,5 @@
 a.bouton1 {
-    background-color:red;
+    background-color:rgb(90, 145, 74);
     box-sizing: border-box;
     padding: 5px 10px;
     border: none;
@@ -8,11 +8,11 @@ a.bouton1 {
     font-weight: 500;
     position: fixed;
     bottom: 10%;
-    right: 10%;
+    right: 15%;
 
 }
 a.bouton2{
-    background-color:green;
+    background-color:rgb(177, 105, 155);
     box-sizing: border-box;
     padding: 5px 10px;
     border: none;
@@ -24,19 +24,143 @@ a.bouton2{
     right: 80%;
 
 }
-
-ngx-slider.slider1 {
+a.bouton3{
+    background-color:rgb(170, 100, 138);
+    box-sizing: border-box;
+    padding: 5px 10px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    font-weight: 500;
     position: fixed;
-    width: 50%;
-    right: 20%;
-    bottom: 45%;
+    bottom: 60%;
+    right: 65%;
 
 }
 
-ngx-slider.slider2 {
+a.bouton4{
+    background-color:rgb(170, 100, 138);
+    box-sizing: border-box;
+    padding: 5px 10px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    font-weight: 500;
     position: fixed;
-    width: 50%;
-    right: 20%;
-    bottom: 20%;
-  }
-     
+    bottom: 60%;
+    right: 55%;
+
+}
+a.bouton5{
+    background-color:rgb(170, 100, 138);
+    box-sizing: border-box;
+    padding: 5px 10px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    font-weight: 500;
+    position: fixed;
+    bottom: 70%;
+    right: 45%;
+
+}
+
+a.bouton6{
+    background-color:rgb(170, 100, 138);
+    box-sizing: border-box;
+    padding: 5px 10px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    font-weight: 500;
+    position: fixed;
+    bottom: 70%;
+    right: 65%;
+
+}
+
+a.bouton7{
+    background-color:rgb(170, 100, 138);
+    box-sizing: border-box;
+    padding: 5px 10px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    font-weight: 500;
+    position: fixed;
+    bottom: 70%;
+    right: 55%;
+
+}
+a.bouton8{
+    background-color:rgb(170, 100, 138);
+    box-sizing: border-box;
+    padding: 5px 10px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    font-weight: 500;
+    position: fixed;
+    bottom: 60%;
+    right: 45%;
+
+}
+::ng-deep {
+    ngx-slider.slider1 {
+        position: fixed;
+        width: 50%;
+        right: 20%;
+        bottom: 45%;
+        .ngx-slider-bar {
+            background: #803369 !important;
+        }
+        .ngx-slider-pointer {
+            background: #9c668c !important;
+        }
+
+    }
+}
+::ng-deep {
+    ngx-slider.slider2 {
+        position: fixed;
+        width: 50%;
+        right: 20%;
+        bottom: 33%;
+        .ngx-slider-bar {
+            background: #803369 !important;
+        }
+        .ngx-slider-pointer {
+            background: #9c668c !important;
+        }
+    }
+}
+
+p.genre{
+    position: fixed;
+    right: 80%;
+    bottom: 68%;
+    font-size:larger ;
+}
+p.orientation{
+    position: fixed;
+    right: 80%;
+    bottom: 58%;
+    font-size:larger ;
+}
+p.rayon{
+    position: fixed;
+    right: 80%;
+    bottom: 43%;
+    font-size:larger ;
+}
+p.age{
+    position: fixed;
+    right: 80%;
+    bottom: 33%;
+    font-size:larger ;
+}
+h2.titre{
+    position:fixed;
+
+
+}

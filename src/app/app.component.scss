@@ -33,7 +33,7 @@ a.bouton3{
     font-size: 20px;
     font-weight: 500;
     position: fixed;
-    bottom: 60%;
+    bottom: 82%;
     right: 65%;
 
 }
@@ -47,7 +47,7 @@ a.bouton4{
     font-size: 20px;
     font-weight: 500;
     position: fixed;
-    bottom: 60%;
+    bottom: 82%;
     right: 55%;
 
 }
@@ -101,16 +101,16 @@ a.bouton8{
     font-size: 20px;
     font-weight: 500;
     position: fixed;
-    bottom: 60%;
+    bottom: 82%;
     right: 45%;
 
 }
 ::ng-deep {
     ngx-slider.slider1 {
         position: fixed;
-        width: 50%;
-        right: 20%;
-        bottom: 45%;
+        width: 40%;
+        right: 30%;
+        bottom: 58%;
         .ngx-slider-bar {
             background: #803369 !important;
         }
@@ -123,9 +123,9 @@ a.bouton8{
 ::ng-deep {
     ngx-slider.slider2 {
         position: fixed;
-        width: 50%;
-        right: 20%;
-        bottom: 33%;
+        width: 40%;
+        right: 30%;
+        bottom: 48%;
         .ngx-slider-bar {
             background: #803369 !important;
         }
@@ -137,30 +137,40 @@ a.bouton8{
 
 p.genre{
     position: fixed;
-    right: 80%;
-    bottom: 68%;
+    right: 75%;
+    bottom: 80%;
     font-size:larger ;
 }
 p.orientation{
     position: fixed;
-    right: 80%;
-    bottom: 58%;
+    right: 75%;
+    bottom: 68%;
     font-size:larger ;
 }
 p.rayon{
     position: fixed;
-    right: 80%;
-    bottom: 43%;
+    right: 75%;
+    bottom: 58%;
     font-size:larger ;
 }
 p.age{
     position: fixed;
-    right: 80%;
-    bottom: 33%;
+    right: 75%;
+    bottom: 48%;
+    font-size:larger ;
+}
+p.description{
+    position: fixed;
+    right: 75%;
+    bottom: 38%;
     font-size:larger ;
 }
 h2.titre{
     position:fixed;
-
-
+    right: 50%;
+}
+textarea{
+    position:fixed;
+    right:45%;
+    bottom:33%;
 }

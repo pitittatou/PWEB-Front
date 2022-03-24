@@ -1,5 +1,11 @@
 
 <a class="bouton1">Valider</a>
 <a class="bouton2">Apercu</a>
-<ngx-slider [(value)]="value" [options]="options"></ngx-slider>
+<ngx-slider class="slider1" [(value)]="value" [options]="options"></ngx-slider>
+<ngx-slider
+  class="slider2"
+  [(value)]="minValue"
+  [(highValue)]="maxValue"
+  [options]="Options"
+></ngx-slider>
 

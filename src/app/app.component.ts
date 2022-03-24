@@ -13,4 +13,10 @@ export class AppComponent {
     floor: 0,
     ceil: 200
   };
+  minValue: number = 50;
+  maxValue: number = 200;
+  Options: Options = {
+    floor: 0,
+    ceil: 100,
+  };
 }

@@ -11,7 +11,7 @@ type Item = {
 @Component({
   selector: 'app-photo-chooser',
   templateUrl: './photo-chooser.component.html',
-  styleUrls: ['./photo-chooser.component.css']
+  styleUrls: ['./photo-chooser.component.scss']
 })
 export class PhotoChooserComponent implements OnInit {
   urls!: string[]
@@ -60,6 +60,6 @@ export class PhotoChooserComponent implements OnInit {
   }
 
   onFileSelected($event: Event) {
-    
+
   }
 }

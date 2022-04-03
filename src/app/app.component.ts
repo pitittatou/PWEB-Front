@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Options } from '@angular-slider/ngx-slider';
+//import { Options } from '@angular-slider/ngx-slider';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +8,7 @@ import { Options } from '@angular-slider/ngx-slider';
 })
 export class AppComponent {
   title = 'PWEB-Front';
-  value: number = 100;
+  /*value: number = 100;
   options: Options = {
     floor: 0,
     ceil: 200
@@ -18,5 +18,5 @@ export class AppComponent {
   Options: Options = {
     floor: 0,
     ceil: 100,
-  };
+  }; */
 }

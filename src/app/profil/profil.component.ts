@@ -21,6 +21,6 @@ export class ProfilComponent{
     floor: 0,
     ceil: 100,
   };
-  
+  text!: String;
 
 }

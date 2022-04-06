@@ -1,5 +1,7 @@
 <div class="matching-card">
-  <h2>{{ matching.prenom | uppercase }}</h2>
-  <p>{{ matching.age }} ans</p>
+  <h2>{{ matching.prenom | uppercase }} {{ matching.age }} ans</h2>
   <img [src]="matching.imageUrl" [alt]="matching.prenom">
+  <p>{{ matching.position }}</p>
+  <p>{{matching.profession}}</p>
+  <p>{{matching.description}}</p>
 </div>

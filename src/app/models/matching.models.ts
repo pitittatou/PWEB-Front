@@ -1,6 +1,6 @@
 export class Matching {
   prenom!: string;
-  nom!: string;
+  age!: number;
   imageUrl!: string;
   profession!: string;
   position!: string;

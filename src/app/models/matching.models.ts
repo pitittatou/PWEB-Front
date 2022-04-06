@@ -1,4 +1,4 @@
-export class Maching {
+export class Matching {
   prenom!: string;
   nom!: string;
   imageUrl!: string;

@@ -29,7 +29,7 @@ import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
-    MatchingComponent
+    MatchingComponent,
     NavbarComponent,
     LoginComponent
   ],

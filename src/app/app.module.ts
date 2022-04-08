@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ApercuComponentComponent } from './apercu-component/apercu-component.component';
 import { ProfilComponent } from './profil/profil.component';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -25,14 +25,14 @@ import { CommonModule } from '@angular/common';
   declarations: [
     AppComponent,
     ApercuComponentComponent,
-    ProfilComponent
+    ProfilComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgxSliderModule,
     BrowserAnimationsModule,
-    LoginComponent,
     FormsModule,
     MatTabsModule,
     MatButtonModule,
@@ -47,7 +47,7 @@ import { CommonModule } from '@angular/common';
     NgxSliderModule,
     ReactiveFormsModule
   ],
- 
+
   providers: [],
   bootstrap: [AppComponent]
 })

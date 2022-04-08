@@ -31,7 +31,7 @@ import { CommonModule } from '@angular/common';
     BrowserModule,
     AppRoutingModule,
     NgxSliderModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
     LoginComponent,
     FormsModule,
     MatTabsModule,

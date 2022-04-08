@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UsersService} from "../services/users.service";
+import {ImageUploadService} from "../services/image-upload.service";
+import {GlobalConstants} from "../common/global-constants";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 type Item = {
   position: number
@@ -14,13 +17,13 @@ type Item = {
   styleUrls: ['./photo-chooser.component.scss']
 })
 export class PhotoChooserComponent implements OnInit {
-  urls!: string[]
+  photos!: string[]
   items!: Item[]
 
-  constructor(private usersService: UsersService) {}
+  constructor(private usersService: UsersService, private fileUploadService: ImageUploadService, private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
-    this.urls = this.usersService.urls
+    this.photos = this.usersService.photos
     this.items = []
     for (let i = 0; i < 3; i++) {
       this.items.push({position: i, disabled: false, empty: true, url: ""})
@@ -29,17 +32,11 @@ export class PhotoChooserComponent implements OnInit {
   }
 
   updateItems(): void {
-    for (let i = 0; i < this.urls.length; i++) {
-      this.items[i].disabled = false
-      this.items[i].empty = false
-      this.items[i].url = this.urls[i]
-    }
-
     for (let i = 0; i < 3; i++) {
-      if (this.urls[i]) {
+      if (this.photos[i]) {
         this.items[i].disabled = false
         this.items[i].empty = false
-        this.items[i].url = this.urls[i]
+        this.items[i].url = GlobalConstants.apiURL + 'images/' + this.photos[i]
       } else {
         this.items[i].empty = true
         this.items[i].url = ""
@@ -49,17 +46,37 @@ export class PhotoChooserComponent implements OnInit {
   }
 
   onDelete(id: number): void {
-    this.urls.splice(id, 1)
+    let fileName = this.photos.splice(id, 1)[0]
     this.updateItems()
+    this.fileUploadService.delete(fileName).subscribe({
+        next: (v) => {
+          console.log(v)
+        },
+        error: () => {
+          console.log("Error trying to delete the file")
+        }
+      }
+    )
   }
 
   onPositionChange(id: number, target: number): void {
-    [this.urls[id], this.urls[target]] = [this.urls[target], this.urls[id]]
+    [this.photos[id], this.photos[target]] = [this.photos[target], this.photos[id]]
     this.updateItems()
-    console.log(this.urls)
   }
 
-  onFileSelected($event: Event) {
-
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      this.fileUploadService.upload(file).subscribe({
+          next: (v) => {
+            this.photos.push(v.filename)
+            this.updateItems()
+          },
+          error: () => {
+            this.snackBar.open("Erreur lors de l'envoi du fichier", 'Fermer')
+          }
+        }
+      )
+    }
   }
 }

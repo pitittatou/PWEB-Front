@@ -19,7 +19,7 @@
         </mat-menu>
       </ng-template>
       <ng-template #placeholder>
-        <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
+        <input type="file" accept="image/png, image/jpeg, image/gif" class="file-input" (change)="onFileSelected($event)" #fileUpload>
         <i class="add-photo-icon"></i>
         <button *ngIf="!item.disabled" (click)="fileUpload.click()" class="upload-btn" aria-label="Ajouter une photo" matTooltip="Ajouter une photo"></button>
       </ng-template>

@@ -1,0 +1,65 @@
+.mat-tab-group{
+	border-radius: 8px;
+	background-color: rgb(255, 255, 255);
+	box-shadow: 2px 2px 5px 0 rgb(192, 191, 191);
+}
+
+.group{
+	width: 85%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	justify-content: center;
+	text-align: center;
+}
+
+.mdp{
+	background-color: transparent;
+	border: none;
+}
+
+.mat-raised-button{
+    box-shadow: 2px 2px 5px 0 rgba(24, 23, 23, 0.418);
+}
+
+.log{
+	text-align: left;
+	width: 90%;
+	margin-left: 15%
+}
+
+.logbutton{
+	text-align: center;
+}
+
+.mat-form-field {
+	width: 80%;
+}
+
+.mat-radio-button {
+	margin-right: 10px;
+}
+
+.mat-checkbox {
+	margin-right: 10px;
+}
+
+.ngx-slider {
+	width: 80%;
+}
+
+p{
+	padding: 0px;
+	padding-bottom: 0px ;
+}
+
+h1{
+	font-size: 500%;
+	font-weight: bold;
+	text-align: center;
+	justify-content: center;
+	padding-top: 5%;
+	padding-bottom: 3%;
+}
+
+body {background-color: rgb(209, 223, 244)}

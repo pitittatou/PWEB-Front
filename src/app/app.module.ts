@@ -17,8 +17,8 @@ import { MatchingComponent } from "./matching/matching.component";
     BrowserModule,
     AppRoutingModule,
     MatCardModule,
-    MatButtonModule,
-    MatIconModule
+      MatButtonModule,
+      MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

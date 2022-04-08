@@ -45,10 +45,13 @@
         <mat-divider></mat-divider>
       <div mat-subheader></div>  
       
-        <img mat-line [src]='folder.imageUrl'>
-        <div mat-line >{{folder.name}}</div>
-         <div mat-line> {{folder.age}} </div>
+      <img mat-line [src]='folder.imageUrl'>
+      
+        <span>{{folder.name}}</span>
+        <span class="example-spacer"></span>
+         <span > {{folder.age}} </span>
         <div mat-line> </div>
+
      
       </mat-list-item>
     </mat-list>

@@ -3,14 +3,14 @@
   <mat-card class="example-card">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>{{ matching.prenom | uppercase }}</mat-card-title>
-      <mat-card-subtitle>{{ matching.age }} ans</mat-card-subtitle>
+      <mat-card-title>{{ prenom | uppercase }}</mat-card-title>
+      <mat-card-subtitle>{{ age }} ans</mat-card-subtitle>
     </mat-card-header>
-    <img [src]="matching.imageUrl" [alt]="matching.prenom">
+    <img [src]="imageUrl" [alt]="prenom">
     <mat-card-content>
-      <p>{{ matching.position }}</p>
-      <p>{{matching.profession}}</p>
-      <p>{{matching.description}}</p>
+      <p>{{position }}</p>
+      <p>{{profession}}</p>
+      <p>{{description}}</p>
     </mat-card-content>
     <mat-card-actions>
       <button mat-fab color="accent" aria-label="Example icon button with a plus one icon">

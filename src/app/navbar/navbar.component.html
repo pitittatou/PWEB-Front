@@ -1,0 +1,75 @@
+  <!-- Toolbar -->
+  <div class="toolbar" role="banner">
+    
+    <button mat-icon-button 
+      width="40"  (click)="opened=!opened" >    
+      <mat-icon >notifications_active</mat-icon>
+    </button>
+
+    
+    <div class="spacer"></div>
+      <span class="example-spacer"></span>
+      <span> Inça match! 💞</span>
+      <span class="example-spacer"></span>
+   
+      <button mat-icon-button 
+      width="40"
+     
+     
+      [matMenuTriggerFor]="menu">
+        <mat-icon>account_circle </mat-icon>
+      </button>
+
+      <mat-menu #menu>
+          <button mat-menu-item >
+            <mat-icon style="color:rgb(223, 156, 31)">manage_accounts</mat-icon>
+            <span style="color:black">Mon profil</span>
+      </button>
+      
+      <button mat-menu-item>
+            <mat-icon style="color:rgb(223, 156, 31)">exit_to_app</mat-icon>
+            <span style="color:black">Me déconnecter</span>
+          </button>
+      
+      </mat-menu>
+    
+  </div>
+
+  
+  <mat-sidenav-container>
+    
+   <mat-sidenav mode="side"[(opened)]="opened">Matchs récents
+    
+    <mat-list>
+      <mat-list-item *ngFor="let folder of folders">
+        <mat-divider></mat-divider>
+      <div mat-subheader></div>  
+      
+      <img mat-line [src]='folder.imageUrl'>
+      
+        <span>{{folder.name}}</span>
+        <span class="example-spacer"></span>
+         <span > {{folder.age}} </span>
+        <div mat-line> </div>
+
+     
+      </mat-list-item>
+    </mat-list>
+  
+    </mat-sidenav>
+  
+    <mat-sidenav-content>Main
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+    
+
+
+
+  
+
+  
+
+  
+
+  
+

@@ -1,147 +1,51 @@
-
-a.bouton1 {
-    background-color:rgb(90, 145, 74);
-    box-sizing: border-box;
-    padding: 5px 10px;
-    border: none;
-    outline: none;
-    font-size: 20px;
-    font-weight: 500;
-    position: fixed;
-    bottom: 10%;
-    right: 15%;
-
+section {
+    display: table;
 }
-
-
-
-/*body{
-    background-color: aqua;
-    p{
-        position: fixed;
-        right: 75%;
-        bottom: 80%;
-        font-size:larger ;
-        }
+body{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:rgb(194, 189, 189);
+	text-align: center
     
 }
-    */
-
-
-/*a.bouton1 {
-    background-color:rgb(90, 145, 74);
-    box-sizing: border-box;
-    padding: 5px 10px;
-    border: none;
-    outline: none;
-    font-size: 20px;
-    font-weight: 500;
+.Profil {
+    display: table-cell;
+    font-size: 14px;
+    margin-left: 8px;
+    min-width: 120px;
     position: fixed;
     bottom: 10%;
-    right: 15%;
-
+    right:5%;
+    background-color: white;
+    justify-content: center;
+    width:90%;
+    height: 80%;
+    border-radius: 7%;
+    box-shadow: 10px 10px 5px lightblue;
 }
-
-a.bouton2{
-    background-color:rgb(177, 105, 155);
-    box-sizing: border-box;
-    padding: 5px 10px;
-    border: none;
-    outline: none;
-    font-size: 20px;
-    font-weight: 500;
-    position: fixed;
+.prenom{
+    position:absolute;
+    bottom: 90%;
+    right:50%;
+}
+.valider{
+    position: absolute;
     bottom: 10%;
-    right: 80%;
-
+    right:5%;
 }
-a.bouton3{
-    background-color:rgb(170, 100, 138);
-    box-sizing: border-box;
-    padding: 5px 10px;
-    border: none;
-    outline: none;
-    font-size: 20px;
-    font-weight: 500;
-    position: fixed;
-    bottom: 82%;
-    right: 65%;
-
-}
-
-a.bouton4{
-    background-color:rgb(170, 100, 138);
-    box-sizing: border-box;
-    padding: 5px 10px;
-    border: none;
-    outline: none;
-    font-size: 20px;
-    font-weight: 500;
-    position: fixed;
-    bottom: 82%;
-    right: 55%;
-
-}
-a.bouton5{
-    background-color:rgb(170, 100, 138);
-    box-sizing: border-box;
-    padding: 5px 10px;
-    border: none;
-    outline: none;
-    font-size: 20px;
-    font-weight: 500;
-    position: fixed;
-    bottom: 70%;
-    right: 45%;
-
-}
-
-a.bouton6{
-    background-color:rgb(170, 100, 138);
-    box-sizing: border-box;
-    padding: 5px 10px;
-    border: none;
-    outline: none;
-    font-size: 20px;
-    font-weight: 500;
-    position: fixed;
-    bottom: 70%;
-    right: 65%;
-
-}
-
-a.bouton7{
-    background-color:rgb(170, 100, 138);
-    box-sizing: border-box;
-    padding: 5px 10px;
-    border: none;
-    outline: none;
-    font-size: 20px;
-    font-weight: 500;
-    position: fixed;
-    bottom: 70%;
-    right: 55%;
-
-}
-a.bouton8{
-    background-color:rgb(170, 100, 138);
-    box-sizing: border-box;
-    padding: 5px 10px;
-    border: none;
-    outline: none;
-    font-size: 20px;
-    font-weight: 500;
-    position: fixed;
-    bottom: 82%;
-    right: 45%;
-
+.apercu{
+    position: absolute;
+    bottom:10%;
+    right:90%;
 }
 ::ng-deep {
     ngx-slider.slider1 {
-        position: fixed;
-        width: 40%;
-        right: 30%;
-        bottom: 58%;
+        position: absolute;
+        width: 50%;
+        right: 20%;
+        bottom: 46%;
         .ngx-slider-bar {
             background: #803369 !important;
         }
@@ -153,10 +57,10 @@ a.bouton8{
 }
 ::ng-deep {
     ngx-slider.slider2 {
-        position: fixed;
-        width: 40%;
-        right: 30%;
-        bottom: 48%;
+        position: absolute;
+        width: 50%;
+        right: 20%;
+        bottom: 36%;
         .ngx-slider-bar {
             background: #803369 !important;
         }
@@ -165,43 +69,72 @@ a.bouton8{
         }
     }
 }
-
 p.genre{
-    position: fixed;
+    position: absolute;
     right: 75%;
-    bottom: 80%;
+    bottom: 65%;
     font-size:larger ;
 }
+.choixGenre{
+    position: absolute;
+    bottom:68%;
+    right: 30%;
+}
+.mat-radio-button {
+	margin-right: 60px;
+    color: #803369;
+
+}
+
 p.orientation{
-    position: fixed;
+    position: absolute;
     right: 75%;
-    bottom: 68%;
+    bottom: 55%;
     font-size:larger ;
 }
+.mat-checkbox {
+	margin-right: 60px;
+    color: #803369;
+}
+.homme{
+    position: absolute;
+    bottom: 57%;
+    right:49%;
+}
+.femme{
+    position: absolute;
+    bottom: 57%;
+    right:39%;
+}
+.autre{
+    position: absolute;
+    bottom: 57%;
+    right:30%;
+
+}
+
 p.rayon{
-    position: fixed;
+    position: absolute;
     right: 75%;
-    bottom: 58%;
+    bottom: 45%;
     font-size:larger ;
 }
 p.age{
-    position: fixed;
+    position: absolute;
     right: 75%;
-    bottom: 48%;
+    bottom: 35%;
     font-size:larger ;
 }
 p.description{
-    position: fixed;
-    right: 75%;
-    bottom: 38%;
+    position: absolute;
+    right:75%;
+    bottom:25%;
     font-size:larger ;
+
 }
-h2.titre{
-    position:fixed;
-    right: 50%;
+.textfield{
+    position: absolute;
+    bottom:23%;
+    right:30%;
+    width: 30%;
 }
-textarea{
-    position:fixed;
-    right:45%;
-    bottom:33%;
-} */

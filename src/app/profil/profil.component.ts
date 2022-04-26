@@ -7,6 +7,23 @@ import { Options } from '@angular-slider/ngx-slider';
   styleUrls: ['./profil.component.scss']
 })
 export class ProfilComponent{
+  Genre!:{
+    type:String,
+      required:true
+  }
+  Attirance!:{
+      type:String,
+      required:true        
+  }
+  Rayon!:{
+      type: Number,
+      required:true
+  }
+  TrancheAge!:{
+      type:Array<number>,
+      required:true
+  }
+  Description!:String
   Enregistrer(){
     
   }

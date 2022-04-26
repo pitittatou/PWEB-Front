@@ -7,15 +7,6 @@ import { Options } from '@angular-slider/ngx-slider';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  value: number = 100;
-  options: Options = {
-    floor: 0,
-    ceil: 200
-  };
-  minValue: number = 50;
-  maxValue: number = 200;
-  Options: Options = {
-    floor: 18,
-    ceil: 100,
-  };
+  title = 'PWEB-Front';
+
 }

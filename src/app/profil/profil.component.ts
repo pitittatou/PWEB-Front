@@ -11,7 +11,6 @@ export class ProfilComponent{
     
   }
   constructor() { }
-  title = 'PWEB-Front';
   value: number = 100;
   options: Options = {
     floor: 0,
@@ -20,7 +19,8 @@ export class ProfilComponent{
   minValue: number = 50;
   maxValue: number = 200;
   Options: Options = {
-    floor: 0,
+    floor: 18,
     ceil: 100,
   };
+  
 }

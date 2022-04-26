@@ -7,7 +7,9 @@ import { Options } from '@angular-slider/ngx-slider';
   styleUrls: ['./profil.component.scss']
 })
 export class ProfilComponent{
-
+  Enregistrer(){
+    
+  }
   constructor() { }
   title = 'PWEB-Front';
   value: number = 100;

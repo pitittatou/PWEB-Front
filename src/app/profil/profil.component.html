@@ -1,0 +1,37 @@
+<html lang="en">
+  
+  <body>
+      <section>
+        <div class="Profil">
+            <h2 class="prenom">Prénom, âge</h2>
+            <p class="genre" style="color:rgb(158, 70, 84);">Genre:</p>
+            <mat-radio-group class="choixGenre">
+                <mat-radio-button value="1">Homme</mat-radio-button>
+                <mat-radio-button value="2">Femme</mat-radio-button>
+                <mat-radio-button value="3">Autre</mat-radio-button>
+            </mat-radio-group>
+            <p class="orientation" style="color:rgb(158, 70, 84);">Orientation sexuelle:</p>
+            <mat-checkbox class="homme">Homme</mat-checkbox>
+			<mat-checkbox class="femme">Femme</mat-checkbox>
+			<mat-checkbox class="autre">Autre</mat-checkbox>
+            <p class="rayon" style="color:rgb(158, 70, 84);">Rayon de recherche:</p>
+            <p class="age" style="color:rgb(158, 70, 84);">Tranche d'âge:</p>
+            <p class="description" style="color:rgb(158, 70, 84);">Description:</p>
+          <ngx-slider class="slider1" [(value)]="value" [options]="options"></ngx-slider>
+          <ngx-slider
+                class="slider2"
+                [(value)]="minValue"
+                [(highValue)]="maxValue"
+                [options]="Options"
+            ></ngx-slider>
+            <mat-form-field class="textfield">
+                <textarea matInput style="color:rgb(158, 70, 84)"></textarea>
+            </mat-form-field>
+            <button mat-raised-button color="accent" class="valider" (click)="Enregistrer()">Valider</button>
+            <router-outlet></router-outlet>
+             <button mat-raised-button color="accent" class="apercu" [routerLink]="['/pageApercu']">Aperçu</button>
+        </div>
+      </section>
+  </body>
+  
+  </html>

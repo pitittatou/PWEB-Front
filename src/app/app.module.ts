@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 // Custom components
+import { MatchingComponent } from "./matching/matching.component";
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { PhotoChooserComponent } from './photo-chooser/photo-chooser.component';
@@ -39,6 +40,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 @NgModule({
   declarations: [
     AppComponent,
+    MatchingComponent,
     ApercuComponentComponent,
     ProfilComponent,
     PhotoChooserComponent,
@@ -48,6 +50,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatCardModule,
     NgxSliderModule,
     BrowserAnimationsModule,
     MatGridListModule,

@@ -1,0 +1,24 @@
+<div class="matching-card">
+
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{ prenom | uppercase }}</mat-card-title>
+      <mat-card-subtitle>{{ age }} ans</mat-card-subtitle>
+    </mat-card-header>
+    <img [src]="imageUrl" [alt]="prenom">
+    <mat-card-content>
+      <p>{{position }}</p>
+      <p>{{profession}}</p>
+      <p>{{description}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-fab color="yes" aria-label="Example icon button with a plus one icon">
+        <mat-icon>YES</mat-icon>
+      </button>
+      <button mat-fab color="no" aria-label="Example icon button with a plus one icon">
+        <mat-icon>NO</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -1,7 +1,13 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import {HttpClientModule} from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ApercuComponentComponent } from './apercu-component/apercu-component.component';
+import { ProfilComponent } from './profil/profil.component';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { PhotoChooserComponent } from './photo-chooser/photo-chooser.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -29,20 +35,22 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ApercuComponentComponent,
+    ProfilComponent,
     PhotoChooserComponent,
     NavbarComponent,
     LoginComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     AppRoutingModule,
+    NgxSliderModule,
     BrowserAnimationsModule,
     MatGridListModule,
     MatCardModule,
@@ -66,8 +74,10 @@ import { CommonModule } from '@angular/common';
     MatRadioModule,
     MatCheckboxModule,
     NgxSliderModule,
+    HttpClientModule,
     ReactiveFormsModule
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })

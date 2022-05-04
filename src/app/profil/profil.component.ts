@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Options } from '@angular-slider/ngx-slider';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ProfilService } from '../services/Profil.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-profil',
@@ -7,27 +10,19 @@ import { Options } from '@angular-slider/ngx-slider';
   styleUrls: ['./profil.component.scss']
 })
 export class ProfilComponent{
-  Genre!:{
-    type:String,
-      required:true
+  Description!:any 
+
+  constructor(public ProfilService: ProfilService) { }
+
+  Enregistrer(descriptionForm:NgForm){
+    document.getElementById('add-Profil-form')?.click();
+    const postbody={
+      description:descriptionForm.value.Description, 
+    }; 
+    this.ProfilService.getData(postbody).subscribe(data => {this.Description=data});
+     console.log(postbody);
   }
-  Attirance!:{
-      type:String,
-      required:true        
-  }
-  Rayon!:{
-      type: Number,
-      required:true
-  }
-  TrancheAge!:{
-      type:Array<number>,
-      required:true
-  }
-  Description!:String
-  Enregistrer(){
-    
-  }
-  constructor() { }
+  
   value: number = 100;
   options: Options = {
     floor: 0,

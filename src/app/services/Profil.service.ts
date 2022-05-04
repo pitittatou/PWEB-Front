@@ -1,22 +1,21 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {GlobalConstants} from "../common/global-constants";
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ProfilComponent } from "../profil/profil.component"; 
 @Injectable({
   providedIn: 'root'
 })
+
 export class ProfilService {
+ 
 
   constructor(private http: HttpClient) {
   }
 
-  getData(): Observable<any> {
-    const route = GlobalConstants.apiURL + 'api/Profil'
-
-    const formData = new FormData();
-    //formData.append("data", file, file.name);
-    //return this.http.post(route, formData);
+  getData(body:any): Observable<any> {   
+    const headers = new HttpHeaders({ 'content-type': 'application/json'} ); 
+    
+    return this.http.post('http://localhost:3000/Profil',body,{'headers': headers});
   }
 
   

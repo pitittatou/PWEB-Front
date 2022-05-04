@@ -24,10 +24,14 @@
                 [(highValue)]="maxValue"
                 [options]="Options"
             ></ngx-slider>
-            <mat-form-field class="textfield">
-                <textarea matInput style="color:rgb(158, 70, 84)"></textarea>
-            </mat-form-field>
-            <button mat-raised-button color="accent" class="valider" (click)="Enregistrer()">Valider</button>
+            <form  #descriptionForm="ngForm" (ngSubmit)="Enregistrer(descriptionForm);">
+                <mat-form-field class="textfield" >
+                    <textarea matInput style="color:rgb(158, 70, 84)" ngModel="Description" ></textarea>
+                </mat-form-field>
+            </form>
+            <!-- <button mat-raised-button color="accent" class="valider" (click)="Enregistrer()">Valider</button> -->
+            <button mat-raised-button color="accent" class="valider" type="submit">Valider</button>
+
             <router-outlet></router-outlet>
              <button mat-raised-button color="accent" class="apercu" [routerLink]="['/pageApercu']">Aperçu</button>
         </div>

@@ -20,6 +20,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { CommonModule } from '@angular/common';
     MatRadioModule,
     MatCheckboxModule,
     NgxSliderModule,
+    HttpClientModule,
     ReactiveFormsModule
   ],
 

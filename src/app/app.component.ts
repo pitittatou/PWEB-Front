@@ -6,6 +6,7 @@ import { Options } from '@angular-slider/ngx-slider';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent {
   title = 'PWEB-Front';
 

@@ -1,0 +1,97 @@
+<body>
+	<h1>LOGO</h1>
+	
+	<div class = "group">
+		<mat-tab-group dynamicHeight animationDuration="200ms" mat-align-tabs="center" color="accent" >
+			<mat-tab label="Connexion">
+				<p></p>
+				<div class="log">
+					<div>Identifiant</div>
+					<mat-form-field appearance="fill" >
+						<mat-label>Entrez votre identifiant</mat-label>
+						<input matInput>
+					</mat-form-field>
+					
+
+					<div>Mot de passe</div>
+					<mat-form-field appearance="fill">
+						<mat-label>Entrez votre mot de passe</mat-label>
+						<input matInput [type]="hide ? 'password' : 'text'">
+						<button class ="mdp" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+							<mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+						</button>
+					</mat-form-field>
+				</div>
+
+				<div class="logbutton">
+					<button mat-raised-button color="accent">Se connecter</button>
+				</div>
+				
+				
+				<p></p>
+				
+			</mat-tab>
+			<mat-tab label="Inscription">
+				<p></p>
+				<div class="log">
+					<div>Prénom</div>
+					<mat-form-field appearance="fill" >
+						<mat-label>Entrez votre prénom</mat-label>
+						<input matInput>
+					</mat-form-field>
+					
+					<div>Date de naissance</div>
+					<mat-form-field appearance="fill">
+						<mat-label>MM/JJ/AAAA</mat-label>
+						<input matInput [matDatepicker]="picker">
+						<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+						<mat-datepicker #picker></mat-datepicker>
+					</mat-form-field>
+
+					<div>Identifiant</div>
+					<mat-form-field appearance="fill" >
+						<mat-label>Entrez votre identifiant</mat-label>
+						<input matInput>
+					</mat-form-field>
+
+					<div>Mot de passe</div>
+					<mat-form-field appearance="fill">
+						<mat-label>Entrez votre mot de passe</mat-label>
+						<input matInput [type]="hide ? 'password' : 'text'">
+						<button class ="mdp" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+							<mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+						</button>
+					</mat-form-field>
+
+					<div>Genre :</div>
+					<mat-radio-group>
+						<mat-radio-button value="1">Homme</mat-radio-button>
+						<mat-radio-button value="2">Femme</mat-radio-button>
+						<mat-radio-button value="3">Autre</mat-radio-button>
+					</mat-radio-group>
+					<p></p>
+					<div>Attirance :</div>
+					<mat-checkbox>Homme</mat-checkbox>
+					<mat-checkbox>Femme</mat-checkbox>
+					<mat-checkbox>Autre</mat-checkbox>
+					<p></p>
+					<div>Rayon de recherche : {{sliderControl.value}} km</div>
+					<ngx-slider [formControl]="sliderControl" [options]="options"></ngx-slider>
+					<p></p>
+					<form [formGroup]="sliderForm">
+						<div>Tranche d'âge recherchée : {{ sliderForm.value.sliderControl2[0] }} - {{ sliderForm.value.sliderControl2[1] }} ans</div>
+						<ngx-slider [options]="options2" formControlName="sliderControl2"></ngx-slider>
+					</form>
+				</div>
+				<p></p>
+
+				<div class="logbutton">
+					<button mat-raised-button color="accent">S'inscrire</button>
+				</div>
+				<p></p>
+			</mat-tab>
+		</mat-tab-group>
+	</div> 
+	
+</body>
+

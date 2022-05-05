@@ -5,13 +5,13 @@
     fxLayout="column"
     fxLayoutAlign="center"
     fxFlex="40%"
+    fxFlex.md="80%"
     fxFlex.xs="100%"
-
   >
 
     <img [src]="imageUrl" [alt]="prenom">
     <mat-card-content>
-      <p>{{ prenom}}, {{ age }}</p>
+      <p style= "font-size : 115%"><strong>{{ prenom}}, {{ age }}</strong></p>
       <p>{{position }}, {{profession}}</p>
       <p>{{description}}</p>
     </mat-card-content>

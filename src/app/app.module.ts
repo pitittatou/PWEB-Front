@@ -24,6 +24,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import {FlexLayoutModule} from "@angular/flex-layout";
 import { CommonModule } from '@angular/common';
 
 @NgModule({
@@ -54,7 +55,9 @@ import { CommonModule } from '@angular/common';
     MatRadioModule,
     MatCheckboxModule,
     NgxSliderModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

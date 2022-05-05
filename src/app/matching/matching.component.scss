@@ -1,5 +1,4 @@
 .matching-card {
-  box-sizing: border-box;
   width: 40%;
   margin: 20px auto;
   padding: 10px 30px;
@@ -7,29 +6,13 @@
   img {
     width: 100%;
   }
-  h2 {
-    margin-bottom: 0;
-  }
-  p {
-    font-weight: 300;
-    font-size: 16px;
-  }
-  button {
-    background-color: transparent;
-    box-sizing: border-box;
-    padding: 5px 10px;
-    border: none;
-    box-shadow: lightgray 3px 3px 7px;
-    margin-right: 20px;
-    outline: none;
-    font-size: 14px;
-    font-weight: 500;
 
-    &:active {
-      transform: translate(1px, 1px);
-      box-shadow: lightgray 0 0 5px;
-    }
+  section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
+
   .material-icons.color_green { color: #00c300; }
   .material-icons.color_red { color: #FF0000; }
   .mat-yes {

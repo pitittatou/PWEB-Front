@@ -8,6 +8,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 
 // Custom components
 import { MatchingComponent } from "./matching/matching.component";
@@ -76,7 +77,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatCheckboxModule,
     NgxSliderModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxUsefulSwiperModule
   ],
 
   providers: [],

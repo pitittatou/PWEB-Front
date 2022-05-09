@@ -8,6 +8,9 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import { GoogleLoginProvider } from 'angularx-social-login';
+import { RouterModule } from '@angular/router';
 
 // Custom components
 import { MatchingComponent } from "./matching/matching.component";
@@ -36,6 +39,7 @@ import { MatGridListModule } from "@angular/material/grid-list";
 import { MatCardModule } from "@angular/material/card";
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -49,6 +53,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   ],
   imports: [
     BrowserModule,
+    RouterModule.forRoot([
+      {path: 'login', component: LoginComponent},
+      {path: 'mainpage', component: MatchingComponent}, 
+      {path: '**', component: LoginComponent}
+    ]),
+    SocialLoginModule,
     AppRoutingModule,
     MatCardModule,
     NgxSliderModule,
@@ -76,10 +86,22 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatCheckboxModule,
     NgxSliderModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDividerModule
   ],
 
-  providers: [],
+  providers: [ {
+    provide: 'SocialAuthServiceConfig',
+    useValue: {
+      autoLogin: false, //keeps the user signed in
+      providers: [
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider('435834645983-n7in6csc466isv3db6rpsjpnl2e0cm04.apps.googleusercontent.com') // your client id
+        }
+      ]
+    } as SocialAuthServiceConfig
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

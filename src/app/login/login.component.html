@@ -1,5 +1,22 @@
 <body>
 	<h1>LOGO</h1>
+	<div class = "group">
+		<mat-card color="accent">
+			<mat-list>
+				<mat-list-item>
+					<button (click)="loginWithGoogle()" mat-raised-button class="google-login-btn">
+						Connexion avec Google
+					</button> 
+				</mat-list-item>
+				<mat-divider></mat-divider>
+				<mat-list-item>
+					<button (click)="loginWithGoogle()" mat-raised-button class="google-login-btn">
+						Inscription avec Google
+					</button> 
+				</mat-list-item>
+			</mat-list>
+		</mat-card>
+	</div>
 	
 	<div class = "group">
 		<mat-tab-group dynamicHeight animationDuration="200ms" mat-align-tabs="center" color="accent" >

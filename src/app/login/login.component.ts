@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Options } from '@angular-slider/ngx-slider';
 import { FormControl, FormGroup } from '@angular/forms';
+import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,6 +10,14 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
+  constructor(
+      private socialAuthService: SocialAuthService) {
+  }
+
+  loginWithGoogle(): void {
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID)
+  }
+
   hide = true;
   isActive = true;
   sliderControl: FormControl = new FormControl(100);

@@ -21,7 +21,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-
+import { FlexModule } from '@angular/flex-layout';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +47,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatCheckboxModule,
     NgxSliderModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FlexModule
   ],
 
   providers: [],

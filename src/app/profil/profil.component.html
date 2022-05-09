@@ -1,41 +1,62 @@
 <html lang="en">
   
   <body>
-      <section>
         <div class="Profil">
-            <h2 class="prenom">Prénom, âge</h2>
-            <p class="genre" style="color:rgb(158, 70, 84);">Genre:</p>
-            <mat-radio-group class="choixGenre">
-                <mat-radio-button value="1">Homme</mat-radio-button>
-                <mat-radio-button value="2">Femme</mat-radio-button>
-                <mat-radio-button value="3">Autre</mat-radio-button>
-            </mat-radio-group>
-            <p class="orientation" style="color:rgb(158, 70, 84);">Orientation sexuelle:</p>
-            <mat-checkbox class="homme">Homme</mat-checkbox>
-			<mat-checkbox class="femme">Femme</mat-checkbox>
-			<mat-checkbox class="autre">Autre</mat-checkbox>
-            <p class="rayon" style="color:rgb(158, 70, 84);">Rayon de recherche:</p>
-            <p class="age" style="color:rgb(158, 70, 84);">Tranche d'âge:</p>
-            <p class="description" style="color:rgb(158, 70, 84);">Description:</p>
-          <ngx-slider class="slider1" [(value)]="value" [options]="options"></ngx-slider>
-          <ngx-slider
-                class="slider2"
-                [(value)]="minValue"
-                [(highValue)]="maxValue"
-                [options]="Options"
-            ></ngx-slider>
-            <form  #descriptionForm="ngForm" (ngSubmit)="Enregistrer(descriptionForm);">
-                <mat-form-field class="textfield" >
-                    <textarea matInput style="color:rgb(158, 70, 84)" ngModel="Description" ></textarea>
-                </mat-form-field>
-            </form>
+            <div class="box-1"><h2 class="prenom">Prénom, âge</h2></div>
+            <div class="block-1">
+                <div class="box-2"><p class="genre" style="color:rgb(158, 70, 84);">Genre:</p></div>
+                        <div class="box-3"><mat-radio-group class="choixGenre">
+                            <mat-radio-button value="1">Homme</mat-radio-button>
+                            <mat-radio-button value="2">Femme</mat-radio-button>
+                            <mat-radio-button value="3">Autre</mat-radio-button>
+                        </mat-radio-group></div>
+            </div>
+            <div class="block-2">
+                <div class="box-4"><p class="orientation" style="color:rgb(158, 70, 84);">Orientation sexuelle:</p></div>
+                <div class="box-5">
+                    <mat-checkbox class="homme">Homme</mat-checkbox>
+                    <mat-checkbox class="femme">Femme</mat-checkbox>
+                    <mat-checkbox class="autre">Autre</mat-checkbox>
+                </div>
+            </div>
+            <div class="block-3">
+                <div class="box-9"><p class="rayon" style="color:rgb(158, 70, 84);">Rayon de recherche:</p></div>
+                <div class="box-8"><ngx-slider class="slider1" [(value)]="value" [options]="options"></ngx-slider></div>
+            </div>
+            <div class="block-4">
+                <div class="box-9"><p class="age" style="color:rgb(158, 70, 84);">Tranche d'âge:</p></div>
+                <div class="box-10">
+                    <ngx-slider
+                    class="slider2"
+                    [(value)]="minValue"
+                    [(highValue)]="maxValue"
+                    [options]="Options"
+                ></ngx-slider>
+                </div>
+            </div>
+            <div class="block-5">
+                <div class="box-6"><p class="description" style="color:rgb(158, 70, 84);">Description:</p></div>
+                <div class="box-7">
+                    <form  #descriptionForm="ngForm" (ngSubmit)="Enregistrer(descriptionForm);">
+                    <mat-form-field class="textfield" >
+                        <textarea matInput style="color:rgb(158, 70, 84)" ngModel="Description" ></textarea>
+                    </mat-form-field>
+                </form>
+                </div>
+            </div>
+                
+         
+            
             <!-- <button mat-raised-button color="accent" class="valider" (click)="Enregistrer()">Valider</button> -->
-            <button mat-raised-button color="accent" class="valider" type="submit">Valider</button>
-
-            <router-outlet></router-outlet>
-             <button mat-raised-button color="accent" class="apercu" [routerLink]="['/pageApercu']">Aperçu</button>
+            <div class="block-6">
+                <div class="box-11"><button mat-raised-button color="accent" class="valider" type="submit">Valider</button></div>
+            </div>
+             <div class="block-7">
+                 <div class="box-12">
+                    <router-outlet></router-outlet>
+                     <button mat-raised-button color="accent" class="apercu" [routerLink]="['/pageApercu']">Aperçu</button></div>
+             </div>
         </div>
-      </section>
   </body>
   
   </html>

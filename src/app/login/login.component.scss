@@ -1,21 +1,18 @@
 .mat-tab-group{
 	border-radius: 8px;
+	background-color: rgb(255, 255, 255);
 	box-shadow: 2px 2px 5px 0 rgb(192, 191, 191);
 }
 
 .group{
-	width: 50%;
+	width: 85%;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 10px;
 	justify-content: center;
 	text-align: center;
-	box-shadow: 2px 2px 5px 0 rgb(192, 191, 191);
 }
 
-.mat-list-item{
-	justify-content: center;
-}
 .mdp{
 	background-color: transparent;
 	border: none;
@@ -51,7 +48,6 @@
 	width: 80%;
 }
 
-
 p{
 	padding: 0px;
 	padding-bottom: 0px ;
@@ -65,3 +61,5 @@ h1{
 	padding-top: 5%;
 	padding-bottom: 2%;
 }
+
+body {background-color: rgb(209, 223, 244)}

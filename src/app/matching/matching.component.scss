@@ -50,8 +50,8 @@
 }
 
 .image-container {
-  width: 25vw;
-  height: 25vw;
+  width: 90vw;
+  height: 90vw;
   position: relative;
 }
 
@@ -61,3 +61,11 @@
   object-fit: cover;
   object-position: center;
 }
+
+@media (min-width: 600px) {
+  .image-container {
+    width: 30vw;
+    height: 30vw;
+  }
+}
+

@@ -25,28 +25,7 @@
   text-transform: uppercase;
 }
 
-.item-1 {
-  background-color: #009169;
-}
-
-.item-2 {
-  background-color: #55b296;
-}
-
-.item-3 {
-  background-color: #9fd3c3;
-}
-
-.item-4 {
-  background-color: #e7b013;
-}
-
-.item-5 {
-  background-color: #073443;
-}
-
 .example-card {
-  border: solid black 1px;
 }
 
 .image-container {
@@ -60,6 +39,7 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
+  border-radius: 5px;
 }
 
 @media (min-width: 600px) {
@@ -78,6 +58,6 @@
 .right-button {
   position: absolute;
   top: 50%;
-  right: 89%;
+  left: 1%;
 }
 

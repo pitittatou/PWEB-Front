@@ -4,30 +4,14 @@
   <mat-card class="example-card"
 
   >
-    <!--<div
-      fxLayout="row"
-      fxFlex="40%"
-      fxFlex.md="80%"
-      fxFlex.xs="100%"
-    >
-      <button
-        mat-fab
-        (click)="onClickLeft()"
-      >
-        <mat-icon>G</mat-icon>
-      </button>
-      <img [src]="imageUrl" [alt]="prenom">
-      <button mat-fab (click)="onClickRight()">
-        <mat-icon>D</mat-icon>
-      </button>
-    </div>-->
+
     <div class="image-container">
       <img [src]="imageUrl" [alt]="prenom">
       <button mat-fab (click)="onClickLeft()" class="left-button">
-        <mat-icon>G</mat-icon>
+        <mat-icon>arrow_right</mat-icon>
       </button>
       <button mat-fab (click)="onClickRight()" class="right-button">
-        <mat-icon>D</mat-icon>
+        <mat-icon>arrow_left</mat-icon>
       </button>
     </div>
 

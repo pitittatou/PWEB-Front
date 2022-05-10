@@ -23,6 +23,12 @@
     </div>-->
     <div class="image-container">
       <img [src]="imageUrl" [alt]="prenom">
+      <button mat-fab (click)="onClickLeft()" class="left-button">
+        <mat-icon>G</mat-icon>
+      </button>
+      <button mat-fab (click)="onClickRight()" class="right-button">
+        <mat-icon>D</mat-icon>
+      </button>
     </div>
 
 

@@ -6,7 +6,7 @@
   >
 
     <div class="image-container">
-      <img [src]="imageUrl" [alt]="prenom">
+      <img [src]="monUser[0].imageUrl" [alt]="monUser[0].prenom">
       <button mat-fab (click)="onClickLeft()" class="left-button">
         <mat-icon>arrow_right</mat-icon>
       </button>
@@ -17,9 +17,9 @@
 
 
     <mat-card-content>
-      <p style= "font-size : 115%"><strong>{{ prenom}}, {{ age }}</strong></p>
-      <p>{{position }}, {{profession}}</p>
-      <p>{{description}}</p>
+      <p style= "font-size : 115%"><strong>{{monUser[0].prenom}}, {{ monUser[0].age }}</strong></p>
+      <p>{{monUser[0].position }}, {{monUser[0].profession}}</p>
+      <p>{{monUser[0].description}}</p>
     </mat-card-content>
     <mat-card-actions
       fxLayoutAlign="center"

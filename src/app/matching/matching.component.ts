@@ -5,6 +5,7 @@ import {Component, OnInit} from '@angular/core';
   templateUrl: './matching.component.html',
   styleUrls: ['./matching.component.scss']
 })
+
 export class MatchingComponent implements OnInit{
   prenom!: string;
   age!: number;

@@ -10,6 +10,7 @@ import {user} from "../models/model_user";
 
 export class MatchingComponent implements OnInit{
   monUser!: user[];
+  i!:number;
   ngOnInit() {
     this.monUser=[
       {
@@ -34,26 +35,36 @@ export class MatchingComponent implements OnInit{
         position:'Pelouse des Humas',
         description:'J accompagne le public à la sortie'
       }
-    ]
+    ];
+    this.i=0;
   }
 
   onClickLeft(){
-    if (this.monUser[0].imageUrl == this.monUser[0].imageUrlCenter){
-      this.monUser[0].imageUrl=this.monUser[0].imageUrlLeft;
-    }else if (this.monUser[0].imageUrl == this.monUser[0].imageUrlRight){
-      this.monUser[0].imageUrl=this.monUser[0].imageUrlCenter;
+    console.log("J'ai cliqué sur le bouton de gauche");
+    if (this.monUser[this.i].imageUrl == this.monUser[this.i].imageUrlCenter){
+      this.monUser[this.i].imageUrl=this.monUser[this.i].imageUrlLeft;
+    }else if (this.monUser[this.i].imageUrl == this.monUser[this.i].imageUrlRight){
+      this.monUser[this.i].imageUrl=this.monUser[this.i].imageUrlCenter;
     }else {
-      this.monUser[0].imageUrl = this.monUser[0].imageUrlRight;
+      this.monUser[this.i].imageUrl = this.monUser[this.i].imageUrlRight;
     }
   }
 
   onClickRight(){
-    if (this.monUser[0].imageUrl == this.monUser[0].imageUrlCenter){
-      this.monUser[0].imageUrl=this.monUser[0].imageUrlRight;
-    }else if (this.monUser[0].imageUrl == this.monUser[0].imageUrlLeft){
-      this.monUser[0].imageUrl=this.monUser[0].imageUrlCenter;
+    console.log("J'ai cliqué sur le bouton de droite");
+    if (this.monUser[this.i].imageUrl == this.monUser[this.i].imageUrlCenter){
+      this.monUser[this.i].imageUrl=this.monUser[this.i].imageUrlRight;
+    }else if (this.monUser[this.i].imageUrl == this.monUser[this.i].imageUrlLeft){
+      this.monUser[this.i].imageUrl=this.monUser[this.i].imageUrlCenter;
     }else{
-      this.monUser[0].imageUrl=this.monUser[0].imageUrlLeft;
+      this.monUser[this.i].imageUrl=this.monUser[this.i].imageUrlLeft;
+    }
+  }
+
+  onClickNext(){
+    console.log("J'ai cliqué sur le bouton pour voir le prochain profil");
+    if (this.monUser.length-1 <= this.i+1){
+      this.i=this.i+1;
     }
   }
 }

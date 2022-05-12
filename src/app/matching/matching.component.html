@@ -6,7 +6,7 @@
   >
 
     <div class="image-container">
-      <img [src]="monUser[0].imageUrl" [alt]="monUser[0].prenom">
+      <img [src]="monUser[this.i].imageUrl" [alt]="monUser[this.i].prenom">
       <button mat-fab (click)="onClickLeft()" class="left-button">
         <mat-icon>arrow_right</mat-icon>
       </button>
@@ -17,21 +17,21 @@
 
 
     <mat-card-content>
-      <p style= "font-size : 115%"><strong>{{monUser[0].prenom}}, {{ monUser[0].age }}</strong></p>
-      <p>{{monUser[0].position }}, {{monUser[0].profession}}</p>
-      <p>{{monUser[0].description}}</p>
+      <p style= "font-size : 115%"><strong>{{monUser[this.i].prenom}}, {{ monUser[this.i].age }}</strong></p>
+      <p>{{monUser[this.i].position }}, {{monUser[this.i].profession}}</p>
+      <p>{{monUser[this.i].description}}</p>
     </mat-card-content>
     <mat-card-actions
       fxLayoutAlign="center"
-      fxLayoutGap="30px"
+      fxLayoutGap="60px"
     >
       <div>
-        <button mat-fab color="no" aria-label="Example icon button with a plus one icon">
+        <button mat-fab (click)="onClickNext()" color="no" aria-label="Example icon button with a plus one icon">
           <mat-icon>clear</mat-icon>
         </button>
       </div>
       <div>
-        <button mat-fab color="yes" aria-label="Example icon button with a plus one icon">
+        <button mat-fab (click)="onClickNext()" color="yes" aria-label="Example icon button with a plus one icon">
           <mat-icon>favorite</mat-icon>
         </button>
       </div>

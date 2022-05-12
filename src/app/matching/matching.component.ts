@@ -67,4 +67,10 @@ export class MatchingComponent implements OnInit{
       this.i=this.i+1;
     }
   }
+
+  onClickBefore(){
+    if (this.i - 1 >= 0) {
+      this.i = this.i - 1;
+    }
+  }
 }

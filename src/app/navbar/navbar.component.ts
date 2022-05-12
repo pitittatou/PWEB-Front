@@ -33,7 +33,7 @@ export class NavbarComponent implements OnInit {
       imageUrl: 'https://cdn.pixabay.com/photo/2020/03/26/10/58/norway-4970080_960_720.jpg',
     },
     {
-      name: 'Leo',
+      name: 'Abdourrahmane',
       age: 19,
       imageUrl: 'https://cdn.pixabay.com/photo/2020/03/26/10/58/norway-4970080_960_720.jpg',
     },

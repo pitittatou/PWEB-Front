@@ -1,14 +1,15 @@
 import { Component, OnInit,EventEmitter  } from '@angular/core';
 
 import { MatSidenav } from '@angular/material/sidenav';
+import {Router} from "@angular/router";
 
 
 export interface Section {
   name: string;
   age: number;
   imageUrl:string;
- 
- 
+
+
 }
 
 @Component({
@@ -19,17 +20,17 @@ export interface Section {
 
 
 export class NavbarComponent implements OnInit {
-  
+
   opened=false;
-  
+
   folders: Section[] = [
     {
-      
+
       name: 'Inès',
       age: 20,
       imageUrl:'https://cdn.pixabay.com/photo/2020/03/26/10/58/norway-4970080_960_720.jpg',
-      
-    
+
+
     },
     {
       name: 'Thomas',
@@ -53,11 +54,15 @@ export class NavbarComponent implements OnInit {
       imageUrl:'https://cdn.pixabay.com/photo/2020/03/26/10/58/norway-4970080_960_720.jpg',
     },
   ];
-  
 
-  constructor() { }
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  onProfile() {
+    this.router.navigateByUrl('profil')
   }
 
 }

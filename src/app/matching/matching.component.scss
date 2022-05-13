@@ -1,35 +1,6 @@
 .matching-card {
-  box-sizing: border-box;
-  width: 40%;
-  margin: 20px auto;
-  padding: 10px 30px;
-  box-shadow: lightgray 4px 4px 20px;
-  img {
-    width: 100%;
-  }
-  h2 {
-    margin-bottom: 0;
-  }
-  p {
-    font-weight: 300;
-    font-size: 16px;
-  }
-  button {
-    background-color: transparent;
-    box-sizing: border-box;
-    padding: 5px 10px;
-    border: none;
-    box-shadow: lightgray 3px 3px 7px;
-    margin-right: 20px;
-    outline: none;
-    font-size: 14px;
-    font-weight: 500;
+  //box-shadow: lightgray 4px 4px 20px;
 
-    &:active {
-      transform: translate(1px, 1px);
-      box-shadow: lightgray 0 0 5px;
-    }
-  }
   .material-icons.color_green { color: #00c300; }
   .material-icons.color_red { color: #FF0000; }
   .mat-yes {
@@ -41,3 +12,52 @@
     color: #fff;
   }
 }
+//.container {
+  //margin: 10px;
+//}
+
+.item {
+  border-radius: .2em;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-size: 2em;
+  padding: 4em 1em;
+  text-transform: uppercase;
+}
+
+.example-card {
+}
+
+.image-container {
+  width: 90vw;
+  height: 90vw;
+  position: relative;
+}
+
+.image-container>img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 5px;
+}
+
+@media (min-width: 600px) {
+  .image-container {
+    width: 30vw;
+    height: 30vw;
+  }
+}
+
+.left-button {
+  position: absolute;
+  top: 50%;
+  right: 1%;
+}
+
+.right-button {
+  position: absolute;
+  top: 50%;
+  left: 1%;
+}
+

@@ -1,24 +1,42 @@
-<div class="matching-card">
+<div class="matching-card"
+     fxLayoutAlign="center"
+>
+  <mat-card class="example-card"
 
-  <mat-card class="example-card">
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>{{ prenom | uppercase }}</mat-card-title>
-      <mat-card-subtitle>{{ age }} ans</mat-card-subtitle>
-    </mat-card-header>
-    <img [src]="imageUrl" [alt]="prenom">
+  >
+
+    <div class="image-container">
+      <img [src]="monUser[this.i].imageUrl" [alt]="monUser[this.i].prenom">
+      <button mat-fab (click)="onClickLeft()" class="left-button">
+        <mat-icon>arrow_right</mat-icon>
+      </button>
+      <button mat-fab (click)="onClickRight()" class="right-button">
+        <mat-icon>arrow_left</mat-icon>
+      </button>
+    </div>
+
+
     <mat-card-content>
-      <p>{{position }}</p>
-      <p>{{profession}}</p>
-      <p>{{description}}</p>
+      <p style= "font-size : 115%"><strong>{{monUser[this.i].prenom}}, {{ monUser[this.i].age }}</strong></p>
+      <p>{{monUser[this.i].position }}, {{monUser[this.i].profession}}</p>
+      <p>{{monUser[this.i].description}}</p>
     </mat-card-content>
-    <mat-card-actions>
-      <button mat-fab color="yes" aria-label="Example icon button with a plus one icon">
-        <mat-icon>YES</mat-icon>
-      </button>
-      <button mat-fab color="no" aria-label="Example icon button with a plus one icon">
-        <mat-icon>NO</mat-icon>
-      </button>
+    <mat-card-actions
+      fxLayoutAlign="center"
+      fxLayoutGap="60px"
+    >
+      <div>
+        <button mat-fab (click)="onClickNext()" color="no" aria-label="Example icon button with a plus one icon">
+          <mat-icon>clear</mat-icon>
+        </button>
+      </div>
+      <div>
+        <button mat-fab (click)="onClickNext()" color="yes" aria-label="Example icon button with a plus one icon">
+          <mat-icon>favorite</mat-icon>
+        </button>
+      </div>
     </mat-card-actions>
+
   </mat-card>
+
 </div>

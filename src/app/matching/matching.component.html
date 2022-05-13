@@ -2,28 +2,27 @@
      fxLayoutAlign="center"
 >
   <mat-card class="example-card"
-
   >
 
     <div class="image-container">
       <img [src]="monUser[this.i].imageUrl" [alt]="monUser[this.i].prenom">
-      <button mat-fab (click)="onClickLeft()" class="left-button">
+      <button mat-fab (click)="onClickLeft()" color="white" class="left-button">
         <mat-icon>arrow_right</mat-icon>
       </button>
-      <button mat-fab (click)="onClickRight()" class="right-button">
+      <button mat-fab (click)="onClickRight()" color="white" class="right-button">
         <mat-icon>arrow_left</mat-icon>
       </button>
     </div>
 
 
     <mat-card-content>
-      <p style= "font-size : 115%"><strong>{{monUser[this.i].prenom}}, {{ monUser[this.i].age }}</strong></p>
+      <p style= "font-size : 210%" fxLayoutAlign="center" ><strong>{{monUser[this.i].prenom}}, {{ monUser[this.i].age }} ans</strong></p>
       <p>{{monUser[this.i].position }}, {{monUser[this.i].profession}}</p>
       <p>{{monUser[this.i].description}}</p>
     </mat-card-content>
     <mat-card-actions
       fxLayoutAlign="center"
-      fxLayoutGap="60px"
+      fxLayoutGap="260px"
     >
       <div>
         <button mat-fab (click)="onClickNext()" color="no" aria-label="Example icon button with a plus one icon">
@@ -38,5 +37,4 @@
     </mat-card-actions>
 
   </mat-card>
-
 </div>

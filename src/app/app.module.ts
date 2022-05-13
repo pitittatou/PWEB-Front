@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
 import { RouterModule } from '@angular/router';
@@ -40,6 +40,7 @@ import { MatCardModule } from "@angular/material/card";
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDividerModule } from '@angular/material/divider';
+import {AuthInterceptorService} from "./services/auth-interceptor.service";
 
 @NgModule({
   declarations: [
@@ -53,11 +54,6 @@ import { MatDividerModule } from '@angular/material/divider';
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([
-      {path: 'login', component: LoginComponent},
-      {path: 'mainpage', component: MatchingComponent}, 
-      {path: '**', component: LoginComponent}
-    ]),
     SocialLoginModule,
     AppRoutingModule,
     MatCardModule,
@@ -93,11 +89,16 @@ import { MatDividerModule } from '@angular/material/divider';
   providers: [ {
     provide: 'SocialAuthServiceConfig',
     useValue: {
-      autoLogin: false, //keeps the user signed in
+      autoLogin: false, // keeps the user signed in
       providers: [
         {
           id: GoogleLoginProvider.PROVIDER_ID,
           provider: new GoogleLoginProvider('435834645983-n7in6csc466isv3db6rpsjpnl2e0cm04.apps.googleusercontent.com') // your client id
+        },
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: AuthInterceptorService,
+          multi: true
         }
       ]
     } as SocialAuthServiceConfig

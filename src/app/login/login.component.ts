@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Options } from '@angular-slider/ngx-slider';
 import { FormControl, FormGroup } from '@angular/forms';
 import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',

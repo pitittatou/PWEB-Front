@@ -1,21 +1,32 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpErrorResponse } from "@angular/common/http";
 import { SocialAuthService } from "angularx-social-login";
-import { catchError, throwError, Observable } from "rxjs";
+import { catchError, throwError, Observable, switchMap, take} from "rxjs";
+import {Injectable} from "@angular/core";
+import {AuthenticationService} from "./authentication.service";
 
+@Injectable()
 export class AuthInterceptorService implements HttpInterceptor {
-  constructor(private authService: SocialAuthService) {}
+  constructor(private authService: AuthenticationService) {}
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token = this.authService.authState.subscribe((user) => {
-        return user.idToken
-      }
-    );
-
-    if (token) {
+    let user = this.authService.get_user()
+    console.log(user)
+    if (user) {
       // If we have a token, we set it to the header
       request = request.clone({
-        setHeaders: {Authorization: `Authorization token ${token}`}
+        setHeaders: { Authorization: `Bearer ${user.idToken}` },
       });
     }
-    return next.handle(request)
+    console.log(user?.idToken)
+
+    return next.handle(request).pipe(
+      catchError((err) => {
+        if (err instanceof HttpErrorResponse) {
+          if (err.status === 401) {
+            this.authService.logout()
+          }
+        }
+        return throwError(err);
+      })
+    );
   }
 }

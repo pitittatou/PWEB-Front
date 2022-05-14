@@ -1,7 +1,8 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {GlobalConstants} from "../common/global-constants";
+import {SocialAuthService} from "angularx-social-login";
 
 @Injectable({
   providedIn: 'root'

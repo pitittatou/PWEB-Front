@@ -1,7 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Options} from '@angular-slider/ngx-slider';
 import {FormControl, FormGroup} from '@angular/forms';
-import {GoogleLoginProvider, SocialAuthService} from 'angularx-social-login';
+import {AuthenticationService} from "../services/authentication.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-login',
@@ -9,29 +10,39 @@ import {GoogleLoginProvider, SocialAuthService} from 'angularx-social-login';
   styleUrls: ['./login.component.scss']
 })
 
-export class LoginComponent {
-  hide = true;
-  isActive = true;
-  sliderControl: FormControl = new FormControl(100);
+export class LoginComponent implements OnInit, OnDestroy {
+  hide = true
+  isActive = true
+  sliderControl: FormControl = new FormControl(100)
   options: Options = {
     floor: 0,
     ceil: 50,
-  };
+  }
   sliderForm: FormGroup = new FormGroup({
     sliderControl2: new FormControl([18, 30])
-  });
+  })
   options2: Options = {
     floor: 18,
     ceil: 100,
     step: 1
-  };
+  }
+  error!: String
 
-  constructor(
-    private socialAuthService: SocialAuthService) {
+  constructor(private authService: AuthenticationService, private snackBar: MatSnackBar) {}
+
+  ngOnInit() {
+    this.error = ''
+  }
+
+  ngOnDestroy() {
+    this.snackBar.dismiss()
   }
 
   loginWithGoogle(): void {
-    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID)
-      .then((user) => console.log(user))
+    this.authService.login().catch(() => this.snackBar.open("Erreur lors de la connexion", 'Fermer'))
+  }
+
+  logout() {
+    this.authService.logout()
   }
 }

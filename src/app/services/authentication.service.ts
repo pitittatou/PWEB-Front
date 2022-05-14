@@ -46,6 +46,10 @@ export class AuthenticationService {
     return null
   }
 
+  is_logged_in() {
+    return this.user.idToken
+  }
+
   private update_user(user: any) {
     if (user == null) {
       this.user = new SocialUser()

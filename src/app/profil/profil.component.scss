@@ -9,7 +9,7 @@ body{
     box-sizing: border-box;
 
 }
-$gap : 4vh;
+/*$gap : 4vh;
 $padding : 4vh;
 
 
@@ -17,8 +17,8 @@ $bp : (
   mobile : 480px,
   tablet : 768px,
   desktop : 1440px,
-);
-@mixin query($display){
+);*/
+/* @mixin query($display){
     @each $key, $value in $bp{
       
       //  defining max-width
@@ -26,7 +26,7 @@ $bp : (
         @media (max-width: $value){@content;}
       }
     }
-  }
+  } */
 .Profil {
     display: flex;
     flex-direction: column;
@@ -41,12 +41,12 @@ $bp : (
     height: 80%;
     border-radius: 7%;
     box-shadow: 10px 10px 5px lightblue;
-    gap: $gap;
+    //gap: $gap;
   
 // to set some padding & border inside
-  padding: $padding;
+ // padding: $padding;
 }
-[class ^="block-"]{
+.block{
 
     //To lay the boxes in a row.
       display: flex;
@@ -56,22 +56,22 @@ $bp : (
     // And then equally distributing spaces between the 
     // .block-* classes by dividing it by 3
     
-      height: (100vh-2vh -$gap*2-$padding*2) / 3;
+      //height: (100vh-2vh -$gap*2-$padding*2) / 3;
     
     // putting gap between .box-* classes
-      gap: $gap;
+      //gap: $gap;
       //hih
     // Style rules for mobile display
-    
+    /* 
       @include query (mobile){
         flex-direction: column;
         
     // you can pick any value you wish.
-        height: 500px;
-      }
+        //height: 500px;
+      } */
       
     }
-    [class ^="box-"]{
+    .box{
   
         // To set the text at center of every box
           display: flex;
@@ -86,8 +86,8 @@ $bp : (
           
         }
 .prenom{
-    bottom: 90%;
-    right:50%;
+   // bottom: 90%;
+    //right:50%;
     display: flex;
 }
 .valider{

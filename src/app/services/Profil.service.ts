@@ -15,7 +15,7 @@ export class ProfilService {
   getData(body:any): Observable<any> {   
     const headers = new HttpHeaders({ 'content-type': 'application/json'} ); 
     
-    return this.http.post('http://localhost:3000/Profil',body,{'headers': headers});
+    return this.http.post('http://localhost:3000/profil',body,{'headers': headers});
   }
 
   

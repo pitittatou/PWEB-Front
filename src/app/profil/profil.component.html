@@ -6,7 +6,7 @@
             <div class="block-1">
                 <div class="box-2"><p class="genre" style="color:rgb(158, 70, 84);">Genre:</p></div>
                         <div class="box-3"><mat-radio-group class="choixGenre">
-                            <mat-radio-button value="1">Homme</mat-radio-button>
+                            <mat-radio-button value="1" ngModel name="Homme" value="Homme">Homme</mat-radio-button>
                             <mat-radio-button value="2">Femme</mat-radio-button>
                             <mat-radio-button value="3">Autre</mat-radio-button>
                         </mat-radio-group></div>
@@ -39,7 +39,7 @@
                 <div class="box-7">
                     <form  #descriptionForm="ngForm" (ngSubmit)="Enregistrer(descriptionForm);">
                     <mat-form-field class="textfield" >
-                        <textarea matInput style="color:rgb(158, 70, 84)" ngModel="Description" ></textarea>
+                        <textarea matInput style="color:rgb(158, 70, 84)" ngModel name="Description"></textarea>
                     </mat-form-field>
                 </form>
                 </div>
@@ -49,7 +49,8 @@
             
             <!-- <button mat-raised-button color="accent" class="valider" (click)="Enregistrer()">Valider</button> -->
             <div class="block-6">
-                <div class="box-11"><button mat-raised-button color="accent" class="valider" type="submit">Valider</button></div>
+                <!-- <div class="box-11"><button mat-raised-button color="accent" class="valider" type="submit">Valider</button></div> -->
+                <div class="box-11"><button mat-raised-button color="accent" class="valider" (click)="Enregistrer(descriptionForm)">Valider</button></div>
             
             
                  <div class="box-12">

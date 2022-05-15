@@ -10,18 +10,22 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./profil.component.scss']
 })
 export class ProfilComponent{
-  Description!:any 
+  Data!:any
 
   constructor(public ProfilService: ProfilService) { }
 
   Enregistrer(descriptionForm:NgForm){
-    document.getElementById('add-Profil-form')?.click();
+    //document.getElementById('add-Profil-form')?.click();
+    console.log("début fonction enregistrer")
+
     const postbody={
       description:descriptionForm.value.Description, 
+      homme:descriptionForm.value.Homme
     }; 
-    this.ProfilService.getData(postbody).subscribe(data => {this.Description=data});
+    this.ProfilService.getData(postbody).subscribe(data => {this.Data=data});
      console.log(postbody);
   }
+  
   
   value: number = 100;
   options: Options = {

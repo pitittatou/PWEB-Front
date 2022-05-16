@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
+import {AuthenticationServie} from "../services/authentication.service";
 
 export interface Section {
   name: string;
@@ -44,13 +45,16 @@ export class NavbarComponent implements OnInit {
     },
   ];
 
-  constructor(private router: Router) {
-  }
+  constructor(private authService: AuthenticationService, private router: Router) {}
 
   ngOnInit(): void {
   }
 
   onProfile() {
     this.router.navigateByUrl('profil')
+  }
+
+  onLogOut() {
+    this.authService.logout()
   }
 }

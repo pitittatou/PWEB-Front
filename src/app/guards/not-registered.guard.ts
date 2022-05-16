@@ -5,14 +5,14 @@ import {AuthenticationService} from "../services/authentication.service";
 @Injectable({
   providedIn: 'root'
 })
-export class RegisteredGuard implements CanActivate {
+export class NotRegisteredGuard implements CanActivate {
   constructor(private authService: AuthenticationService, private router: Router) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if (this.authService.is_registered()) {
+    if (!this.authService.is_registered()) {
       return true
     } else {
-      return this.router.parseUrl('/inscription')
+      return this.router.parseUrl('')
     }
   }
 }

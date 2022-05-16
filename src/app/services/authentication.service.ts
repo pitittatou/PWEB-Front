@@ -15,12 +15,13 @@ export interface Response {
 export class AuthenticationService {
   private user: SocialUser
   private registered: boolean
-  private authState = new BehaviorSubject<boolean>(false);
+  private authState = new BehaviorSubject<boolean>(false); // for components that need an update when the auth state changes
 
   constructor(private socialAuthService: SocialAuthService, private router: Router, private http: HttpClient) {
     this.user = new SocialUser()
     this.registered = false
 
+    // try to get authentication state/user from session storage
     let data = sessionStorage.getItem('registered')
     if (data != null) {
       let parsed_data = JSON.parse(data)

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {GoogleLoginProvider, SocialAuthService, SocialUser} from "angularx-social-login";
-import {first} from "rxjs";
+import {BehaviorSubject, first, throwError} from "rxjs";
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {GlobalConstants} from "../common/global-constants";
@@ -15,6 +15,7 @@ export interface Response {
 export class AuthenticationService {
   private user: SocialUser
   private registered: boolean
+  private authState = new BehaviorSubject<boolean>(false);
 
   constructor(private socialAuthService: SocialAuthService, private router: Router, private http: HttpClient) {
     this.user = new SocialUser()
@@ -38,15 +39,17 @@ export class AuthenticationService {
         }
       }
     }
+    this.update_auth_state()
   }
 
   login() {
     return this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then((user) => {
       this.update_user(user)
       this.startRefreshTokenTimer()
-      const route = GlobalConstants.apiURL + '/api/auth'
-      this.http.post<Response>(route, {idToken: this.user.idToken}).subscribe((resp) => {
+      const route = GlobalConstants.apiURL + 'api/user/login'
+      this.http.get<Response>(route).subscribe((resp) => {
         this.update_registered(resp.registered)
+        this.update_auth_state()
         if (this.registered) {
           this.router.navigateByUrl('')
         } else {
@@ -60,6 +63,7 @@ export class AuthenticationService {
     this.stopRefreshTokenTimer()
     this.update_user(null)
     this.update_registered(false)
+    this.update_auth_state()
     this.socialAuthService.signOut().then(() => this.router.navigateByUrl('/connexion')
     ).catch(() => {})
   }
@@ -71,8 +75,15 @@ export class AuthenticationService {
     return null
   }
 
+  // Returns an observable that output authstate:
+  // - true if logged in and registered
+  // - false otherwise
+  get_auth_state() {
+    return this.authState.asObservable()
+  }
+
   is_logged_in() {
-    return this.user.idToken
+    return !!this.user.idToken;
   }
 
   is_registered() {
@@ -91,6 +102,14 @@ export class AuthenticationService {
   private update_registered(state: boolean) {
     this.registered = state
     sessionStorage.setItem('registered', JSON.stringify(state))
+  }
+
+  private update_auth_state() {
+    if (this.user.idToken && this.registered) {
+      this.authState.next(true)
+    } else {
+      this.authState.next(false)
+    }
   }
 
   private static expirated(token: string) {

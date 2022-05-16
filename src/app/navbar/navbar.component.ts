@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {AuthenticationServie} from "../services/authentication.service";
+import {AuthenticationService} from "../services/authentication.service";
 
 export interface Section {
   name: string;

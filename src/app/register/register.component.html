@@ -1,50 +1,45 @@
 <body>
+	<img class="imgLogo" src="../assets/images/Logo2.png" alt="Logo IN'ça Swipe">
+
+	<p></p>
+
 	<mat-card>
-		<p>Inscription</p>
+		<div class="font">Inscription</div>
+
+		<p></p>
+		
 		<div class="info">
 			<div>Prénom</div>
 			<mat-form-field appearance="fill" >
 				<mat-label>Entrez votre prénom</mat-label>
-				<input matInput>
+				<input matInput required>
 			</mat-form-field>
 			
 			<div>Date de naissance</div>
 			<mat-form-field appearance="fill">
 				<mat-label>MM/JJ/AAAA</mat-label>
-				<input matInput [matDatepicker]="picker">
+				<input matInput [matDatepicker]="picker" required>
 				<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
 				<mat-datepicker #picker></mat-datepicker>
 			</mat-form-field>
 
-			<div>Identifiant</div>
-			<mat-form-field appearance="fill" >
-				<mat-label>Entrez votre identifiant</mat-label>
-				<input matInput>
-			</mat-form-field>
-
-			<div>Mot de passe</div>
-			<mat-form-field appearance="fill">
-				<mat-label>Entrez votre mot de passe</mat-label>
-				<input matInput [type]="hide ? 'password' : 'text'">
-				<button class ="mdp" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-					<mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-				</button>
-			</mat-form-field>
-
-			<div>Genre :</div>
-			<mat-radio-group>
+			<div>Genre : *</div>
+			<mat-radio-group required>
 				<mat-radio-button value="1">Homme</mat-radio-button>
 				<mat-radio-button value="2">Femme</mat-radio-button>
 				<mat-radio-button value="3">Autre</mat-radio-button>
 			</mat-radio-group>
 			
+			<h2></h2>
 
-			<div>Attirance :</div>
+			<div>Attirance : *</div>
 			<mat-checkbox>Homme</mat-checkbox>
 			<mat-checkbox>Femme</mat-checkbox>
 			<mat-checkbox>Autre</mat-checkbox>
 			
-			<div>Rayon de recherche : {{sliderControl.value}} km</div>
+			<h2></h2>
+
+			<div>Rayon de recherche : {{sliderControl.value}} km </div>
 			<ngx-slider [formControl]="sliderControl" [options]="options"></ngx-slider>
 			
 			<form [formGroup]="sliderForm">
@@ -52,12 +47,24 @@
 				<ngx-slider [options]="options2" formControlName="sliderControl2"></ngx-slider>
 			</form>
 			
+			<h2></h2>
+
+			<div>Description</div>
+			<mat-form-field class = "description" hintLabel="Max 300 characters" appearance="fill">
+				<mat-label>Entrez votre description</mat-label>
+				<textarea  rows="6" matInput #input maxlength="300"></textarea>
+				<mat-hint align="end">{{input.value?.length || 0}}/300</mat-hint>
+			</mat-form-field>
+
+			<h2></h2>
 
 			<div class="logbutton">
 				<button mat-raised-button color="accent">S'inscrire</button>
 			</div>
+
 		</div>
 	</mat-card>
 	
+	<p> </p>
 		
 </body>

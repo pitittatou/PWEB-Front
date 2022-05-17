@@ -14,13 +14,24 @@ export class RegisterComponent {
 	options: Options = {
 		floor: 0,
 		ceil: 50,
+		getPointerColor: (value: number): string => {
+			return '#34c6bb';
+		}
 	};
 	sliderForm: FormGroup = new FormGroup({
 		sliderControl2: new FormControl([18, 30])
 	});
 	options2: Options = {
 		floor: 18,
-		ceil: 100,
-		step: 1
+		ceil: 99,
+		step: 1,
+		showSelectionBar: true,
+		getPointerColor: (value: number): string => {
+			return '#34c6bb';
+		},
+		getSelectionBarColor: (value: number): string => {
+			return '#34c6bb';
+		}
 	};
+
 }

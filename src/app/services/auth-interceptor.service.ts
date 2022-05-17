@@ -15,7 +15,6 @@ export class AuthInterceptorService implements HttpInterceptor {
         setHeaders: { Authorization: `Bearer ${user.idToken}` },
       });
     }
-    console.log(user?.idToken)
 
     return next.handle(request).pipe(
       catchError((err) => {

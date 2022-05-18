@@ -1,27 +1,37 @@
 <body>
-	<img class="imgLogo" src="../assets/images/Logo2.png" alt="Logo IN'ça Swipe">
-
+	<div *ngIf="registerPage">
+		<img class="imgLogo" src="../assets/images/Logo2.png" alt="Logo IN'ça Swipe">
+	</div>
+	
 	<p></p>
 
 	<mat-card>
-		<div class="font">Inscription</div>
+		<div *ngIf="registerPage">
+			<div class="font">Inscription</div>
+		</div>
+		<div *ngIf="!registerPage">
+			<div class="font">Prénom, âge</div>
+		</div>
 
 		<p></p>
 		
 		<div class="info">
-			<div>Prénom</div>
-			<mat-form-field appearance="fill" >
-				<mat-label>Entrez votre prénom</mat-label>
-				<input matInput required>
-			</mat-form-field>
+			<div *ngIf="registerPage">
+				<div>Prénom</div>
+				<mat-form-field appearance="fill" >
+					<mat-label>Entrez votre prénom</mat-label>
+					<input matInput required>
+				</mat-form-field>
+				
+				<div>Date de naissance</div>
+				<mat-form-field appearance="fill">
+					<mat-label>MM/JJ/AAAA</mat-label>
+					<input matInput [matDatepicker]="picker" required>
+					<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+					<mat-datepicker #picker></mat-datepicker>
+				</mat-form-field>
+			</div>
 			
-			<div>Date de naissance</div>
-			<mat-form-field appearance="fill">
-				<mat-label>MM/JJ/AAAA</mat-label>
-				<input matInput [matDatepicker]="picker" required>
-				<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-				<mat-datepicker #picker></mat-datepicker>
-			</mat-form-field>
 
 			<div>Genre : *</div>
 			<mat-radio-group required>
@@ -58,8 +68,13 @@
 
 			<h2></h2>
 
-			<div class="logbutton">
+			<div class="logbutton" *ngIf="registerPage">
 				<button mat-raised-button color="accent">S'inscrire</button>
+			</div>
+
+			<div class="profilButton" *ngIf="!registerPage">
+				<button mat-raised-button color="accent">Aperçu</button>
+				<button mat-raised-button color="accent">Valider</button>
 			</div>
 
 		</div>

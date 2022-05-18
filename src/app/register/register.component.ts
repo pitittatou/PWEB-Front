@@ -8,8 +8,14 @@ import { FormControl, FormGroup } from '@angular/forms';
 	styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-	hide = true;
-	isActive = true;
+	// registerPage: boolean;		//if true: RegisterPage -- if false: ProfilPage
+
+	// constructor(registerPage:boolean){
+	// 	this.registerPage=registerPage
+	// }
+
+	registerPage=false;
+
 	sliderControl: FormControl = new FormControl(100);
 	options: Options = {
 		floor: 0,

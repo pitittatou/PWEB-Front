@@ -1,7 +1,7 @@
 <html lang="en">
   
   <body>
-    <form  #descriptionForm="ngForm" (ngSubmit)="Enregistrer();">
+    <form  #descriptionForm="ngForm" (ngSubmit)="Enregistrer()" formControlName="formControl" >
         <div class="Profil">
             <div class="block">
                 <div class="box"><h2 class="prenom">Prénom, âge</h2></div>
@@ -9,22 +9,24 @@
             <div class="block">
             
                 <div class="box"><p class="genre" style="color:rgb(158, 70, 84);">Genre:</p></div>
-                        <div class="box"><mat-radio-group class="choixGenre"  [(ngModel)]="model.gender"  name="gender" [formControl]="genderControl">
+                        <div class="box"><mat-radio-group class="choixGenre"   [(ngModel)]="model.gender"  name="gender" >
                             <mat-radio-button *ngFor="let genre of Gender" [value]="genre">{{genre}}</mat-radio-button>
                         </mat-radio-group>
-                        <mat-error *ngIf="genderControl.hasError('required')">Please choose a cartoon</mat-error>
+                        <!-- <mat-error *ngIf="formControl.hasError('')">Please choose a cartoon</mat-error> -->
                     
                     </div>
                 </div>
             <div class="block">
                 <div class="box"><p class="orientation" style="color:rgb(158, 70, 84);">Orientation sexuelle:</p></div>
-                <div class="box" *ngFor="let data of attirances; let i = index" >
+                <div class="box" *ngFor="let data of attirances; let i = index"  >
                     <mat-checkbox (change)="onChange(i, $event.checked)">{{data.name}}</mat-checkbox>
                 </div>
+
             </div>
             <div class="block">
                 <div class="box"><p class="rayon" style="color:rgb(158, 70, 84);">Rayon de recherche:</p></div>
-                <div class="box"><ngx-slider class="slider1" [(value)]="value" [options]="options" [(ngModel)]="model.rayon" name="rayon"></ngx-slider></div>
+                <div class="box"><ngx-slider class="slider1" [(value)]="value" [options]="options"  [(ngModel)]="model.rayon" name="rayon"></ngx-slider></div>
+
             </div>
             <div class="block">
                 <div class="box"><p class="age" style="color:rgb(158, 70, 84);">Tranche d'âge:</p></div>
@@ -36,17 +38,20 @@
                     [options]="Options"
                     [(ngModel)]="model.trancheAge"
                     name="age"
+                    
                 ></ngx-slider>
                 </div>
+
             </div>
             <div class="block">
                 <div class="box"><p class="description" style="color:rgb(158, 70, 84);">Description:</p></div>
                 <div class="box">
                     <mat-form-field class="textfield" >
-                        <textarea matInput style="color:rgb(158, 70, 84)" [(ngModel)]="model.description" name="description" ></textarea>
+                        <textarea matInput style="color:rgb(158, 70, 84)" [(ngModel)]="model.description" name="description"  ></textarea>
                     </mat-form-field>
                 
                 </div>
+
             </div>
                 
          

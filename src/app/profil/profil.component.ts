@@ -36,7 +36,7 @@ export class UserForm {
 export class ProfilComponent  {
   Data!:any
   Gender =["Homme","Femme","Autre"]
-  genderControl= new FormControl('', [Validators.required])
+  formrControl= new FormControl('', [Validators.required])
   attirances = [
      <attirance> {name: "Homme", selected: false},
      <attirance> {name: "Femme", selected: false},

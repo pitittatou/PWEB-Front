@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, Injectable, OnInit } from '@angular/core';
 import { Options } from '@angular-slider/ngx-slider';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ProfilService } from '../services/Profil.service';
@@ -6,9 +6,26 @@ import { NgForm } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 
+
+
+
 interface attirance {
   name: string;
   selected: boolean;
+}
+
+
+
+
+export class UserForm {
+  constructor(
+    public gender: string,
+    public description: String,
+    public rayon: number,
+    public trancheAge: number[],
+    public attirance: string[]
+
+){}
 }
 
 @Component({
@@ -16,52 +33,48 @@ interface attirance {
   templateUrl: './profil.component.html',
   styleUrls: ['./profil.component.scss']
 })
-export class ProfilComponent implements OnInit {
+export class ProfilComponent  {
   Data!:any
-  gender!: String[]
-  genderControl!: FormControl 
-  attirances!: attirance[]
-  constructor(public ProfilService: ProfilService) {}
+  Gender =["Homme","Femme","Autre"]
+  genderControl= new FormControl('', [Validators.required])
+  attirances = [
+     <attirance> {name: "Homme", selected: false},
+     <attirance> {name: "Femme", selected: false},
+     <attirance> {name: "Autre", selected: false}
+   ]
 
-  ngOnInit(): void {
-    this.gender =["Homme","Femme","Autre"]
-    this.genderControl= new FormControl('', [Validators.required])
-    this.attirances = [
-        <attirance> {name: 'Homme', selected: false},
-        <attirance> {name: 'Femme', selected: false},
-        <attirance> {name: 'Autre', selected: false}
-      ]
-  }
+  model= new UserForm("Femme","Ici mettre une description",1,[18,100], ["Homme"])
+
+  constructor(
+    public ProfilService: ProfilService,
+    ) {}
+
+  
+  
 
   onChange(id: number, isChecked: boolean) {
    this.attirances[id].selected = isChecked
 
   }
 
-  Enregistrer(descriptionForm:NgForm){
-    //document.getElementById('add-Profil-form')?.click();
+  Enregistrer(){
     console.log("début fonction enregistrer")
-    let drive:string[]=[]
     for (let i=0; i<this.attirances.length-1;i++){
       if(this.attirances[i].selected == true){
-        drive.push(this.attirances[i].name)
+        this.model.attirance.push(this.attirances[i].name)
       }
     }
-    const postbody={
-      Description:descriptionForm.value.Description, 
-      Genre: this.genderControl.value,
-      Attirance: drive
-      
-      //homme:descriptionForm.value.Homme
-    }; 
+    const postbody= this.model
+    
     this.ProfilService.getData(postbody).subscribe(data => {this.Data=data});
      console.log(postbody);
+     console.log(this.model.trancheAge[0],this.model.trancheAge[1])
   }
   
-  
+ 
   value: number = 100;
   options: Options = {
-    floor: 0,
+    floor: 1,
     ceil: 200
   };
   minValue: number = 50;

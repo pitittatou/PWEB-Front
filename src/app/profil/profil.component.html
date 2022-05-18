@@ -1,7 +1,7 @@
 <html lang="en">
   
   <body>
-    <form  #descriptionForm="ngForm" (ngSubmit)="Enregistrer(descriptionForm);">
+    <form  #descriptionForm="ngForm" (ngSubmit)="Enregistrer();">
         <div class="Profil">
             <div class="block">
                 <div class="box"><h2 class="prenom">Prénom, âge</h2></div>
@@ -9,11 +9,8 @@
             <div class="block">
             
                 <div class="box"><p class="genre" style="color:rgb(158, 70, 84);">Genre:</p></div>
-                        <div class="box"><mat-radio-group class="choixGenre" ngModel name="Gender" [formControl]="genderControl">
-                            <mat-radio-button *ngFor="let genre of gender" [value]="genre">{{genre}}</mat-radio-button>
-                           <!--  <mat-radio-button value="Homme" ngModel name="Homme" *ngFor="let genre of gender">Homme</mat-radio-button>
-                            <mat-radio-button value="Femme" ngModel name="Femme"  *ngFor="let genre of gender">Femme</mat-radio-button>
-                            <mat-radio-button value="Autre" ngModel name="Autre"  *ngFor="let genre of gender">Autre</mat-radio-button> -->
+                        <div class="box"><mat-radio-group class="choixGenre"  [(ngModel)]="model.gender"  name="gender" [formControl]="genderControl">
+                            <mat-radio-button *ngFor="let genre of Gender" [value]="genre">{{genre}}</mat-radio-button>
                         </mat-radio-group>
                         <mat-error *ngIf="genderControl.hasError('required')">Please choose a cartoon</mat-error>
                     
@@ -21,13 +18,13 @@
                 </div>
             <div class="block">
                 <div class="box"><p class="orientation" style="color:rgb(158, 70, 84);">Orientation sexuelle:</p></div>
-                <div class="box"*ngFor="let data of attirances; let i = index" >
+                <div class="box" *ngFor="let data of attirances; let i = index" >
                     <mat-checkbox (change)="onChange(i, $event.checked)">{{data.name}}</mat-checkbox>
                 </div>
             </div>
             <div class="block">
                 <div class="box"><p class="rayon" style="color:rgb(158, 70, 84);">Rayon de recherche:</p></div>
-                <div class="box"><ngx-slider class="slider1" [(value)]="value" [options]="options"></ngx-slider></div>
+                <div class="box"><ngx-slider class="slider1" [(value)]="value" [options]="options" [(ngModel)]="model.rayon" name="rayon"></ngx-slider></div>
             </div>
             <div class="block">
                 <div class="box"><p class="age" style="color:rgb(158, 70, 84);">Tranche d'âge:</p></div>
@@ -37,6 +34,8 @@
                     [(value)]="minValue"
                     [(highValue)]="maxValue"
                     [options]="Options"
+                    [(ngModel)]="model.trancheAge"
+                    name="age"
                 ></ngx-slider>
                 </div>
             </div>
@@ -44,7 +43,7 @@
                 <div class="box"><p class="description" style="color:rgb(158, 70, 84);">Description:</p></div>
                 <div class="box">
                     <mat-form-field class="textfield" >
-                        <textarea matInput style="color:rgb(158, 70, 84)" ngModel name="Description"></textarea>
+                        <textarea matInput style="color:rgb(158, 70, 84)" [(ngModel)]="model.description" name="description" ></textarea>
                     </mat-form-field>
                 
                 </div>
@@ -52,10 +51,8 @@
                 
          
             
-            <!-- <button mat-raised-button color="accent" class="valider" (click)="Enregistrer()">Valider</button> -->
             <div class="block">
-                <!-- <div class="box-11"><button mat-raised-button color="accent" class="valider" type="submit">Valider</button></div> -->
-                <div class="box"><button mat-raised-button color="accent" class="valider" (click)="Enregistrer(descriptionForm)">Valider</button></div>
+                <div class="box"><button mat-raised-button color="accent" class="valider" type="submit">Valider</button></div>
             
             
                  <div class="box">

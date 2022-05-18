@@ -3,21 +3,38 @@
 	box-shadow: 2px 2px 5px 0 rgb(192, 191, 191);
 }
 
-.group{
-	width: 50%;
+.mat-card{
+	@media (orientation : landscape) {
+		width: 40%;
+		border-width: 2px;
+	}
+
+	@media (orientation : portrait) {
+		width: 80%;
+		border-width: 1px;
+	}
+
+	border-color: #34c6bb;
+	border-style: solid;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 10px;
 	justify-content: center;
 	text-align: center;
-	box-shadow: 2px 2px 5px 0 rgb(192, 191, 191);
 }
 
 .image{
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-	width: 50%;
+
+	@media (orientation : landscape) {
+		width: 40%;
+	}
+
+	@media (orientation : portrait) {
+		width: 70%;
+	}
 }
 .mdp{
 	background-color: transparent;
@@ -61,10 +78,5 @@ p{
 }
 
 h1{
-	font-size: 500%;
-	font-weight: bold;
-	text-align: center;
-	justify-content: center;
-	padding-top: 5%;
-	padding-bottom: 2%;
+	font-size: 400%;
 }

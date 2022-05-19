@@ -1,73 +1,39 @@
-  <!-- Toolbar -->
-  <div class="toolbar" role="banner">
-
-    <button mat-icon-button
-      width="40"  (click)="opened=!opened" >
-      <mat-icon >notifications_active</mat-icon>
+<mat-toolbar color="primary" fxLayout="row wrap" fxLayoutAlign="space-between center">
+  <div>
+    <button [matMenuTriggerFor]="matchs" class="large-icon-button" mat-icon-button>
+      <mat-icon>diversity_1</mat-icon>
     </button>
-
-
-    <div class="spacer"></div>
-      <span class="example-spacer"></span>
-      <span> Inça match! 💞</span>
-      <span class="example-spacer"></span>
-
-      <button mat-icon-button
-      width="40"
-
-
-      [matMenuTriggerFor]="menu">
-        <mat-icon>account_circle </mat-icon>
-      </button>
-
-      <mat-menu #menu>
-          <button mat-menu-item (click)="onProfile()">
-            <mat-icon style="color:rgb(223, 156, 31)">manage_accounts</mat-icon>
-            <span style="color:black">Mon profil</span>
-      </button>
-
-      <button mat-menu-item>
-            <mat-icon style="color:rgb(223, 156, 31)">exit_to_app</mat-icon>
-            <span style="color:black">Me déconnecter</span>
-          </button>
-
-      </mat-menu>
-
+    <mat-menu #matchs>
+      <div *ngFor="let profile of profiles">
+        <button class="match-item" fxLayout="row wrap" fxLayoutAlign="center" mat-menu-item>
+          <div fxFlex="50%">
+            <img [src]='profile.imageUrl' alt="profile photo" class="profile-photo">
+          </div>
+          <div fxFlex="50%" fxLayout="column wrap" fxLayoutAlign="start stretch">
+            <span fxFlex>{{profile.name}}</span>
+            <span fxFlex>{{profile.age}} ans</span>
+          </div>
+        </button>
+      </div>
+    </mat-menu>
   </div>
-
-
-  <mat-sidenav-container>
-
-   <mat-sidenav mode="side"[(opened)]="opened">Matchs récents
-
-    <mat-list>
-      <mat-list-item *ngFor="let folder of folders">
-        <mat-divider></mat-divider>
-      <div mat-subheader></div>
-
-      <img mat-line [src]='folder.imageUrl'>
-
-        <span>{{folder.name}}</span>
-        <span class="example-spacer"></span>
-         <span > {{folder.age}} </span>
-        <div mat-line> </div>
-
-
-      </mat-list-item>
-    </mat-list>
-
-    </mat-sidenav>
-
-  </mat-sidenav-container>
-
-
-
-
-
-
-
-
-
-
-
-
+  <div class="image-wrapper">
+    <img alt="logo" class="logo" src="../assets/images/white_logo.png"/>
+  </div>
+  <div>
+    <button [matMenuTriggerFor]="settings" class="large-icon-button" mat-icon-button>
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #settings="matMenu">
+      <div fxLayout="column">
+        <button mat-menu-item (click)="onProfile()">
+          <mat-icon>manage_accounts</mat-icon>
+          <span>Mon profil</span></button>
+        <button mat-menu-item (click)="onLogOut()">
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Me déconnecter</span>
+        </button>
+      </div>
+    </mat-menu>
+  </div>
+</mat-toolbar>

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {UsersService} from "../services/users.service";
 import {ImageUploadService} from "../services/image-upload.service";
 import {GlobalConstants} from "../common/global-constants";
@@ -16,7 +16,7 @@ type Item = {
   templateUrl: './photo-chooser.component.html',
   styleUrls: ['./photo-chooser.component.scss']
 })
-export class PhotoChooserComponent implements OnInit {
+export class PhotoChooserComponent implements OnInit, OnDestroy {
   photos!: string[]
   items!: Item[]
 
@@ -29,6 +29,10 @@ export class PhotoChooserComponent implements OnInit {
       this.items.push({position: i, disabled: false, empty: true, url: ""})
     }
     this.updateItems()
+  }
+
+  ngOnDestroy() {
+    this.snackBar.dismiss()
   }
 
   updateItems(): void {

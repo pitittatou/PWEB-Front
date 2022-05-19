@@ -15,8 +15,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { PhotoChooserComponent } from './photo-chooser/photo-chooser.component';
 import { ApercuComponentComponent } from './apercu-component/apercu-component.component';
-import { ProfilComponent } from './profil/profil.component';
-import { RegisterComponent } from './register/register.component';
+import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 
 // Material Components
 import { MatButtonModule } from "@angular/material/button";
@@ -43,11 +42,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     AppComponent,
     MatchingComponent,
     ApercuComponentComponent,
-    ProfilComponent,
     PhotoChooserComponent,
     NavbarComponent,
     LoginComponent,
-    RegisterComponent
+    ProfileEditComponent
   ],
   imports: [
     BrowserModule,

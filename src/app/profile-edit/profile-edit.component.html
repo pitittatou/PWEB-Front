@@ -1,0 +1,85 @@
+<body>
+<div *ngIf="registerPage">
+  <img alt="Logo IN'ça Swipe" class="imgLogo" src="../assets/images/Logo2.png">
+</div>
+
+<p></p>
+
+<mat-card>
+  <form #userForm="ngForm" (ngSubmit)="onFormSubmit(userForm)">
+    <div *ngIf="registerPage">
+      <div class="font">Inscription</div>
+    </div>
+    <div *ngIf="!registerPage">
+      <div class="font">Prénom, âge</div>
+    </div>
+
+    <p></p>
+
+    <div class="info">
+      <div *ngIf="registerPage">
+        <div>Prénom</div>
+        <mat-form-field appearance="fill">
+          <mat-label>Entrez votre prénom</mat-label>
+          <input matInput name="firstName" ngModel required>
+        </mat-form-field>
+
+        <div>Date de naissance</div>
+        <mat-form-field appearance="fill">
+          <mat-label>MM/JJ/AAAA</mat-label>
+          <input [matDatepicker]="picker" matInput name="birthDate" ngModel required>
+          <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+
+      <div>Genre : *</div>
+      <mat-radio-group name="gender" ngModel required>
+        <mat-radio-button id='g1' value="Homme">Homme</mat-radio-button>
+        <mat-radio-button id='g2' value="Femme">Femme</mat-radio-button>
+        <mat-radio-button id='g3' value="Autre">Autre</mat-radio-button>
+      </mat-radio-group>
+
+      <h2></h2>
+
+      <div>Attirance : *</div>
+      <div *ngFor="let data of attractions; let i = index">
+        <mat-checkbox (change)="onCheck(i, $event.checked)">{{data.display_name}}</mat-checkbox>
+      </div>
+
+      <h2></h2>
+
+      <!-- <div>Rayon de recherche : {{sliderControl.value}} km </div>
+      <ngx-slider [formControl]="sliderControl" [options]="options"></ngx-slider>
+       -->
+
+      <div>Tranche d'âge recherchée : {{ minValue }} - {{ maxValue }} ans</div>
+      <ngx-slider [(highValue)]="maxValue" [(value)]="minValue" [options]="Options" name="ageRange" ngModel></ngx-slider>
+
+      <h2></h2>
+
+      <div>Description</div>
+      <mat-form-field appearance="fill" class="description" hintLabel="Max 300 characters">
+        <mat-label>Entrez votre description</mat-label>
+        <textarea #input matInput maxlength="300" name="description" ngModel rows="6"></textarea>
+        <mat-hint align="end">{{input.value?.length || 0}}/300</mat-hint>
+      </mat-form-field>
+
+      <h2></h2>
+
+      <div *ngIf="registerPage" class="logbutton">
+        <button color="accent" mat-raised-button>S'inscrire</button>
+      </div>
+
+      <div *ngIf="!registerPage" class="profilButton">
+        <!--					<button mat-raised-button color="accent">Aperçu</button>-->
+        <button color="accent" mat-raised-button>Valider</button>
+      </div>
+    </div>
+  </form>
+</mat-card>
+
+<p></p>
+
+</body>

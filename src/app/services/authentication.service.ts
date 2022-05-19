@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {GoogleLoginProvider, SocialAuthService, SocialUser} from "angularx-social-login";
-import {BehaviorSubject, first, throwError} from "rxjs";
+import {BehaviorSubject, first} from "rxjs";
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {GlobalConstants} from "../common/global-constants";
@@ -40,7 +40,6 @@ export class AuthenticationService {
         }
       }
     }
-    this.update_auth_state()
   }
 
   login() {
@@ -50,7 +49,6 @@ export class AuthenticationService {
       const route = GlobalConstants.apiURL + 'api/user/login'
       this.http.get<Response>(route).subscribe((resp) => {
         this.update_registered(resp.registered)
-        this.update_auth_state()
         if (this.registered) {
           this.router.navigateByUrl('')
         } else {
@@ -64,7 +62,6 @@ export class AuthenticationService {
     this.stopRefreshTokenTimer()
     this.update_user(null)
     this.update_registered(false)
-    this.update_auth_state()
     this.socialAuthService.signOut().then(() => this.router.navigateByUrl('/connexion')
     ).catch(() => {})
   }
@@ -97,11 +94,13 @@ export class AuthenticationService {
     } else {
       this.user = user
     }
+    this.update_auth_state()
     sessionStorage.setItem('user', JSON.stringify(user))
   }
 
-  private update_registered(state: boolean) {
+  public update_registered(state: boolean) {
     this.registered = state
+    this.update_auth_state()
     sessionStorage.setItem('registered', JSON.stringify(state))
   }
 

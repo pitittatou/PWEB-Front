@@ -6,78 +6,83 @@
 	<p></p>
 
 	<mat-card>
-		<div *ngIf="knowRegisterOrProfil()">
-			<div class="font">Inscription</div>
-		</div>
-		<div *ngIf="!knowRegisterOrProfil()">
-			<div class="font">Prénom, âge</div>
-		</div>
-
-		<p></p>
-		
-		<div class="info">
+		<form #userForm="ngForm" (ngSubmit)="onFormSubmit(userForm)">
 			<div *ngIf="knowRegisterOrProfil()">
-				<div>Prénom</div>
-				<mat-form-field appearance="fill" >
-					<mat-label>Entrez votre prénom</mat-label>
-					<input matInput required>
-				</mat-form-field>
+				<div class="font">Inscription</div>
+			</div>
+			<div *ngIf="!knowRegisterOrProfil()">
+				<div class="font">Prénom, âge</div>
+			</div>
+
+			<p></p>
+			
+			<div class="info">
+				<div *ngIf="knowRegisterOrProfil()">
+					<div>Prénom</div>
+					<mat-form-field appearance="fill" >
+						<mat-label>Entrez votre prénom</mat-label>
+						<input ngModel name="Name" matInput required>
+					</mat-form-field>
+					
+					<div>Date de naissance</div>
+					<mat-form-field appearance="fill">
+						<mat-label>MM/JJ/AAAA</mat-label>
+						<input ngModel name="Birthdate" matInput [matDatepicker]="picker" required>
+						<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+						<mat-datepicker #picker></mat-datepicker>
+					</mat-form-field>
+				</div>
 				
-				<div>Date de naissance</div>
-				<mat-form-field appearance="fill">
-					<mat-label>MM/JJ/AAAA</mat-label>
-					<input matInput [matDatepicker]="picker" required>
-					<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-					<mat-datepicker #picker></mat-datepicker>
+
+				<div>Genre : *</div>
+				<mat-radio-group ngModel required name="Gender">
+					<mat-radio-button id='g1' value="Homme">Homme</mat-radio-button>
+					<mat-radio-button id='g2' value="Femme">Femme</mat-radio-button>
+					<mat-radio-button id='g3' value="Autre">Autre</mat-radio-button>
+				</mat-radio-group>
+				
+				<h2></h2>
+
+				<div>Attirance : *</div>
+				<div *ngFor="let data of attirances">
+                    <mat-checkbox ngModel required name= "Attraction {{data.name}}">{{data.name}}</mat-checkbox>
+                </div>
+				<!-- <mat-checkbox ngModel name="Attraction" >Homme</mat-checkbox>
+				<mat-checkbox ngModel name="Attraction">Femme</mat-checkbox>
+				<mat-checkbox ngModel name="Attraction">Autre</mat-checkbox>
+				 -->
+				<h2></h2>
+
+				<!-- <div>Rayon de recherche : {{sliderControl.value}} km </div>
+				<ngx-slider [formControl]="sliderControl" [options]="options"></ngx-slider>
+				 -->
+				
+				<div>Tranche d'âge recherchée : {{ minValue }} - {{ maxValue }} ans </div>
+				<ngx-slider ngModel required name="Age" [(value)]="minValue" [(highValue)]="maxValue" [options]="Options"></ngx-slider>
+				
+				
+				<h2></h2>
+
+				<div>Description</div>
+				<mat-form-field class = "description" hintLabel="Max 300 characters" appearance="fill">
+					<mat-label>Entrez votre description</mat-label>
+					<textarea ngModel name="Description" rows="6" matInput #input maxlength="300"></textarea>
+					<mat-hint align="end">{{input.value?.length || 0}}/300</mat-hint>
 				</mat-form-field>
+
+				<h2></h2>
+
+				<div class="logbutton" *ngIf="knowRegisterOrProfil()">
+					<button mat-raised-button color="accent">S'inscrire</button>
+				</div>
+
+				<div class="profilButton" *ngIf="!knowRegisterOrProfil()">
+					<button mat-raised-button color="accent">Aperçu</button>
+					<button mat-raised-button color="accent">Valider</button>
+				</div>
+
 			</div>
-			
-
-			<div>Genre : *</div>
-			<mat-radio-group required>
-				<mat-radio-button id='g1' value="Homme">Homme</mat-radio-button>
-				<mat-radio-button id='g2' value="Femme">Femme</mat-radio-button>
-				<mat-radio-button id='g3' value="Autre">Autre</mat-radio-button>
-			</mat-radio-group>
-			
-			<h2></h2>
-
-			<div>Attirance : *</div>
-			<mat-checkbox>Homme</mat-checkbox>
-			<mat-checkbox>Femme</mat-checkbox>
-			<mat-checkbox>Autre</mat-checkbox>
-			
-			<h2></h2>
-
-			<div>Rayon de recherche : {{sliderControl.value}} km </div>
-			<ngx-slider [formControl]="sliderControl" [options]="options"></ngx-slider>
-			
-			<form [formGroup]="sliderForm">
-				<div>Tranche d'âge recherchée : {{ sliderForm.value.sliderControl2[0] }} - {{ sliderForm.value.sliderControl2[1] }} ans</div>
-				<ngx-slider [options]="options2" formControlName="sliderControl2"></ngx-slider>
-			</form>
-			
-			<h2></h2>
-
-			<div>Description</div>
-			<mat-form-field class = "description" hintLabel="Max 300 characters" appearance="fill">
-				<mat-label>Entrez votre description</mat-label>
-				<textarea  rows="6" matInput #input maxlength="300"></textarea>
-				<mat-hint align="end">{{input.value?.length || 0}}/300</mat-hint>
-			</mat-form-field>
-
-			<h2></h2>
-
-			<div class="logbutton" *ngIf="knowRegisterOrProfil()">
-				<button mat-raised-button color="accent">S'inscrire</button>
-			</div>
-
-			<div class="profilButton" *ngIf="!knowRegisterOrProfil()">
-				<button mat-raised-button color="accent">Aperçu</button>
-				<button mat-raised-button color="accent">Valider</button>
-			</div>
-
-		</div>
+		</form>
 	</mat-card>
 	
 	<p> </p>

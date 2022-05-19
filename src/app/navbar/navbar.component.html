@@ -26,7 +26,7 @@
     </button>
     <mat-menu #settings="matMenu">
       <div fxLayout="column">
-        <button mat-menu-item>
+        <button mat-menu-item (click)="onProfile()">
           <mat-icon>manage_accounts</mat-icon>
           <span>Mon profil</span></button>
         <button mat-menu-item (click)="onLogOut()">

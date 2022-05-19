@@ -51,7 +51,7 @@ export class NavbarComponent implements OnInit {
   }
 
   onProfile() {
-    this.router.navigateByUrl('profil')
+    this.router.navigateByUrl('/profil')
   }
 
   onLogOut() {

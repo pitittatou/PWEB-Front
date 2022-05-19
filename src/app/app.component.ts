@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { Options } from '@angular-slider/ngx-slider';
+import {Component, OnInit} from '@angular/core';
+import {AuthenticationService} from "./services/authentication.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,13 @@ import { Options } from '@angular-slider/ngx-slider';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'PWEB-Front';
+  showNavbar!: Observable<boolean>
 
+  constructor(private authService: AuthenticationService) {}
+
+  ngOnInit() {
+    this.showNavbar = this.authService.get_auth_state()
+  }
 }

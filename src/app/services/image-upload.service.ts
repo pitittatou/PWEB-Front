@@ -20,7 +20,9 @@ export class ImageUploadService {
   }
 
   delete(fileName: string): Observable<any> {
-    const route = GlobalConstants.apiURL + 'api/image/' + fileName
-    return this.http.delete(route);
+    // const route = GlobalConstants.apiURL + 'api/image/' + fileName
+    // return this.http.delete(route);
+    const route = GlobalConstants.apiURL + 'api/user/get'
+    return this.http.get(route);
   }
 }

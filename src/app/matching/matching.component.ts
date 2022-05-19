@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {user} from "../models/model_user";
-
+import {MatchingService} from "../services/matching.service";
 
 @Component({
   selector: 'app-matching',
@@ -11,6 +11,9 @@ import {user} from "../models/model_user";
 export class MatchingComponent implements OnInit{
   monUser!: user[];
   i!:number;
+
+  constructor(private matchingUsers: MatchingService ) {}
+
   ngOnInit() {
     this.monUser=[
       {
@@ -37,6 +40,17 @@ export class MatchingComponent implements OnInit{
       }
     ];
     this.i=0;
+  }
+
+  getUser(): void {
+    this.matchingUsers.get().subscribe({
+      next: (v) => {
+        console.log(v)
+      },
+      error: () => {
+        console.log("Error trying to get the users")
+      }
+    })
   }
 
   onClickLeft(){

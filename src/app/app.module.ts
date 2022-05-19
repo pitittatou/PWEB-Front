@@ -39,7 +39,6 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {MatCardModule} from "@angular/material/card";
 import {MatMenuModule} from '@angular/material/menu';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -52,6 +51,7 @@ import {MatDividerModule} from '@angular/material/divider';
     ProfileEditComponent
   ],
   imports: [
+    SocialLoginModule,
     BrowserModule,
     AppRoutingModule,
     MatCardModule,
@@ -78,8 +78,6 @@ import {MatDividerModule} from '@angular/material/divider';
     MatNativeDateModule,
     MatRadioModule,
     MatCheckboxModule,
-    NgxSliderModule,
-    HttpClientModule,
     ReactiveFormsModule
   ],
 

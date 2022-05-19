@@ -5,7 +5,5 @@ export class user {
     imageUrlCenter!: string;
     imageUrlLeft!: string;
     imageUrlRight!: string;
-    profession!: string;
-    position!: string;
     description!: string;
 }

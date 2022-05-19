@@ -65,6 +65,10 @@ export class MatchingComponent implements OnInit{
     })
   }
 
+  /*getUser(): void {
+    return this.matchingUsers.get().then((user: user))
+  }*/
+
   onClickLeft(){
     console.log("J'ai cliqué sur le bouton de gauche");
     if (this.monUser[this.i].imageUrl == this.monUser[this.i].imageUrlCenter){

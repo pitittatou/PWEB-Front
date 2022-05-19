@@ -1,22 +1,22 @@
 <body>
-	<div *ngIf="registerPage">
+	<div *ngIf="knowRegisterOrProfil()">
 		<img class="imgLogo" src="../assets/images/Logo2.png" alt="Logo IN'ça Swipe">
 	</div>
 	
 	<p></p>
 
 	<mat-card>
-		<div *ngIf="registerPage">
+		<div *ngIf="knowRegisterOrProfil()">
 			<div class="font">Inscription</div>
 		</div>
-		<div *ngIf="!registerPage">
+		<div *ngIf="!knowRegisterOrProfil()">
 			<div class="font">Prénom, âge</div>
 		</div>
 
 		<p></p>
 		
 		<div class="info">
-			<div *ngIf="registerPage">
+			<div *ngIf="knowRegisterOrProfil()">
 				<div>Prénom</div>
 				<mat-form-field appearance="fill" >
 					<mat-label>Entrez votre prénom</mat-label>
@@ -35,9 +35,9 @@
 
 			<div>Genre : *</div>
 			<mat-radio-group required>
-				<mat-radio-button value="1">Homme</mat-radio-button>
-				<mat-radio-button value="2">Femme</mat-radio-button>
-				<mat-radio-button value="3">Autre</mat-radio-button>
+				<mat-radio-button id='g1' value="Homme">Homme</mat-radio-button>
+				<mat-radio-button id='g2' value="Femme">Femme</mat-radio-button>
+				<mat-radio-button id='g3' value="Autre">Autre</mat-radio-button>
 			</mat-radio-group>
 			
 			<h2></h2>
@@ -68,11 +68,11 @@
 
 			<h2></h2>
 
-			<div class="logbutton" *ngIf="registerPage">
+			<div class="logbutton" *ngIf="knowRegisterOrProfil()">
 				<button mat-raised-button color="accent">S'inscrire</button>
 			</div>
 
-			<div class="profilButton" *ngIf="!registerPage">
+			<div class="profilButton" *ngIf="!knowRegisterOrProfil()">
 				<button mat-raised-button color="accent">Aperçu</button>
 				<button mat-raised-button color="accent">Valider</button>
 			</div>

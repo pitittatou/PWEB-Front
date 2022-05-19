@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Options } from '@angular-slider/ngx-slider';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Validators } from '@angular/forms';
+import { ProfilService } from '../services/Profil.service';
 
 @Component({
 	selector: 'app-register',
@@ -8,13 +11,20 @@ import { FormControl, FormGroup } from '@angular/forms';
 	styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-	// registerPage: boolean;		//if true: RegisterPage -- if false: ProfilPage
+	registerPage!: boolean;
 
-	// constructor(registerPage:boolean){
-	// 	this.registerPage=registerPage
-	// }
+	constructor( public ProfilService: ProfilService, private router: Router) {}
 
-	registerPage=false;
+	knowRegisterOrProfil(): boolean{
+		if (this.router.url == '/inscription') {
+			this.registerPage = true;
+		};
+		if (this.router.url == '/profil') {
+			this.registerPage = false;
+		};
+		return this.registerPage;
+	}
+	
 
 	sliderControl: FormControl = new FormControl(100);
 	options: Options = {
@@ -39,5 +49,4 @@ export class RegisterComponent {
 			return '#34c6bb';
 		}
 	};
-
 }

@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: '', component: MatchingComponent },
   { path: 'connexion', component: LoginComponent },
   { path: 'inscription', component: RegisterComponent},
-  { path: 'profil', component: ProfilComponent },
+  { path: 'profil', component: RegisterComponent },
   { path: 'photos', component: PhotoChooserComponent }, // temporaire
 ];
 

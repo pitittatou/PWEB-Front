@@ -22,33 +22,6 @@ export class NavbarComponent implements OnInit {
   opened = false;
   matches!: User[]
   apiUrl = GlobalConstants.apiURL
-  profiles: Section[] = [
-    {
-      name: 'Inès',
-      age: 20,
-      imageUrl: 'https://cdn.pixabay.com/photo/2020/03/26/10/58/norway-4970080_960_720.jpg',
-    },
-    {
-      name: 'Thomas',
-      age: 22,
-      imageUrl: 'https://cdn.pixabay.com/photo/2020/03/26/10/58/norway-4970080_960_720.jpg',
-    },
-    {
-      name: 'Jad',
-      age: 23,
-      imageUrl: 'https://cdn.pixabay.com/photo/2020/03/26/10/58/norway-4970080_960_720.jpg',
-    },
-    {
-      name: 'Abdourrahmane',
-      age: 19,
-      imageUrl: 'https://cdn.pixabay.com/photo/2020/03/26/10/58/norway-4970080_960_720.jpg',
-    },
-    {
-      name: 'Marion',
-      age: 24,
-      imageUrl: 'https://cdn.pixabay.com/photo/2020/03/26/10/58/norway-4970080_960_720.jpg',
-    },
-  ];
 
   constructor(private authService: AuthenticationService, private router: Router, private matchingService: MatchingService) {}
 
@@ -66,6 +39,7 @@ export class NavbarComponent implements OnInit {
   onGetMatches() {
     this.matchingService.getMatches().subscribe((matches) => {
       this.matches = matches
+      console.log(matches)
         for (let match of this.matches) {
           if(!match.photos.length) {
             match.photos.push("placeholder.jpg")

@@ -5,8 +5,8 @@
     </button>
     <mat-menu #matchs>
       <div *ngFor="let match of matches">
-        <button class="match-item" fxLayout="row wrap" fxLayoutAlign="center justify" mat-menu-item>
-          <div fxFlex="50%">
+        <button class="match-item" fxLayout="row wrap" fxLayoutAlign="center center" mat-menu-item>
+          <div fxFlex="50%" fxLayoutAlign="center center">
             <img [src]="apiUrl + 'images/' + match.photos[0]" alt="profile photo" class="profile-photo">
           </div>
           <div fxFlex="50%" fxLayout="column wrap" fxLayoutAlign="start stretch">

@@ -11,10 +11,10 @@ import * as kf from './keyframes';
   styleUrls: ['./matching.component.scss'],
   animations: [
     trigger('cardAnimator', [
-      
+
       transition('* => swipeleft', animate(1000, keyframes(kf.swipeleft))),
       transition('* => swiperight', animate(1000, keyframes(kf.swiperight))),
-      
+
     ])
   ]
 })
@@ -22,11 +22,10 @@ import * as kf from './keyframes';
 export class MatchingComponent implements OnInit{
   animationState!: string;
   user!: User;
-  i!:number;
   apiUrl: string = GlobalConstants.apiURL
   selectedPhotoIdx: number = 0
   blockRequests = false
-  
+
 
   constructor(private matchingService: MatchingService ) {}
 
@@ -38,7 +37,7 @@ export class MatchingComponent implements OnInit{
     this.matchingService.getRandomUser().subscribe({
       next: (user) => {
         this.user = user
-        console.log(user)
+        this.selectedPhotoIdx = 0
         if (!this.user.photos.length) {
           this.user.photos.push('placeholder.jpg')
         }
@@ -81,14 +80,14 @@ export class MatchingComponent implements OnInit{
 
   startAnimation(state:any) {
     console.log(state)
-    
+
     if (!this.animationState) {
       this.animationState = state;
-    }    
+    }
   }
 
   resetAnimationState(){
-    this.animationState = ''; 
+    this.animationState = '';
   }
 
 }

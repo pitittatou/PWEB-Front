@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {GoogleLoginProvider, SocialAuthService, SocialUser} from "angularx-social-login";
 import {BehaviorSubject, first} from "rxjs";
 import {Router} from "@angular/router";
@@ -40,6 +40,7 @@ export class AuthenticationService {
         }
       }
     }
+    this.update_auth_state()
   }
 
   login() {

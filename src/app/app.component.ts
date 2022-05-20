@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from "./services/authentication.service";
-import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -10,11 +9,11 @@ import {Observable} from "rxjs";
 
 export class AppComponent implements OnInit{
   title = 'PWEB-Front';
-  showNavbar!: Observable<boolean>
+  showNavbar!: boolean
 
   constructor(private authService: AuthenticationService) {}
 
   ngOnInit() {
-    this.showNavbar = this.authService.get_auth_state()
+    this.authService.get_auth_state().subscribe((v) => this.showNavbar = v)
   }
 }

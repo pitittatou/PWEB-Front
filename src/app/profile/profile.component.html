@@ -1,0 +1,53 @@
+<div class="wrapper" fxLayout="row wrap" fxLayoutAlign="center">
+  <div fxFlex="35.5vw" fxFlex.md="52vw" fxFlex.sm="72vw" fxFlex.xs="94vw">
+    <mat-card fxLayout="row wrap" fxLayoutAlign="center">
+      <div fxFlex>
+        <div class="font">{{profile.firstName}}, {{profile.age}} ans</div>
+
+        <app-photo-chooser></app-photo-chooser>
+        <div class="photo-label">Ajouter des photos</div>
+        <form #userForm="ngForm" (ngSubmit)="onFormSubmit(userForm)">
+          <div class="form-wrapper text-left">
+            <div>Genre :</div>
+            <mat-radio-group [(ngModel)]="profile.gender" name="gender">
+              <mat-radio-button id='g1' value="man">Homme</mat-radio-button>
+              <mat-radio-button id='g2' value="woman">Femme</mat-radio-button>
+              <mat-radio-button id='g3' value="other">Autre</mat-radio-button>
+            </mat-radio-group>
+
+            <div class="space-top">Attirance :</div>
+            <div>
+              <mat-checkbox (change)="onCheck(0, $event.checked)" [(ngModel)]="profile.menChecked" name="menChecked">Hommes
+              </mat-checkbox>
+              <mat-checkbox (change)="onCheck(1, $event.checked)" [(ngModel)]="profile.womenChecked" name="womenChecked">
+                Femmes
+              </mat-checkbox>
+              <mat-checkbox (change)="onCheck(2, $event.checked)" [(ngModel)]="profile.otherChecked" name="otherChecked">
+                Autre
+              </mat-checkbox>
+            </div>
+
+            <!-- <div>Rayon de recherche : {{sliderControl.value}} km </div>
+            <ngx-slider [formControl]="sliderControl" [options]="options"></ngx-slider>
+             -->
+
+            <div class="space-top">Tranche d'âge recherchée : {{ profile.minAge }} - {{ profile.maxAge }} ans</div>
+            <ngx-slider [(highValue)]="profile.maxAge" [(value)]="profile.minAge" [options]="Options" name="ageRange" ngModel></ngx-slider>
+
+            <div class="space-top">Description</div>
+            <mat-form-field appearance="fill" class="description">
+              <mat-label>Modifier votre description</mat-label>
+              <textarea #input [(ngModel)]="profile.description" matInput maxlength="300" name="description" rows="6"></textarea>
+              <mat-hint align="end">{{input.value?.length || 0}}/300</mat-hint>
+            </mat-form-field>
+            <div class="button-wrapper" fxLayoutAlign="space-between">
+              <button disabled="true" color="accent" mat-raised-button>Aperçu</button>
+              <button type="submit" color="accent" mat-raised-button>Valider</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </mat-card>
+  </div>
+</div>
+<div class="spacer"></div>

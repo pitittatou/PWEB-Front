@@ -31,8 +31,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.userService.get_profile().subscribe((profile) => {
       this.profile = profile
       this.attraction = [
-        {name: "men", checked: this.profile.menChecked},
-        {name: "women", checked: this.profile.womenChecked},
+        {name: "man", checked: this.profile.manChecked},
+        {name: "woman", checked: this.profile.womanChecked},
         {name: "other", checked: this.profile.otherChecked}
       ]
     },

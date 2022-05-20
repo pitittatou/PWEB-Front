@@ -31,8 +31,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.profile = new RegisterForm()
     this.attraction = [
-      {name: "men", checked: this.profile.menChecked},
-      {name: "women", checked: this.profile.womenChecked},
+      {name: "men", checked: this.profile.manChecked},
+      {name: "women", checked: this.profile.womanChecked},
       {name: "other", checked: this.profile.otherChecked}
     ]
   }

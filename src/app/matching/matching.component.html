@@ -1,38 +1,34 @@
 <div class="matching-card" fxLayout="row wrap" fxLayoutAlign="center">
   <div fxFlex="34vw" fxFlex.md="44vw" fxFlex.sm="54vw" fxFlex.xs="94vw">
-  <mat-card fxLayoutAlign="center center" fxLayout="row wrap" class="border">
-    <div class="" >
-    <div class="image-container">
-      <img *ngFor="let link of user.photos; let i = index" [hidden]="selectedPhotoIdx != i"
-           [src]="apiUrl+'images/'+link"
-           alt="Photo {{i}}">
-      <button (click)="onNextPhoto()" class="right-button" color="white" mat-fab>
-        <mat-icon>arrow_right</mat-icon>
-      </button>
-      <button (click)="onPreviousPhoto()" class="left-button" color="white" mat-fab>
-        <mat-icon>arrow_left</mat-icon>
-      </button>
-    </div>
-    </div>
-
-
-      <p fxLayoutAlign="center" class="strong">{{user.firstName}}, {{user.age}} ans</p>
-    <div class="wrapper " fxLayoutAlign="center center"><textarea class="description-wrapper " rows="6">{{user.description}}</textarea></div>
-
-    <mat-card-actions fxLayoutAlign="space-between">
-      <div>
-        <button (click)="onReject()" color="no" mat-fab>
-          <mat-icon>clear</mat-icon>
-        </button>
+    <mat-card class="border" fxLayout="row wrap" fxLayoutAlign="center center">
+      <div class="">
+        <div class="image-container">
+          <img *ngFor="let link of user.photos; let i = index" [hidden]="selectedPhotoIdx != i"
+               [src]="apiUrl+'images/'+link" alt="Photo {{i}}">
+          <button (click)="onNextPhoto()" class="right-button" color="white" mat-fab>
+            <mat-icon>arrow_right</mat-icon>
+          </button>
+          <button (click)="onPreviousPhoto()" class="left-button" color="white" mat-fab>
+            <mat-icon>arrow_left</mat-icon>
+          </button>
+        </div>
       </div>
-      <div>
-        <button (click)="onAccept()" color="yes" mat-fab>
-          <mat-icon>favorite</mat-icon>
-        </button>
-      </div>
-    </mat-card-actions>
-
-  </mat-card>
-</div>
+      <p class="strong" fxLayoutAlign="center">{{user.firstName}}, {{user.age}} ans</p>
+      <div class="wrapper" fxLayoutAlign="center center"><textarea class="description-wrapper"
+                                                                    rows="6">{{user.description}}</textarea></div>
+      <mat-card-actions fxLayoutAlign="space-between">
+        <div>
+          <button (click)="onReject()" color="no" mat-fab>
+            <mat-icon>clear</mat-icon>
+          </button>
+        </div>
+        <div>
+          <button (click)="onAccept()" color="yes" mat-fab>
+            <mat-icon>favorite</mat-icon>
+          </button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
 </div>
 <div class="spacer"></div>

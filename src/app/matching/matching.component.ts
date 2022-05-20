@@ -2,19 +2,31 @@ import {Component, OnInit} from '@angular/core';
 import {User} from "../models/user.model";
 import {MatchingService} from "../services/matching.service";
 import {GlobalConstants} from "../common/global-constants";
+import { trigger, keyframes, animate, transition } from '@angular/animations';
+import * as kf from './keyframes';
 
 @Component({
   selector: 'app-matching',
   templateUrl: './matching.component.html',
-  styleUrls: ['./matching.component.scss']
+  styleUrls: ['./matching.component.scss'],
+  animations: [
+    trigger('cardAnimator', [
+      
+      transition('* => swipeleft', animate(1000, keyframes(kf.swipeleft))),
+      transition('* => swiperight', animate(1000, keyframes(kf.swiperight))),
+      
+    ])
+  ]
 })
 
 export class MatchingComponent implements OnInit{
+  animationState!: string;
   user!: User;
   i!:number;
   apiUrl: string = GlobalConstants.apiURL
   selectedPhotoIdx: number = 0
   blockRequests = false
+  
 
   constructor(private matchingService: MatchingService ) {}
 
@@ -66,4 +78,18 @@ export class MatchingComponent implements OnInit{
       (e) => console.log(e))
     }
   }
+
+  startAnimation(state:any) {
+    console.log(state)
+    
+    if (!this.animationState) {
+      this.animationState = state;
+    }    
+  }
+
+  resetAnimationState(){
+    this.animationState = ''; 
+  }
+
 }
+

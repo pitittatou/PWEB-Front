@@ -21,20 +21,6 @@ export class MatchingComponent implements OnInit{
     this.getUser()
   }
 
-  /*UserMatchFromUserBack(UserBack: userBack) : user {
-    let MatchUser:user;
-    MatchUser = {
-      prenom : 'Jonas',
-      age: 36,
-      imageUrl:'https://www.karnaval.fr/wp-content/uploads/2022/02/SoireeDUB_MLutz-9.jpg',
-      imageUrlCenter:'https://www.karnaval.fr/wp-content/uploads/2022/02/SoireeDUB_MLutz-9.jpg',
-      imageUrlLeft:'https://www.karnaval.fr/wp-content/uploads/2022/02/Karna-Dub-WM-AD-05.jpg',
-      imageUrlRight:'https://www.karnaval.fr/wp-content/uploads/2022/02/Karna-Dub-WM-AD-09.jpg',
-      description:'J apprécie particulierement les crepes au caramel'
-    }
-    return MatchUser
-  }*/
-
   getUser(): void {
     this.matchingService.getRandomUser().subscribe({
       next: (user) => {
@@ -49,10 +35,6 @@ export class MatchingComponent implements OnInit{
       }
     })
   }
-
-  /*getUser(): void {
-    return this.matchingService.get().then((user: user))
-  }*/
 
   onNextPhoto() {
     this.selectedPhotoIdx = (this.selectedPhotoIdx + 1) % this.user.photos.length

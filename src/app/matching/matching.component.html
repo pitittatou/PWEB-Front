@@ -1,24 +1,25 @@
-<div class="matching-card" fxLayoutAlign="center">
-  <mat-card class="example-card">
-
+<div class="matching-card" fxLayout="row wrap" fxLayoutAlign="center">
+  <div fxFlex="34vw" fxFlex.md="44vw" fxFlex.sm="54vw" fxFlex.xs="94vw">
+  <mat-card fxLayoutAlign="center center" fxLayout="row wrap" class="border">
+    <div class="" >
     <div class="image-container">
       <img *ngFor="let link of user.photos; let i = index" [hidden]="selectedPhotoIdx != i"
            [src]="apiUrl+'images/'+link"
            alt="Photo {{i}}">
-      <button (click)="onNextPhoto()" class="left-button" color="white" mat-fab>
+      <button (click)="onNextPhoto()" class="right-button" color="white" mat-fab>
         <mat-icon>arrow_right</mat-icon>
       </button>
-      <button (click)="onPreviousPhoto()" class="right-button" color="white" mat-fab>
+      <button (click)="onPreviousPhoto()" class="left-button" color="white" mat-fab>
         <mat-icon>arrow_left</mat-icon>
       </button>
     </div>
+    </div>
 
 
-    <mat-card-content>
-      <p fxLayoutAlign="center" style="font-size : 2rem"><strong>{{user.firstName}}, {{user.age}} ans</strong></p>
-      <div class="description-container">{{user.description}}</div>
-    </mat-card-content>
-    <mat-card-actions fxLayoutAlign="center" fxLayoutGap="260px">
+      <p fxLayoutAlign="center" class="strong">{{user.firstName}}, {{user.age}} ans</p>
+    <div class="wrapper " fxLayoutAlign="center center"><textarea class="description-wrapper " rows="6">{{user.description}}</textarea></div>
+
+    <mat-card-actions fxLayoutAlign="space-between">
       <div>
         <button (click)="onReject()" color="no" mat-fab>
           <mat-icon>clear</mat-icon>
@@ -33,3 +34,5 @@
 
   </mat-card>
 </div>
+</div>
+<div class="spacer"></div>

@@ -26,4 +26,9 @@ export class MatchingService {
     const route = GlobalConstants.apiURL + 'api/matching/reject'
     return this.http.post(route, {userId: userId})
   }
+
+  getMatches() : Observable<any> {
+    const route = GlobalConstants.apiURL + 'api/matching/getMatches'
+    return this.http.get<User[]>(route)
+  }
 }

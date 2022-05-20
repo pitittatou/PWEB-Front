@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {NgModule, Injectable} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgxSliderModule} from '@angular-slider/ngx-slider';
 import {AppRoutingModule} from './app-routing.module';
@@ -48,7 +48,7 @@ import { RegisterComponent } from './register/register.component';
     NavbarComponent,
     LoginComponent,
     ProfileComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     SocialLoginModule,
@@ -99,3 +99,4 @@ import { RegisterComponent } from './register/register.component';
 })
 export class AppModule {
 }
+

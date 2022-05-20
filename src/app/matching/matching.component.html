@@ -1,6 +1,10 @@
 <div class="matching-card" fxLayout="row wrap" fxLayoutAlign="center">
   <div fxFlex="34vw" fxFlex.md="44vw" fxFlex.sm="54vw" fxFlex.xs="94vw">
-    <mat-card class="border" fxLayout="row wrap" fxLayoutAlign="center center">
+    <mat-card class="border" fxLayout="row wrap" fxLayoutAlign="center center" 
+              [@cardAnimator]="animationState" 
+              (@cardAnimator.done)="resetAnimationState()"
+              (swipeleft)="startAnimation('swipeleft')"
+              (swiperight)="startAnimation('swiperight')">
       <div class="">
         <div class="image-container">
           <img *ngFor="let link of user.photos; let i = index" [hidden]="selectedPhotoIdx != i"
@@ -18,12 +22,12 @@
                                                                     rows="6">{{user.description}}</textarea></div>
       <mat-card-actions fxLayoutAlign="space-between">
         <div>
-          <button (click)="onReject()" color="no" mat-fab>
+          <button (click)="startAnimation('swipeleft')" (click)="onReject()" color="no" mat-fab>
             <mat-icon>clear</mat-icon>
           </button>
         </div>
         <div>
-          <button (click)="onAccept()" color="yes" mat-fab>
+          <button (click)="startAnimation('swiperight')" (click)="onAccept()" color="yes" mat-fab>
             <mat-icon>favorite</mat-icon>
           </button>
         </div>

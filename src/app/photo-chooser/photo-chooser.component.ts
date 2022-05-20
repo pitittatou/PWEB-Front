@@ -1,4 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
+import {UserService} from "../services/user.service";
 import {ImageUploadService} from "../services/image-upload.service";
 import {GlobalConstants} from "../common/global-constants";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -19,14 +20,18 @@ export class PhotoChooserComponent implements OnInit, OnDestroy {
   photos!: string[]
   items!: Item[]
 
-  constructor(private fileUploadService: ImageUploadService, private snackBar: MatSnackBar) {}
+  constructor(private userService: UserService, private fileUploadService: ImageUploadService, private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     this.items = []
     for (let i = 0; i < 3; i++) {
       this.items.push({position: i, disabled: false, empty: true, url: ""})
     }
-    this.updateItems()
+    this.photos = []
+    this.userService.get_photos().subscribe((resp) => {
+      this.photos = resp.photos
+      this.updateItems()
+    })
   }
 
   ngOnDestroy() {
@@ -51,18 +56,18 @@ export class PhotoChooserComponent implements OnInit, OnDestroy {
     let fileName = this.photos.splice(id, 1)[0]
     this.updateItems()
     this.fileUploadService.delete(fileName).subscribe({
-        next: (v) => {
-          console.log(v)
-        },
+        next: () => {},
         error: () => {
           console.log("Error trying to delete the file")
         }
       }
     )
+    this.userService.update_photos(this.photos).subscribe()
   }
 
   onPositionChange(id: number, target: number): void {
     [this.photos[id], this.photos[target]] = [this.photos[target], this.photos[id]]
+    this.userService.update_photos(this.photos).subscribe()
     this.updateItems()
   }
 
@@ -72,6 +77,7 @@ export class PhotoChooserComponent implements OnInit, OnDestroy {
       this.fileUploadService.upload(file).subscribe({
           next: (v) => {
             this.photos.push(v.filename)
+            this.userService.update_photos(this.photos).subscribe()
             this.updateItems()
           },
           error: () => {

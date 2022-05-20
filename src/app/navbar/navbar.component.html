@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" fxLayout="row wrap" fxLayoutAlign="space-between center">
+<mat-toolbar class="wrapper" color="primary" fxLayout="row wrap" fxLayoutAlign="space-between center">
   <div>
     <button [matMenuTriggerFor]="matchs" class="large-icon-button" mat-icon-button>
       <mat-icon>diversity_1</mat-icon>
@@ -26,7 +26,7 @@
     </button>
     <mat-menu #settings="matMenu">
       <div fxLayout="column">
-        <button mat-menu-item>
+        <button mat-menu-item (click)="onProfile()">
           <mat-icon>manage_accounts</mat-icon>
           <span>Mon profil</span></button>
         <button mat-menu-item (click)="onLogOut()">

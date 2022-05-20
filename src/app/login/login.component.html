@@ -1,119 +1,25 @@
 <body>
-<img alt="Logo" class="image" src="../assets/images/pink_logo.png">
+	<p></p>
 
-<div class="group">
-  <mat-card>
-    <mat-list>
-      <div>
-        <button (click)="loginWithGoogle()" class="google-login-btn" mat-raised-button>
-          Connexion avec Google
-        </button>
-      </div>
-      <p></p>
-      <div>
-        <button (click)="logout()" class="google-login-btn" mat-raised-button>
-          Inscription avec Google
-        </button>
-      </div>
-    </mat-list>
-  </mat-card>
-</div>
+	<img alt="Logo" class="image" src="../assets/images/pink_logo.png">
 
-<div class="group">
-  <mat-tab-group animationDuration="200ms" color="accent" dynamicHeight mat-align-tabs="center">
-    <mat-tab label="Connexion">
-      <p></p>
-      <div class="log">
-        <div>Identifiant</div>
-        <mat-form-field appearance="fill">
-          <mat-label>Entrez votre identifiant</mat-label>
-          <input matInput>
-        </mat-form-field>
+	<h1></h1>
 
+	<div>
+		<mat-card>
+			<p>
+				A la recherche de l'âme soeur, d'un peu d'affection, ou juste envie de t'amuser ?<br>
+				In'ça Swipe est fait pour toi !<br>
+				Swipe à gauche pour passer ton chemin, swipe à droite pour tenter d'aller matcher !<br><br>
+				Découvre ou redécouvre les INSAliens !<br>
+			</p>
 
-        <div>Mot de passe</div>
-        <mat-form-field appearance="fill">
-          <mat-label>Entrez votre mot de passe</mat-label>
-          <input [type]="hide ? 'password' : 'text'" matInput>
-          <button (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" class="mdp" mat-icon-button
-                  matSuffix>
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-          </button>
-        </mat-form-field>
-      </div>
-
-      <div class="logbutton">
-        <button color="accent" mat-raised-button>Se connecter</button>
-      </div>
-
-
-      <p></p>
-
-    </mat-tab>
-    <mat-tab label="Inscription">
-      <p></p>
-      <div class="log">
-        <div>Prénom</div>
-        <mat-form-field appearance="fill">
-          <mat-label>Entrez votre prénom</mat-label>
-          <input matInput>
-        </mat-form-field>
-
-        <div>Date de naissance</div>
-        <mat-form-field appearance="fill">
-          <mat-label>MM/JJ/AAAA</mat-label>
-          <input [matDatepicker]="picker" matInput>
-          <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-
-        <div>Identifiant</div>
-        <mat-form-field appearance="fill">
-          <mat-label>Entrez votre identifiant</mat-label>
-          <input matInput>
-        </mat-form-field>
-
-        <div>Mot de passe</div>
-        <mat-form-field appearance="fill">
-          <mat-label>Entrez votre mot de passe</mat-label>
-          <input [type]="hide ? 'password' : 'text'" matInput>
-          <button (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" class="mdp" mat-icon-button
-                  matSuffix>
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-          </button>
-        </mat-form-field>
-
-        <div>Genre :</div>
-        <mat-radio-group>
-          <mat-radio-button value="1">Homme</mat-radio-button>
-          <mat-radio-button value="2">Femme</mat-radio-button>
-          <mat-radio-button value="3">Autre</mat-radio-button>
-        </mat-radio-group>
-        <p></p>
-        <div>Attirance :</div>
-        <mat-checkbox>Homme</mat-checkbox>
-        <mat-checkbox>Femme</mat-checkbox>
-        <mat-checkbox>Autre</mat-checkbox>
-        <p></p>
-        <div>Rayon de recherche : {{sliderControl.value}} km</div>
-        <ngx-slider [formControl]="sliderControl" [options]="options"></ngx-slider>
-        <p></p>
-        <form [formGroup]="sliderForm">
-          <div>Tranche d'âge recherchée : {{ sliderForm.value.sliderControl2[0] }}
-            - {{ sliderForm.value.sliderControl2[1] }} ans
-          </div>
-          <ngx-slider [options]="options2" formControlName="sliderControl2"></ngx-slider>
-        </form>
-      </div>
-      <p></p>
-
-      <div class="logbutton">
-        <button color="accent" mat-raised-button>S'inscrire</button>
-      </div>
-      <p></p>
-    </mat-tab>
-  </mat-tab-group>
-</div>
+			<button mat-raised-button  (click)="loginWithGoogle()" class="google-login-btn">
+			<img src="../../assets/images/google_logo.png" alt="logo Google" height="30px" class="imgButton">
+				Connexion avec Google
+			</button>
+		</mat-card>
+	</div>
 
 </body>
 

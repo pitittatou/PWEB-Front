@@ -1,1 +1,69 @@
-<p>register works!</p>
+<div class="wrapper" fxLayout="row wrap" fxLayoutAlign="center">
+  <div fxFlex="35.5vw" fxFlex.md="52vw" fxFlex.sm="72vw" fxFlex.xs="94vw">
+    <img alt="Logo IN'ça Swipe" class="logo" src="../assets/images/pink_logo.png">
+    <mat-card fxLayout="row wrap" fxLayoutAlign="center">
+      <div fxFlex>
+        <div class="font">Inscription</div>
+
+        <app-photo-chooser></app-photo-chooser>
+        <div class="photo-label">Ajouter des photos</div>
+        <form #userForm="ngForm" (ngSubmit)="onFormSubmit(userForm)">
+        <div class="form-wrapper text-left">
+          <div>Prénom</div>
+          <mat-form-field appearance="fill">
+            <mat-label>Entrez votre prénom</mat-label>
+            <input [(ngModel)]="profile.firstName" matInput name="firstName" required>
+          </mat-form-field>
+
+          <div>Date de naissance</div>
+          <mat-form-field appearance="fill">
+            <mat-label>MM/JJ/AAAA</mat-label>
+            <input [(ngModel)]="profile.birthDate" [matDatepicker]="picker" matInput name="birthDate" required>
+            <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <div>Genre : *</div>
+          <mat-radio-group [(ngModel)]="profile.gender" name="gender" required>
+            <mat-radio-button id='g1' value="man">Homme</mat-radio-button>
+            <mat-radio-button id='g2' value="woman">Femme</mat-radio-button>
+            <mat-radio-button id='g3' value="other">Autre</mat-radio-button>
+          </mat-radio-group>
+
+          <div class="space-top">Attirance : *</div>
+          <div>
+            <mat-checkbox (change)="onCheck(0, $event.checked)" [(ngModel)]="profile.manChecked" name="manChecked">
+              Hommes
+            </mat-checkbox>
+            <mat-checkbox (change)="onCheck(1, $event.checked)" [(ngModel)]="profile.womanChecked" name="womanChecked">
+              Femmes
+            </mat-checkbox>
+            <mat-checkbox (change)="onCheck(2, $event.checked)" [(ngModel)]="profile.otherChecked" name="otherChecked">
+              Autre
+            </mat-checkbox>
+          </div>
+
+          <!-- <div>Rayon de recherche : {{sliderControl.value}} km </div>
+          <ngx-slider [formControl]="sliderControl" [options]="options"></ngx-slider>
+           -->
+
+          <div class="space-top">Tranche d'âge recherchée : {{ profile.minAge }} - {{ profile.maxAge }} ans</div>
+          <ngx-slider [(highValue)]="profile.maxAge" [(value)]="profile.minAge" [options]="Options" name="ageRange" ngModel></ngx-slider>
+
+          <div class="space-top">Description</div>
+          <mat-form-field appearance="fill" class="description">
+            <mat-label>Entrer votre description</mat-label>
+            <textarea #input [(ngModel)]="profile.description" matInput maxlength="300" name="description"
+                      rows="6"></textarea>
+            <mat-hint align="end">{{input.value?.length || 0}}/300</mat-hint>
+          </mat-form-field>
+          <div fxLayoutAlign="center" class="button-wrapper">
+            <button type="submit" [disabled]="userForm.invalid || !checkBoxesValid()" color="accent" mat-raised-button>S'inscrire</button>
+          </div>
+        </div>
+      </form>
+      </div>
+    </mat-card>
+  </div>
+</div>
+<div class="spacer"></div>

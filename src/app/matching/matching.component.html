@@ -1,7 +1,7 @@
 <div class="matching-card" fxLayout="row wrap" fxLayoutAlign="center">
   <div fxFlex="34vw" fxFlex.md="44vw" fxFlex.sm="54vw" fxFlex.xs="94vw">
-    <mat-card class="border" fxLayout="row wrap" fxLayoutAlign="center center" 
-              [@cardAnimator]="animationState" 
+    <mat-card class="border" fxLayout="row wrap" fxLayoutAlign="center center"
+              [@cardAnimator]="animationState"
               (@cardAnimator.done)="resetAnimationState()"
               (swipeleft)="startAnimation('swipeleft')"
               (swiperight)="startAnimation('swiperight')">
@@ -18,7 +18,7 @@
         </div>
       </div>
       <p class="strong" fxLayoutAlign="center">{{user.firstName}}, {{user.age}} ans</p>
-      <div class="wrapper" fxLayoutAlign="center center"><textarea class="description-wrapper"
+      <div class="wrapper" fxLayoutAlign="center center"><textarea readonly disabled class="description-wrapper"
                                                                     rows="6">{{user.description}}</textarea></div>
       <mat-card-actions fxLayoutAlign="space-between">
         <div>

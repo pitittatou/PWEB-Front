@@ -1,10 +1,10 @@
-<div fxLayout="row wrap" class="container">
-  <div fxFlex="33%" fxFlex.xs="100%" *ngFor="let item of items; let i = index">
+<div fxFlex fxLayout="row wrap" fxLayoutAlign="center center">
+  <div *ngFor="let item of items; let i = index">
     <div class="grid-item"
          [ngClass]="{'empty': item.empty && !item.disabled, 'disabled': item.disabled}" fxLayout="row" fxLayoutAlign="center center">
       <div *ngIf="!item.empty; then itemContent else placeholder"></div>
       <ng-template #itemContent>
-        <img mat-card-image [src]="item.url" alt="Photo numéro {{i+1}}">
+        <img  [src]="item.url" alt="Photo numéro {{i+1}}">
         <button (click)="onDelete(i)" mat-mini-fab color="warn" aria-label="Supprimer la photo" matTooltip="Supprimer la photo" class="close-button">
           <mat-icon>clear</mat-icon>
         </button>

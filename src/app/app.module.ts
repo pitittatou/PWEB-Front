@@ -17,8 +17,6 @@ import {MatchingComponent} from "./matching/matching.component";
 import {NavbarComponent} from './navbar/navbar.component';
 import {LoginComponent} from './login/login.component';
 import {PhotoChooserComponent} from './photo-chooser/photo-chooser.component';
-import {ApercuComponentComponent} from './apercu-component/apercu-component.component';
-import {ProfileEditComponent} from './profile-edit/profile-edit.component';
 
 // Material Components
 import {MatButtonModule} from "@angular/material/button";
@@ -39,16 +37,18 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {MatCardModule} from "@angular/material/card";
 import {MatMenuModule} from '@angular/material/menu';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { ProfileComponent } from './profile/profile.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MatchingComponent,
-    ApercuComponentComponent,
     PhotoChooserComponent,
     NavbarComponent,
     LoginComponent,
-    ProfileEditComponent
+    ProfileComponent,
+    RegisterComponent
   ],
   imports: [
     SocialLoginModule,

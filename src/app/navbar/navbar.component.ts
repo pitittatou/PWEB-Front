@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthenticationService} from "../services/authentication.service";
+import {User} from "../models/user.model";
+import {MatchingService} from "../services/matching.service";
+import {GlobalConstants} from "../common/global-constants";
 
 export interface Section {
   name: string;
@@ -17,6 +20,8 @@ export interface Section {
 export class NavbarComponent implements OnInit {
 
   opened = false;
+  matches!: User[]
+  apiUrl = GlobalConstants.apiURL
   profiles: Section[] = [
     {
       name: 'Inès',
@@ -45,7 +50,7 @@ export class NavbarComponent implements OnInit {
     },
   ];
 
-  constructor(private authService: AuthenticationService, private router: Router) {}
+  constructor(private authService: AuthenticationService, private router: Router, private matchingService: MatchingService) {}
 
   ngOnInit(): void {
   }
@@ -56,5 +61,19 @@ export class NavbarComponent implements OnInit {
 
   onLogOut() {
     this.authService.logout()
+  }
+
+  onGetMatches() {
+    this.matchingService.getMatches().subscribe((matches) => {
+      this.matches = matches
+        for (let match of this.matches) {
+          if(!match.photos.length) {
+            match.photos.push("placeholder.jpg")
+          }
+        }
+    },
+      (e) => {
+        console.log(e)
+      })
   }
 }

@@ -4,6 +4,7 @@ import {NgForm} from '@angular/forms';
 import {UserService} from "../services/user.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {UpdateProfileForm} from "../models/update-profile-form.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-profile',
@@ -24,7 +25,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     }
   };
 
-  constructor(private snackBar: MatSnackBar, private userService: UserService) {}
+  constructor(private snackBar: MatSnackBar, private userService: UserService, private router: Router) {}
 
   ngOnInit() {
     this.userService.get_profile().subscribe((profile) => {
@@ -62,5 +63,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.snackBar.open("Erreur lors de la mise à jour du profil", 'Fermer')
       }
     })
+  }
+
+  onReturn() {
+    this.router.navigateByUrl('/')
   }
 }

@@ -41,7 +41,7 @@
               <mat-hint align="end">{{input.value?.length || 0}}/300</mat-hint>
             </mat-form-field>
             <div class="button-wrapper" fxLayoutAlign="space-between">
-              <button disabled="true" color="accent" mat-raised-button>Aperçu</button>
+              <button color="accent" (click)="onReturn()" mat-raised-button>Retour</button>
               <button type="submit" color="accent" mat-raised-button>Valider</button>
             </div>
           </div>

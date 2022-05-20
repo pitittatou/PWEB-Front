@@ -14,6 +14,7 @@ export class MatchingComponent implements OnInit{
   i!:number;
   apiUrl: string = GlobalConstants.apiURL
   selectedPhotoIdx: number = 0
+  blockRequests = false
 
   constructor(private matchingService: MatchingService ) {}
 
@@ -45,12 +46,24 @@ export class MatchingComponent implements OnInit{
   }
 
   onReject() {
-    this.matchingService.reject(this.user.userId).subscribe(() => this.getUser(),
-      (e) => console.log(e))
+    if (!this.blockRequests) {
+      this.blockRequests = true
+      this.matchingService.reject(this.user.userId).subscribe(() => {
+          this.getUser()
+          this.blockRequests = false
+        },
+        (e) => console.log(e))
+    }
   }
 
   onAccept() {
-    this.matchingService.accept(this.user.userId).subscribe(() => this.getUser(),
+    if (!this.blockRequests) {
+      this.blockRequests = true
+      this.matchingService.accept(this.user.userId).subscribe(() => {
+          this.getUser()
+        this.blockRequests = false
+        },
       (e) => console.log(e))
+    }
   }
 }

@@ -1,8 +1,5 @@
-<div class="matching-card"
-     fxLayoutAlign="center"
->
-  <mat-card class="example-card"
-  >
+<div class="matching-card" fxLayoutAlign="center">
+  <mat-card class="example-card">
 
     <div class="image-container">
       <img *ngFor="let link of user.photos; let i = index" [hidden]="selectedPhotoIdx != i"
@@ -19,7 +16,7 @@
 
     <mat-card-content>
       <p fxLayoutAlign="center" style="font-size : 2rem"><strong>{{user.firstName}}, {{user.age}} ans</strong></p>
-      <p style="font-size : 1.3rem">{{user.description}}</p>
+      <div class="description-container">{{user.description}}</div>
     </mat-card-content>
     <mat-card-actions fxLayoutAlign="center" fxLayoutGap="260px">
       <div>

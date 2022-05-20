@@ -5,31 +5,30 @@
   >
 
     <div class="image-container">
-      <img [src]="monUser[this.i].imageUrl" [alt]="monUser[this.i].prenom">
-      <button mat-fab (click)="onClickLeft()" color="white" class="left-button">
+      <img *ngFor="let link of user.photos; let i = index" [hidden]="selectedPhotoIdx != i"
+           [src]="apiUrl+'images/'+link"
+           alt="Photo {{i}}">
+      <button (click)="onNextPhoto()" class="left-button" color="white" mat-fab>
         <mat-icon>arrow_right</mat-icon>
       </button>
-      <button mat-fab (click)="getUser()" color="white" class="right-button">
+      <button (click)="onPreviousPhoto()" class="right-button" color="white" mat-fab>
         <mat-icon>arrow_left</mat-icon>
       </button>
     </div>
 
 
     <mat-card-content>
-      <p style= "font-size : 2rem" fxLayoutAlign="center" ><strong>{{monUser[this.i].prenom}}, {{ monUser[this.i].age }} ans</strong></p>
-      <p style= "font-size : 1.3rem" >{{monUser[this.i].description}}</p>
+      <p fxLayoutAlign="center" style="font-size : 2rem"><strong>{{user.firstName}}, {{user.age}} ans</strong></p>
+      <p style="font-size : 1.3rem">{{user.description}}</p>
     </mat-card-content>
-    <mat-card-actions
-      fxLayoutAlign="center"
-      fxLayoutGap="260px"
-    >
+    <mat-card-actions fxLayoutAlign="center" fxLayoutGap="260px">
       <div>
-        <button mat-fab (click)="onClickNext()" color="no" aria-label="Example icon button with a plus one icon">
+        <button (click)="onReject()" color="no" mat-fab>
           <mat-icon>clear</mat-icon>
         </button>
       </div>
       <div>
-        <button mat-fab (click)="onClickNext()" color="yes" aria-label="Example icon button with a plus one icon">
+        <button (click)="onAccept()" color="yes" mat-fab>
           <mat-icon>favorite</mat-icon>
         </button>
       </div>

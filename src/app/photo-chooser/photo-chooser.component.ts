@@ -1,5 +1,4 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {UsersService} from "../services/users.service";
 import {ImageUploadService} from "../services/image-upload.service";
 import {GlobalConstants} from "../common/global-constants";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -20,10 +19,9 @@ export class PhotoChooserComponent implements OnInit, OnDestroy {
   photos!: string[]
   items!: Item[]
 
-  constructor(private usersService: UsersService, private fileUploadService: ImageUploadService, private snackBar: MatSnackBar) {}
+  constructor(private fileUploadService: ImageUploadService, private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
-    this.photos = this.usersService.photos
     this.items = []
     for (let i = 0; i < 3; i++) {
       this.items.push({position: i, disabled: false, empty: true, url: ""})

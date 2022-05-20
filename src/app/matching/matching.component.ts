@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {user} from "../models/model_user";
+import {User} from "../models/user.model";
 import {MatchingService} from "../services/matching.service";
+import {GlobalConstants} from "../common/global-constants";
 
 @Component({
   selector: 'app-matching',
@@ -9,33 +10,15 @@ import {MatchingService} from "../services/matching.service";
 })
 
 export class MatchingComponent implements OnInit{
-  monUser!: user[];
+  user!: User;
   i!:number;
+  apiUrl: string = GlobalConstants.apiURL
+  selectedPhotoIdx: number = 0
 
-  constructor(private matchingUsers: MatchingService ) {}
+  constructor(private matchingService: MatchingService ) {}
 
   ngOnInit() {
-    this.monUser=[
-      {
-        prenom : 'Jonas',
-        age: 36,
-        imageUrl:'https://www.karnaval.fr/wp-content/uploads/2022/02/SoireeDUB_MLutz-9.jpg',
-        imageUrlCenter:'https://www.karnaval.fr/wp-content/uploads/2022/02/SoireeDUB_MLutz-9.jpg',
-        imageUrlLeft:'https://www.karnaval.fr/wp-content/uploads/2022/02/Karna-Dub-WM-AD-05.jpg',
-        imageUrlRight:'https://www.karnaval.fr/wp-content/uploads/2022/02/Karna-Dub-WM-AD-09.jpg',
-        description:'J apprécie particulierement les crepes au caramel'
-      },
-      {
-        prenom : 'Elektruka',
-        age: 32,
-        imageUrl:'https://www.karnaval.fr/wp-content/uploads/2022/04/Karna_Bal_Folk_PLeCorre-69.jpg',
-        imageUrlCenter:'https://www.karnaval.fr/wp-content/uploads/2022/04/Karna_Bal_Folk_PLeCorre-69.jpg',
-        imageUrlLeft:'https://www.karnaval.fr/wp-content/uploads/2022/04/Karna_Bal_Folk_PLeCorre-64.jpg',
-        imageUrlRight:'https://www.karnaval.fr/wp-content/uploads/2022/04/Karna_Bal_Folk_PLeCorre-62.jpg',
-        description:'J accompagne le public à la sortie'
-      }
-    ];
-    this.i=0;
+    this.getUser()
   }
 
   /*UserMatchFromUserBack(UserBack: userBack) : user {
@@ -53,48 +36,39 @@ export class MatchingComponent implements OnInit{
   }*/
 
   getUser(): void {
-    this.matchingUsers.get().subscribe({
-      next: (v) => {
-        console.log(v)
-        console.log(v[0].userId)
-        //this.monUser = tabUserMatchFromTabUserBack
+    this.matchingService.getRandomUser().subscribe({
+      next: (user) => {
+        this.user = user
+        console.log(user)
+        if (!this.user.photos.length) {
+          this.user.photos.push('placeholder.jpg')
+        }
       },
       error: () => {
-        console.log("Error trying to get the users")
+        console.log("Error trying to get a user")
       }
     })
   }
 
   /*getUser(): void {
-    return this.matchingUsers.get().then((user: user))
+    return this.matchingService.get().then((user: user))
   }*/
 
-  onClickLeft(){
-    console.log("J'ai cliqué sur le bouton de gauche");
-    if (this.monUser[this.i].imageUrl == this.monUser[this.i].imageUrlCenter){
-      this.monUser[this.i].imageUrl=this.monUser[this.i].imageUrlLeft;
-    }else if (this.monUser[this.i].imageUrl == this.monUser[this.i].imageUrlRight){
-      this.monUser[this.i].imageUrl=this.monUser[this.i].imageUrlCenter;
-    }else {
-      this.monUser[this.i].imageUrl = this.monUser[this.i].imageUrlRight;
-    }
+  onNextPhoto() {
+    this.selectedPhotoIdx = (this.selectedPhotoIdx + 1) % this.user.photos.length
   }
 
-  onClickRight(){
-    console.log("J'ai cliqué sur le bouton de droite");
-    if (this.monUser[this.i].imageUrl == this.monUser[this.i].imageUrlCenter){
-      this.monUser[this.i].imageUrl=this.monUser[this.i].imageUrlRight;
-    }else if (this.monUser[this.i].imageUrl == this.monUser[this.i].imageUrlLeft){
-      this.monUser[this.i].imageUrl=this.monUser[this.i].imageUrlCenter;
-    }else{
-      this.monUser[this.i].imageUrl=this.monUser[this.i].imageUrlLeft;
-    }
+  onPreviousPhoto() {
+    this.selectedPhotoIdx = (this.selectedPhotoIdx - 1) % this.user.photos.length
   }
 
-  onClickNext(){
-    console.log("J'ai cliqué sur le bouton pour voir le prochain profil");
-    if (this.monUser.length-1 <= this.i+1){
-      this.i=this.i+1;
-    }
+  onReject() {
+    this.matchingService.reject(this.user.userId).subscribe(() => this.getUser(),
+      (e) => console.log(e))
+  }
+
+  onAccept() {
+    this.matchingService.accept(this.user.userId).subscribe(() => this.getUser(),
+      (e) => console.log(e))
   }
 }

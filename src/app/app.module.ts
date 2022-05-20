@@ -18,7 +18,6 @@ import {NavbarComponent} from './navbar/navbar.component';
 import {LoginComponent} from './login/login.component';
 import {PhotoChooserComponent} from './photo-chooser/photo-chooser.component';
 import {ApercuComponentComponent} from './apercu-component/apercu-component.component';
-import {ProfilComponent} from './profil/profil.component';
 import {RegisterComponent} from './register/register.component';
 
 // Material Components
@@ -43,7 +42,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
-  declarations: [AppComponent, MatchingComponent, ApercuComponentComponent, ProfilComponent, PhotoChooserComponent, NavbarComponent, LoginComponent, RegisterComponent],
+  declarations: [AppComponent, MatchingComponent, ApercuComponentComponent, PhotoChooserComponent, NavbarComponent, LoginComponent, RegisterComponent],
   imports: [BrowserModule, SocialLoginModule, AppRoutingModule, MatCardModule, NgxSliderModule, BrowserAnimationsModule, MatGridListModule, MatCardModule, MatSnackBarModule, FlexLayoutModule, MatTooltipModule, HttpClientModule, MatMenuModule, MatToolbarModule, MatSidenavModule, MatListModule, FormsModule, MatTabsModule, MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, MatButtonToggleModule, MatDatepickerModule, MatNativeDateModule, MatRadioModule, MatCheckboxModule, NgxSliderModule, HttpClientModule, ReactiveFormsModule, MatDividerModule],
 
   providers: [

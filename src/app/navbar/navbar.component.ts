@@ -26,6 +26,11 @@ export class NavbarComponent implements OnInit {
   constructor(private authService: AuthenticationService, private router: Router, private matchingService: MatchingService) {}
 
   ngOnInit(): void {
+    this.matchingService.getMatchesObs().subscribe({
+      next: (matches) => {
+        this.matches = matches
+      }
+    })
   }
 
   onProfile() {
@@ -34,20 +39,5 @@ export class NavbarComponent implements OnInit {
 
   onLogOut() {
     this.authService.logout()
-  }
-
-  onGetMatches() {
-    this.matchingService.getMatches().subscribe((matches) => {
-      this.matches = matches
-      console.log(matches)
-        for (let match of this.matches) {
-          if(!match.photos.length) {
-            match.photos.push("placeholder.jpg")
-          }
-        }
-    },
-      (e) => {
-        console.log(e)
-      })
   }
 }

@@ -35,13 +35,10 @@ export class MatchingComponent implements OnInit {
 
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
-    console.log(event);
-
     if (event.key === "ArrowRight") {
       this.onAccept();
       this.startAnimation("swiperight")
     }
-
     if (event.key === "ArrowLeft") {
       this.onReject();
       this.startAnimation("swipeleft")
@@ -51,6 +48,11 @@ export class MatchingComponent implements OnInit {
   getUsers(nb: number, trim: number = 0): void {
     this.matchingService.getRandomUsers(nb).subscribe({
       next: (users) => {
+        for (let user of users) {
+          if (!user.photos.length) {
+            user.photos.push("placeholder.jpg")
+          }
+        }
         this.users = this.users.concat(users.slice(trim))
         this.requestSent = false
         this.loaded = true

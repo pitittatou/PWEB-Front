@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {BehaviorSubject, first, Observable} from "rxjs";
 import {GlobalConstants} from "../common/global-constants";
 import {User} from "../models/user.model";
 
@@ -8,18 +8,23 @@ import {User} from "../models/user.model";
   providedIn: 'root'
 })
 export class MatchingService {
+  private matches = new BehaviorSubject<User[]>([]);
 
   constructor(private http: HttpClient) {
+    this.getMatches().subscribe({
+      next: (matches) => {
+        this.matches.next(matches)
+        this.startRefreshMatchesTimer()
+      }
+    })
   }
 
-  getRandomUser(): Observable<any> {
-    const route = GlobalConstants.apiURL + 'api/user/getRandom'
-    return this.http.get<User>(route);
+  getMatchesObs() {
+    return this.matches.asObservable()
   }
 
   getRandomUsers(nb: number): Observable<any> {
     const route = GlobalConstants.apiURL + 'api/user/getRandomUsers/' + nb
-    console.log(route)
     return this.http.get<User[]>(route);
   }
 
@@ -36,5 +41,20 @@ export class MatchingService {
   getMatches() : Observable<any> {
     const route = GlobalConstants.apiURL + 'api/matching/getMatches'
     return this.http.get<User[]>(route)
+  }
+
+  private refreshMatchesTimeout: number | undefined;
+
+  private startRefreshMatchesTimer() {
+    const timeout = 30*1000;
+    this.refreshMatchesTimeout = window.setTimeout(() => {
+      this.getMatches().subscribe({
+        next: (matches) => {
+          console.log("refresh")
+          this.matches.next(matches)
+          this.startRefreshMatchesTimer()
+        }
+      })
+    }, timeout);
   }
 }

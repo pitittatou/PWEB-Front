@@ -131,6 +131,7 @@ export class AuthenticationService {
       this.socialAuthService.refreshAuthToken(GoogleLoginProvider.PROVIDER_ID).then(() => {
         this.socialAuthService.authState.pipe(first()).subscribe((user) => this.update_user(user))
       }).catch(() => this.logout())
+      this.startRefreshTokenTimer()
     }, timeout);
   }
 

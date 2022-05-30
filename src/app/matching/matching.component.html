@@ -1,10 +1,10 @@
-<div class="matching-card" fxLayout="row wrap" fxLayoutAlign="center">
-  <div fxFlex="34vw" fxFlex.md="44vw" fxFlex.sm="54vw" fxFlex.xs="94vw">
+<div fxLayout="column wrap" fxLayoutAlign="center center">
     <mat-card (@cardAnimator.done)="resetAnimationState()" (swipeleft)="startAnimation('swipeleft')" (swiperight)="startAnimation('swiperight')"
               [@cardAnimator]="animationState"
-              class="border"
-              fxLayout="row wrap"
-              fxLayoutAlign="center center">
+              fxFlex="80vh"
+              class=" matching-card border"
+              fxLayout="column wrap"
+              fxLayoutAlign="space-between justify">
       <div *ngIf="loaded; then profilePhotos else placeholder"></div>
       <ng-template #profilePhotos>
         <div class="image-container">
@@ -23,31 +23,32 @@
           <img [src]="apiUrl+'images/placeholder.png'" alt="Photo temporaire">
         </div>
       </ng-template>
-      <p *ngIf="loaded; else loadingText" class="strong" fxLayoutAlign="center">{{users[0].firstName}}, {{users[0].age}} ans</p>
+      <div fxFlex="10%" fxLayoutAlign="center center">
+      <p *ngIf="loaded; else loadingText" class="strong" >{{users[0].firstName}}, {{users[0].age}} ans</p>
       <ng-template #loadingText>
         <p class="strong" fxLayoutAlign="center">Chargement...</p>
       </ng-template>
-          <div class="wrapper" fxLayoutAlign="center center">
-          <textarea *ngIf="loaded; else emptyDesc" class="description-wrapper" disabled readonly rows="6">
+      </div>
+        <div fxFlex="20%">
+          <textarea *ngIf="loaded; else emptyDesc" class="description-wrapper" disabled readonly>
             {{users[0].description}}
           </textarea>
             <ng-template #emptyDesc>
               <textarea class="description-wrapper" disabled readonly rows="6"></textarea>
             </ng-template>
           </div>
-      <mat-card-actions fxLayoutAlign="space-between">
+      <div fxFlex="10%" fxLayoutAlign="space-between center" class="button-wrapper">
         <div>
-          <button (click)="startAnimation('swipeleft'); onReject()" color="no" mat-fab [disabled]="!loaded">
+          <button (click)="onReject(); startAnimation('swipeleft')" color="no" mat-fab [disabled]="!loaded">
             <mat-icon>clear</mat-icon>
           </button>
         </div>
         <div>
-          <button (click)="startAnimation('swiperight'); onAccept()" color="yes" mat-fab [disabled]="!loaded">
+          <button (click)="onAccept(); startAnimation('swiperight')" color="yes" mat-fab [disabled]="!loaded">
             <mat-icon>favorite</mat-icon>
           </button>
         </div>
-      </mat-card-actions>
+      </div>
     </mat-card>
   </div>
-</div>
 <div class="spacer"></div>

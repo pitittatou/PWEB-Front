@@ -1,9 +1,14 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {User} from "../models/user.model";
 import {MatchingService} from "../services/matching.service";
 import {GlobalConstants} from "../common/global-constants";
 import {trigger, keyframes, animate, transition} from '@angular/animations';
 import * as kf from './keyframes';
+
+export enum KEY_CODE {
+  RIGHT_ARROW = "A",
+  LEFT_ARROW = 37
+}
 
 @Component({
   selector: 'app-matching',
@@ -28,6 +33,21 @@ export class MatchingComponent implements OnInit {
     this.getUsers(10)
   }
 
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    console.log(event);
+
+    if (event.key === "ArrowRight") {
+      this.onAccept();
+      this.startAnimation("swiperight")
+    }
+
+    if (event.key === "ArrowLeft") {
+      this.onReject();
+      this.startAnimation("swipeleft")
+    }
+  }
+
   getUsers(nb: number, trim: number = 0): void {
     this.matchingService.getRandomUsers(nb).subscribe({
       next: (users) => {
@@ -47,7 +67,7 @@ export class MatchingComponent implements OnInit {
   }
 
   onPreviousPhoto() {
-    this.selectedPhotoIdx = (this.selectedPhotoIdx - 1) % this.users[0].photos.length
+    this.selectedPhotoIdx = (((this.selectedPhotoIdx - 1) % this.users[0].photos.length) + this.users[0].photos.length) % this.users[0].photos.length // modulo bug fix
   }
 
   onReject() {

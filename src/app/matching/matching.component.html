@@ -1,13 +1,14 @@
 <div class="matching-card" fxLayout="row wrap" fxLayoutAlign="center">
   <div fxFlex="34vw" fxFlex.md="44vw" fxFlex.sm="54vw" fxFlex.xs="94vw">
-    <mat-card class="border" fxLayout="row wrap" fxLayoutAlign="center center"
+    <mat-card (@cardAnimator.done)="resetAnimationState()" (swipeleft)="startAnimation('swipeleft')" (swiperight)="startAnimation('swiperight')"
               [@cardAnimator]="animationState"
-              (@cardAnimator.done)="resetAnimationState()"
-              (swipeleft)="startAnimation('swipeleft')"
-              (swiperight)="startAnimation('swiperight')">
-      <div class="">
+              class="border"
+              fxLayout="row wrap"
+              fxLayoutAlign="center center">
+      <div *ngIf="loaded; then profilePhotos else placeholder"></div>
+      <ng-template #profilePhotos>
         <div class="image-container">
-          <img *ngFor="let link of user.photos; let i = index" [hidden]="selectedPhotoIdx != i"
+          <img *ngFor="let link of users[0].photos; let i = index" [hidden]="selectedPhotoIdx != i"
                [src]="apiUrl+'images/'+link" alt="Photo {{i}}">
           <button (click)="onNextPhoto()" class="right-button" color="white" mat-fab>
             <mat-icon>arrow_right</mat-icon>
@@ -16,18 +17,32 @@
             <mat-icon>arrow_left</mat-icon>
           </button>
         </div>
-      </div>
-      <p class="strong" fxLayoutAlign="center">{{user.firstName}}, {{user.age}} ans</p>
-      <div class="wrapper" fxLayoutAlign="center center"><textarea readonly disabled class="description-wrapper"
-                                                                    rows="6">{{user.description}}</textarea></div>
+      </ng-template>
+      <ng-template #placeholder>
+        <div class="image-container">
+          <img [src]="apiUrl+'images/placeholder.png'" alt="Photo temporaire">
+        </div>
+      </ng-template>
+      <p *ngIf="loaded; else loadingText" class="strong" fxLayoutAlign="center">{{users[0].firstName}}, {{users[0].age}} ans</p>
+      <ng-template #loadingText>
+        <p class="strong" fxLayoutAlign="center">Chargement...</p>
+      </ng-template>
+          <div class="wrapper" fxLayoutAlign="center center">
+          <textarea *ngIf="loaded; else emptyDesc" class="description-wrapper" disabled readonly rows="6">
+            {{users[0].description}}
+          </textarea>
+            <ng-template #emptyDesc>
+              <textarea class="description-wrapper" disabled readonly rows="6"></textarea>
+            </ng-template>
+          </div>
       <mat-card-actions fxLayoutAlign="space-between">
         <div>
-          <button (click)="startAnimation('swipeleft')" (click)="onReject()" color="no" mat-fab>
+          <button (click)="startAnimation('swipeleft'); onReject()" color="no" mat-fab [disabled]="!loaded">
             <mat-icon>clear</mat-icon>
           </button>
         </div>
         <div>
-          <button (click)="startAnimation('swiperight')" (click)="onAccept()" color="yes" mat-fab>
+          <button (click)="startAnimation('swiperight'); onAccept()" color="yes" mat-fab [disabled]="!loaded">
             <mat-icon>favorite</mat-icon>
           </button>
         </div>

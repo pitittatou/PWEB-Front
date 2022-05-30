@@ -17,6 +17,12 @@ export class MatchingService {
     return this.http.get<User>(route);
   }
 
+  getRandomUsers(nb: number): Observable<any> {
+    const route = GlobalConstants.apiURL + 'api/user/getRandomUsers/' + nb
+    console.log(route)
+    return this.http.get<User[]>(route);
+  }
+
   accept(userId: string) : Observable<any> {
     const route = GlobalConstants.apiURL + 'api/matching/accept'
     return this.http.post(route, {userId: userId})

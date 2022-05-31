@@ -6,17 +6,14 @@ import {trigger, keyframes, animate, transition} from '@angular/animations';
 import * as kf from './keyframes';
 
 export enum KEY_CODE {
-  RIGHT_ARROW = "A",
-  LEFT_ARROW = 37
+  RIGHT_ARROW = "A", LEFT_ARROW = 37
 }
 
 @Component({
   selector: 'app-matching',
   templateUrl: './matching.component.html',
   styleUrls: ['./matching.component.scss'],
-  animations: [trigger('cardAnimator', [
-    transition('* => swipeleft', animate(600, keyframes(kf.swipeleft))), transition('* => swiperight', animate(600, keyframes(kf.swiperight))),
-  ])]
+  animations: [trigger('cardAnimator', [transition('* => swipeleft', animate(600, keyframes(kf.swipeleft))), transition('* => swiperight', animate(600, keyframes(kf.swiperight))),])]
 })
 
 export class MatchingComponent implements OnInit {
@@ -27,14 +24,14 @@ export class MatchingComponent implements OnInit {
   requestSent: boolean = false
   loaded: boolean = false
 
-  constructor(private matchingService: MatchingService) {}
+  constructor(private matchingService: MatchingService) {
+  }
 
   ngOnInit() {
     this.getUsers(10)
   }
 
-  @HostListener('window:keyup', ['$event'])
-  keyEvent(event: KeyboardEvent) {
+  @HostListener('window:keyup', ['$event']) keyEvent(event: KeyboardEvent) {
     if (event.key === "ArrowRight") {
       this.onAccept();
     }
@@ -80,8 +77,7 @@ export class MatchingComponent implements OnInit {
 
       this.matchingService.reject(this.users[0].userId).subscribe({
         next: () => {
-        },
-        error: (e) => {
+        }, error: (e) => {
           console.log(e)
         }
       })
@@ -93,21 +89,21 @@ export class MatchingComponent implements OnInit {
       this.startAnimation("swiperight")
 
 
-    if (this.users.length <= 10 && !this.requestSent) {
-      this.requestSent = true
-      this.getUsers(20, this.users.length)
-    }
-
-    this.matchingService.accept(this.users[0].userId).subscribe({
-      next: (match) => {
-        if (match) {
-          this.matchingService.addMatch(match)
-        }
-      },
-      error: (e) => {
-        console.log(e)
+      if (this.users.length <= 10 && !this.requestSent) {
+        this.requestSent = true
+        this.getUsers(20, this.users.length)
       }
-    })}
+
+      this.matchingService.accept(this.users[0].userId).subscribe({
+        next: (match) => {
+          if (match) {
+            this.matchingService.addMatch(match)
+          }
+        }, error: (e) => {
+          console.log(e)
+        }
+      })
+    }
   }
 
   startAnimation(state: any) {

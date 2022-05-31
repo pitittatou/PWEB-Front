@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {BehaviorSubject, first, Observable} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {GlobalConstants} from "../common/global-constants";
 import {User} from "../models/user.model";
 
@@ -10,6 +10,7 @@ import {User} from "../models/user.model";
 export class MatchingService {
   private matches: User[] = []
   private matchesObs = new BehaviorSubject<User[]>([]);
+  private refreshMatchesTimeout: number | undefined;
 
   constructor(private http: HttpClient) {
     this.getMatches().subscribe({
@@ -35,25 +36,23 @@ export class MatchingService {
     return this.http.get<User[]>(route);
   }
 
-  accept(userId: string) : Observable<any> {
+  accept(userId: string): Observable<any> {
     const route = GlobalConstants.apiURL + 'api/matching/accept'
     return this.http.post<User>(route, {userId: userId})
   }
 
-  reject(userId: string) : Observable<any> {
+  reject(userId: string): Observable<any> {
     const route = GlobalConstants.apiURL + 'api/matching/reject'
     return this.http.post(route, {userId: userId})
   }
 
-  private getMatches() : Observable<any> {
+  private getMatches(): Observable<any> {
     const route = GlobalConstants.apiURL + 'api/matching/getMatches'
     return this.http.get<User[]>(route)
   }
 
-  private refreshMatchesTimeout: number | undefined;
-
   private startRefreshMatchesTimer() {
-    const timeout = 30*1000;
+    const timeout = 30 * 1000;
     this.refreshMatchesTimeout = window.setTimeout(() => {
       this.getMatches().subscribe({
         next: (matches) => {

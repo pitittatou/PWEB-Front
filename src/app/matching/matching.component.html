@@ -1,54 +1,55 @@
 <div fxLayout="column wrap" fxLayoutAlign="center center">
-    <mat-card (@cardAnimator.done)="resetAnimationState()" (swipeleft)="startAnimation('swipeleft')" (swiperight)="startAnimation('swiperight')"
-              [@cardAnimator]="animationState"
-              fxFlex="80vh"
-              class=" matching-card border"
-              fxLayout="column wrap"
-              fxLayoutAlign="space-between justify">
-      <div *ngIf="loaded; then profilePhotos else placeholder"></div>
-      <ng-template #profilePhotos>
-        <div class="image-container">
-          <img *ngFor="let link of users[0].photos; let i = index" [hidden]="selectedPhotoIdx != i"
-               [src]="apiUrl+'images/'+link" alt="Photo {{i}}">
-          <button (click)="onNextPhoto()" class="right-button" color="white" mat-fab>
-            <mat-icon>arrow_right</mat-icon>
-          </button>
-          <button (click)="onPreviousPhoto()" class="left-button" color="white" mat-fab>
-            <mat-icon>arrow_left</mat-icon>
-          </button>
-        </div>
-      </ng-template>
-      <ng-template #placeholder>
-        <div class="image-container">
-          <img [src]="apiUrl+'images/placeholder.png'" alt="Photo temporaire">
-        </div>
-      </ng-template>
-      <div fxFlex="10%" fxLayoutAlign="center center">
-      <p *ngIf="loaded; else loadingText" class="strong" >{{users[0].firstName}}, {{users[0].age}} ans</p>
+  <mat-card (@cardAnimator.done)="resetAnimationState()" (swipeleft)="startAnimation('swipeleft')"
+            (swiperight)="startAnimation('swiperight')"
+            [@cardAnimator]="animationState"
+            class=" matching-card border"
+            fxFlex="80vh"
+            fxLayout="column wrap"
+            fxLayoutAlign="space-between justify">
+    <div *ngIf="loaded; then profilePhotos else placeholder"></div>
+    <ng-template #profilePhotos>
+      <div class="image-container">
+        <img *ngFor="let link of users[0].photos; let i = index" [hidden]="selectedPhotoIdx != i"
+             [src]="apiUrl+'images/'+link" alt="Photo {{i}}">
+        <button (click)="onNextPhoto()" class="right-button" color="white" mat-fab>
+          <mat-icon>arrow_right</mat-icon>
+        </button>
+        <button (click)="onPreviousPhoto()" class="left-button" color="white" mat-fab>
+          <mat-icon>arrow_left</mat-icon>
+        </button>
+      </div>
+    </ng-template>
+    <ng-template #placeholder>
+      <div class="image-container">
+        <img [src]="apiUrl+'images/placeholder.png'" alt="Photo temporaire">
+      </div>
+    </ng-template>
+    <div fxFlex="10%" fxLayoutAlign="center center">
+      <p *ngIf="loaded; else loadingText" class="strong">{{users[0].firstName}}, {{users[0].age}} ans</p>
       <ng-template #loadingText>
         <p class="strong" fxLayoutAlign="center">Chargement...</p>
       </ng-template>
-      </div>
-        <div fxFlex="20%">
+    </div>
+    <div fxFlex="20%">
           <textarea *ngIf="loaded; else emptyDesc" class="description-wrapper" disabled readonly>
             {{users[0].description}}
           </textarea>
-            <ng-template #emptyDesc>
-              <textarea class="description-wrapper" disabled readonly rows="6"></textarea>
-            </ng-template>
-          </div>
-      <div fxFlex="10%" fxLayoutAlign="space-between center" class="button-wrapper">
-        <div>
-          <button (click)="onReject()" color="no" mat-fab [disabled]="!loaded">
-            <mat-icon>clear</mat-icon>
-          </button>
-        </div>
-        <div>
-          <button (click)="onAccept()" color="yes" mat-fab [disabled]="!loaded">
-            <mat-icon>favorite</mat-icon>
-          </button>
-        </div>
+      <ng-template #emptyDesc>
+        <textarea class="description-wrapper" disabled readonly rows="6"></textarea>
+      </ng-template>
+    </div>
+    <div class="button-wrapper" fxFlex="10%" fxLayoutAlign="space-between center">
+      <div>
+        <button (click)="onReject()" [disabled]="!loaded" color="no" mat-fab>
+          <mat-icon>clear</mat-icon>
+        </button>
       </div>
-    </mat-card>
-  </div>
+      <div>
+        <button (click)="onAccept()" [disabled]="!loaded" color="yes" mat-fab>
+          <mat-icon>favorite</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-card>
+</div>
 <div class="spacer"></div>

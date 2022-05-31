@@ -3,8 +3,9 @@ import {Options} from '@angular-slider/ngx-slider';
 import {NgForm} from '@angular/forms';
 import {UserService} from "../services/user.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {UpdateProfileForm} from "../models/update-profile-form.model";
 import {Router} from "@angular/router";
+import {Title} from "@angular/platform-browser";
+import {Profile} from "../models/profile.model";
 
 @Component({
   selector: 'app-profile',
@@ -12,8 +13,9 @@ import {Router} from "@angular/router";
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit, OnDestroy {
-  profile!: UpdateProfileForm;
+  profile!: Profile
   attraction!: {name: string, checked: boolean}[]
+  loaded: boolean = false
   Options: Options = {
     floor: 18,
     ceil: 99,
@@ -25,18 +27,22 @@ export class ProfileComponent implements OnInit, OnDestroy {
     }
   };
 
-  constructor(private snackBar: MatSnackBar, private userService: UserService, private router: Router) {}
+  constructor(private snackBar: MatSnackBar, private userService: UserService, private router: Router, private titleService: Title) {}
 
   ngOnInit() {
-    this.userService.get_profile().subscribe((profile) => {
-      this.profile = profile
+    this.titleService.setTitle("Profil")
+    this.userService.get_profile().subscribe({
+    next: (p) => {
+      this.profile = p
       this.attraction = [
         {name: "man", checked: this.profile.manChecked},
         {name: "woman", checked: this.profile.womanChecked},
         {name: "other", checked: this.profile.otherChecked}
       ]
+      this.loaded = true
     },
-      (e) => console.log(e))
+    error:  (e) => console.log(e)
+    })
   }
 
   ngOnDestroy() {
@@ -49,6 +55,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   onFormSubmit(userForm: NgForm) {
     let data = userForm.value
+    data.ageRange = [this.profile.minAge, this.profile.maxAge]
     data.attraction = []
     for (let gender of this.attraction) {
       if (gender.checked) {

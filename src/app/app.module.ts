@@ -1,5 +1,5 @@
-import {NgModule, Injectable} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule, Title} from '@angular/platform-browser';
 import {NgxSliderModule} from '@angular-slider/ngx-slider';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -82,6 +82,7 @@ import { RegisterComponent } from './register/register.component';
   ],
 
   providers: [
+    Title,
     {
     provide: 'SocialAuthServiceConfig', useValue: {
       autoLogin: true, // keeps the user signed in

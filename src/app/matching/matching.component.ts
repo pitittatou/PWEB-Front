@@ -4,6 +4,7 @@ import {MatchingService} from "../services/matching.service";
 import {GlobalConstants} from "../common/global-constants";
 import {trigger, keyframes, animate, transition} from '@angular/animations';
 import * as kf from './keyframes';
+import {Title} from "@angular/platform-browser";
 
 export enum KEY_CODE {
   RIGHT_ARROW = "A", LEFT_ARROW = 37
@@ -24,10 +25,11 @@ export class MatchingComponent implements OnInit {
   requestSent: boolean = false
   loaded: boolean = false
 
-  constructor(private matchingService: MatchingService) {
+  constructor(private matchingService: MatchingService, private titleService: Title) {
   }
 
   ngOnInit() {
+    this.titleService.setTitle("IN'ÇA SWIPE")
     this.getUsers(10)
   }
 

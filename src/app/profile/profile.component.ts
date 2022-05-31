@@ -5,6 +5,7 @@ import {UserService} from "../services/user.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {UpdateProfileForm} from "../models/update-profile-form.model";
 import {Router} from "@angular/router";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-profile',
@@ -25,9 +26,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
     }
   };
 
-  constructor(private snackBar: MatSnackBar, private userService: UserService, private router: Router) {}
+  constructor(private snackBar: MatSnackBar, private userService: UserService, private router: Router, private titleService: Title) {}
 
   ngOnInit() {
+    this.titleService.setTitle("Profil")
     this.userService.get_profile().subscribe((profile) => {
       this.profile = profile
       this.attraction = [

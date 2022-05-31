@@ -6,6 +6,7 @@ import {UserService} from "../services/user.service";
 import {AuthenticationService} from "../services/authentication.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {RegisterForm} from "../models/register-form.model";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-register',
@@ -26,9 +27,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
     }
   };
 
-  constructor(private snackBar: MatSnackBar, private userService: UserService, private router: Router, private authService: AuthenticationService) {}
+  constructor(private snackBar: MatSnackBar, private userService: UserService, private router: Router, private authService: AuthenticationService, private titleService: Title) {}
 
   ngOnInit() {
+    this.titleService.setTitle("Inscription")
     this.profile = new RegisterForm()
     this.attraction = [
       {name: "man", checked: this.profile.manChecked},

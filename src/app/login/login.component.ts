@@ -3,6 +3,7 @@ import {Options} from '@angular-slider/ngx-slider';
 import {FormControl, FormGroup} from '@angular/forms';
 import {AuthenticationService} from "../services/authentication.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-login',
@@ -28,9 +29,10 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
   error!: String
 
-  constructor(private authService: AuthenticationService, private snackBar: MatSnackBar) {}
+  constructor(private authService: AuthenticationService, private snackBar: MatSnackBar, private titleService: Title) {}
 
   ngOnInit() {
+    this.titleService.setTitle("Connexion")
     this.error = ''
   }
 

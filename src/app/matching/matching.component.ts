@@ -37,11 +37,9 @@ export class MatchingComponent implements OnInit {
   keyEvent(event: KeyboardEvent) {
     if (event.key === "ArrowRight") {
       this.onAccept();
-      this.startAnimation("swiperight")
     }
     if (event.key === "ArrowLeft") {
       this.onReject();
-      this.startAnimation("swipeleft")
     }
   }
 
@@ -73,31 +71,43 @@ export class MatchingComponent implements OnInit {
   }
 
   onReject() {
-    if (this.users.length <= 10 && !this.requestSent) {
-      this.requestSent = true
-      this.getUsers(20, this.users.length)
-    }
-
-    this.matchingService.reject(this.users[0].userId).subscribe({
-      next: () => {},
-      error: (e) => {
-        console.log(e)
+    if (!this.animationState) {
+      this.startAnimation("swipeleft")
+      if (this.users.length <= 10 && !this.requestSent) {
+        this.requestSent = true
+        this.getUsers(20, this.users.length)
       }
-    })
+
+      this.matchingService.reject(this.users[0].userId).subscribe({
+        next: () => {
+        },
+        error: (e) => {
+          console.log(e)
+        }
+      })
+    }
   }
 
   onAccept() {
+    if (!this.animationState) {
+      this.startAnimation("swiperight")
+
+
     if (this.users.length <= 10 && !this.requestSent) {
       this.requestSent = true
       this.getUsers(20, this.users.length)
     }
 
     this.matchingService.accept(this.users[0].userId).subscribe({
-      next: () => {},
+      next: (match) => {
+        if (match) {
+          this.matchingService.addMatch(match)
+        }
+      },
       error: (e) => {
         console.log(e)
       }
-    })
+    })}
   }
 
   startAnimation(state: any) {

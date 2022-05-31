@@ -39,12 +39,12 @@
           </div>
       <div fxFlex="10%" fxLayoutAlign="space-between center" class="button-wrapper">
         <div>
-          <button (click)="onReject(); startAnimation('swipeleft')" color="no" mat-fab [disabled]="!loaded">
+          <button (click)="onReject()" color="no" mat-fab [disabled]="!loaded">
             <mat-icon>clear</mat-icon>
           </button>
         </div>
         <div>
-          <button (click)="onAccept(); startAnimation('swiperight')" color="yes" mat-fab [disabled]="!loaded">
+          <button (click)="onAccept()" color="yes" mat-fab [disabled]="!loaded">
             <mat-icon>favorite</mat-icon>
           </button>
         </div>

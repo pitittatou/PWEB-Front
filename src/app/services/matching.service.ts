@@ -8,19 +8,26 @@ import {User} from "../models/user.model";
   providedIn: 'root'
 })
 export class MatchingService {
-  private matches = new BehaviorSubject<User[]>([]);
+  private matches: User[] = []
+  private matchesObs = new BehaviorSubject<User[]>([]);
 
   constructor(private http: HttpClient) {
     this.getMatches().subscribe({
       next: (matches) => {
-        this.matches.next(matches)
+        this.matches = matches
+        this.matchesObs.next(this.matches)
         this.startRefreshMatchesTimer()
       }
     })
   }
 
+  addMatch(match: User) {
+    this.matches.push(match)
+    this.matchesObs.next(this.matches)
+  }
+
   getMatchesObs() {
-    return this.matches.asObservable()
+    return this.matchesObs.asObservable()
   }
 
   getRandomUsers(nb: number): Observable<any> {
@@ -30,7 +37,7 @@ export class MatchingService {
 
   accept(userId: string) : Observable<any> {
     const route = GlobalConstants.apiURL + 'api/matching/accept'
-    return this.http.post(route, {userId: userId})
+    return this.http.post<User>(route, {userId: userId})
   }
 
   reject(userId: string) : Observable<any> {
@@ -38,7 +45,7 @@ export class MatchingService {
     return this.http.post(route, {userId: userId})
   }
 
-  getMatches() : Observable<any> {
+  private getMatches() : Observable<any> {
     const route = GlobalConstants.apiURL + 'api/matching/getMatches'
     return this.http.get<User[]>(route)
   }
@@ -50,8 +57,8 @@ export class MatchingService {
     this.refreshMatchesTimeout = window.setTimeout(() => {
       this.getMatches().subscribe({
         next: (matches) => {
-          console.log("refresh")
-          this.matches.next(matches)
+          this.matches = matches
+          this.matchesObs.next(this.matches)
           this.startRefreshMatchesTimer()
         }
       })

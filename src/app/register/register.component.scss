@@ -1,0 +1,77 @@
+.logo {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.mat-card {
+  border: 1px solid #34c6bb;
+  justify-content: center;
+  text-align: center;
+  border-radius: 8px;
+}
+
+@media (min-width: 600px) {
+  .mat-card {
+    border-width: 2px;
+  }
+}
+
+.spacer {
+  margin-bottom: 19px;
+  height: 1px;
+}
+
+.button-wrapper {
+  margin-top: 10px;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.wrapper {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.form-wrapper {
+  padding: 0 5%;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.photo-label {
+  margin: 5px 0;
+}
+
+.mat-radio-button {
+  margin: 6px 10px 6px 0;
+}
+
+.mat-checkbox {
+  margin: 6px 10px 6px 0;
+}
+
+.space-top {
+  margin-top: 14px;
+}
+
+.ngx-slider {
+  width: 100%;
+}
+
+.font {
+  color: #e70a7c;
+  font-weight: bold;
+  font-size: 35px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+@media (min-width: 960px) {
+  .font {
+    font-size: 40px;
+  }
+}

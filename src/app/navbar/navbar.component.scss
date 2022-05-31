@@ -1,0 +1,41 @@
+.image-wrapper {
+  height: 100%;
+}
+
+.logo {
+  margin-top: 5px;
+  height: calc(100% - 10px);
+}
+
+.large-icon-button {
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+
+  .mat-icon {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+  }
+  .material-icons {
+    font-size: 40px;
+  }
+}
+
+.profile-photo {
+  margin-right: 0.3%;
+  width: 90%;
+  height: 90%;
+  clip-path: circle();
+}
+
+.match-item {
+  padding: 10px;
+  height: 140px;
+  width: 280px;
+  text-align: center;
+}
+
+.wrapper {
+  margin-bottom: 4vh;
+}

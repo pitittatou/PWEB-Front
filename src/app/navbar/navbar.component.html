@@ -1,0 +1,39 @@
+<mat-toolbar class="wrapper" color="primary" fxLayout="row wrap" fxLayoutAlign="space-between center">
+  <div>
+    <button [matMenuTriggerFor]="matchs" class="large-icon-button" mat-icon-button>
+      <mat-icon>diversity_1</mat-icon>
+    </button>
+    <mat-menu #matchs>
+      <div *ngFor="let match of matches">
+        <button class="match-item" fxLayout="row wrap" fxLayoutAlign="center center" mat-menu-item>
+          <div fxFlex="50%" fxLayoutAlign="center center">
+            <img [src]="apiUrl + 'images/' + match.photos[0]" alt="profile photo" class="profile-photo">
+          </div>
+          <div fxFlex="50%" fxLayout="column wrap" fxLayoutAlign="start stretch">
+            <span fxFlex>{{match.firstName}}</span>
+            <span fxFlex>{{match.age}} ans</span>
+          </div>
+        </button>
+      </div>
+    </mat-menu>
+  </div>
+  <div class="image-wrapper">
+    <img alt="logo" class="logo" src="../assets/images/white_logo.png"/>
+  </div>
+  <div>
+    <button [matMenuTriggerFor]="settings" class="large-icon-button" mat-icon-button>
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #settings="matMenu">
+      <div fxLayout="column">
+        <button mat-menu-item (click)="onProfile()">
+          <mat-icon>manage_accounts</mat-icon>
+          <span>Mon profil</span></button>
+        <button mat-menu-item (click)="onLogOut()">
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Me déconnecter</span>
+        </button>
+      </div>
+    </mat-menu>
+  </div>
+</mat-toolbar>

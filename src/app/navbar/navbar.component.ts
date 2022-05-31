@@ -28,6 +28,11 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.matchingService.getMatchesObs().subscribe({
       next: (matches) => {
+        for (let match of matches) {
+          if (!match.photos.length) {
+            match.photos.push("placeholder.png")
+          }
+        }
         this.matches = matches
       }
     })

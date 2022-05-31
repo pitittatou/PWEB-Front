@@ -47,7 +47,7 @@ export class MatchingComponent implements OnInit {
       next: (users) => {
         for (let user of users) {
           if (!user.photos.length) {
-            user.photos.push("placeholder.jpg")
+            user.photos.push("placeholder.png")
           }
         }
         this.users = this.users.concat(users.slice(trim))

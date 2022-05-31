@@ -3,7 +3,7 @@ import {Router} from "@angular/router";
 import {AuthenticationService} from "../services/authentication.service";
 import {User} from "../models/user.model";
 import {MatchingService} from "../services/matching.service";
-import {GlobalConstants} from "../common/global-constants";
+import {environment} from "../../environments/environment";
 
 export interface Section {
   name: string;
@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit {
 
   opened = false;
   matches!: User[]
-  apiUrl = GlobalConstants.apiURL
+  apiUrl = environment.apiURL
 
   constructor(private authService: AuthenticationService, private router: Router, private matchingService: MatchingService) {}
 

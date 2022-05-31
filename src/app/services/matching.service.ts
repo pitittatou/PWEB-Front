@@ -1,8 +1,8 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject, Observable} from "rxjs";
-import {GlobalConstants} from "../common/global-constants";
 import {User} from "../models/user.model";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -32,22 +32,22 @@ export class MatchingService {
   }
 
   getRandomUsers(nb: number): Observable<any> {
-    const route = GlobalConstants.apiURL + 'api/user/getRandomUsers/' + nb
+    const route = environment.apiURL + 'api/user/getRandomUsers/' + nb
     return this.http.get<User[]>(route);
   }
 
   accept(userId: string): Observable<any> {
-    const route = GlobalConstants.apiURL + 'api/matching/accept'
+    const route = environment.apiURL + 'api/matching/accept'
     return this.http.post<User>(route, {userId: userId})
   }
 
   reject(userId: string): Observable<any> {
-    const route = GlobalConstants.apiURL + 'api/matching/reject'
+    const route = environment.apiURL + 'api/matching/reject'
     return this.http.post(route, {userId: userId})
   }
 
   private getMatches(): Observable<any> {
-    const route = GlobalConstants.apiURL + 'api/matching/getMatches'
+    const route = environment.apiURL + 'api/matching/getMatches'
     return this.http.get<User[]>(route)
   }
 

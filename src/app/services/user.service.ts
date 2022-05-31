@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
 import {GlobalConstants} from "../common/global-constants";
 import {HttpClient} from "@angular/common/http";
-import {UpdateProfileForm} from "../models/update-profile-form.model";
+import {Profile} from "../models/profile.model";
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +33,6 @@ export class UserService {
 
   get_profile(): Observable<any> {
     const route = GlobalConstants.apiURL + 'api/user/getProfile'
-    return this.http.get<UpdateProfileForm>(route)
+    return this.http.get<Profile>(route)
   }
 }

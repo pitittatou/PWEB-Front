@@ -3,7 +3,7 @@ import {GoogleLoginProvider, SocialAuthService, SocialUser} from "angularx-socia
 import {BehaviorSubject, first} from "rxjs";
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
-import {GlobalConstants} from "../common/global-constants";
+import {environment} from "../../environments/environment";
 
 export interface Response {
   registered: boolean
@@ -47,7 +47,7 @@ export class AuthenticationService {
     return this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then((user) => {
       this.update_user(user)
       this.startRefreshTokenTimer()
-      const route = GlobalConstants.apiURL + 'api/user/login'
+      const route = environment.apiURL + 'api/user/login'
       this.http.get<Response>(route).subscribe((resp) => {
         this.update_registered(resp.registered)
         if (this.registered) {

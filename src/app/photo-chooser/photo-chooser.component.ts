@@ -1,8 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {UserService} from "../services/user.service";
 import {ImageUploadService} from "../services/image-upload.service";
-import {GlobalConstants} from "../common/global-constants";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {environment} from "../../environments/environment";
 
 type Item = {
   position: number
@@ -43,7 +43,7 @@ export class PhotoChooserComponent implements OnInit, OnDestroy {
       if (this.photos[i]) {
         this.items[i].disabled = false
         this.items[i].empty = false
-        this.items[i].url = GlobalConstants.apiURL + 'images/' + this.photos[i]
+        this.items[i].url = environment.apiURL + 'images/' + this.photos[i]
       } else {
         this.items[i].empty = true
         this.items[i].url = ""

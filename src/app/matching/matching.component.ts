@@ -1,10 +1,10 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {User} from "../models/user.model";
 import {MatchingService} from "../services/matching.service";
-import {GlobalConstants} from "../common/global-constants";
 import {trigger, keyframes, animate, transition} from '@angular/animations';
 import * as kf from './keyframes';
 import {Title} from "@angular/platform-browser";
+import {environment} from "../../environments/environment";
 
 export enum KEY_CODE {
   RIGHT_ARROW = "A", LEFT_ARROW = 37
@@ -20,7 +20,7 @@ export enum KEY_CODE {
 export class MatchingComponent implements OnInit {
   animationState!: string
   users: User[] = []
-  apiUrl: string = GlobalConstants.apiURL
+  apiUrl: string = environment.apiURL
   selectedPhotoIdx: number = 0
   requestSent: boolean = false
   loaded: boolean = false
